@@ -1,3 +1,9 @@
+:root{
+    --main-grey: #BCBCBC;
+    --main-black: #231f20;
+    --main-black-a: rgba(35,31,32,.15);
+}
+
 #header{
     height: 60px;
     width: 100%;
@@ -29,13 +35,13 @@ a{
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
     font-size: 10pt;
-    color: rgb(201, 201, 201);
+    color: var(--main-grey);
 }
 a:hover{
 text-decoration: underline;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: rgb(201, 201, 201);
+    color: var(--main-grey);
     opacity: 1; /* Firefox */
 }
 
@@ -62,7 +68,7 @@ button:focus {
     font-family: 'Montserrat', sans-serif;
     font-style: italic;
     border: none;
-    border-bottom: 1px solid rgb(201, 201, 201);
+    border-bottom: 1px solid var(--main-grey);
     font-size: 11pt;
 }
 
@@ -72,7 +78,7 @@ button:focus {
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
     font-size: 10pt;
-    color: rgb(201, 201, 201);
+    color: var(--main-grey);
     float: right;
     margin-right: 30px;
     margin-top: -37px;
@@ -94,14 +100,14 @@ button:focus {
     background-color: white;
     border-radius: 30px;
     padding: 10px 50px 10px 50px;
-    -webkit-box-shadow: 0 0 74px 2px rgba(0,0,0,0.15);
-    -moz-box-shadow: 0 0 74px 2px rgba(0,0,0,0.15);
-    box-shadow: 0 0 74px 2px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 74px 2px var(--main-black-a);
+    -moz-box-shadow: 0 0 74px 2px var(--main-black-a);;
+    box-shadow: 0 0 74px 2px var(--main-black-a);;
 }
 .search{
     background-color: transparent;
     border: none;
-    color: black;
+    color: var(--main-black);
     text-align: center;
     text-decoration: none;
     display: inline-block;

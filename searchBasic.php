@@ -29,10 +29,9 @@ if($mysqli -> connect_errno){
     <title>Pantry Pal</title>
 </head>
 <body>
-<div id="header">
-    <img src="pantrypal.png" id="masthead">
-    <a class="account" href=""> my account</a>
-</div>
+<?php
+include_once 'header.php';
+?>
 <div id="search_div">
     <h1>What's in Your <br> Pantry Today?</h1>
     <br>
