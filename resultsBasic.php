@@ -17,6 +17,10 @@ if ($mysqli->connect_errno) {
 <head>
     <link rel="stylesheet" type="text/css" href="generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
     <meta charset="UTF-8">
     <title>Pantry Pal</title>
     <style>
@@ -44,6 +48,8 @@ if ($mysqli->connect_errno) {
             box-shadow: -1px 0px 7px 1px rgba(0, 0, 0, 0.1);
             height: auto;
             float: left;
+            display: block;
+            clear: both;
         }
 
         .recipeImage {
@@ -146,6 +152,15 @@ include_once 'header.php';
         }
     }
     ?>
+    <script src="masonry.pkgd.min.js"></script>
+    <script>
+        $('.resultsDiv').masonry({
+
+            itemSelector: '.grid-item',
+            columnWidth: 250
+        });
+
+    </script>
 </div>
 
 </body>
