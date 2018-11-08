@@ -62,7 +62,7 @@ button:focus {
     font-family: 'Montserrat', sans-serif;
     font-style: italic;
     border: none;
-    border-bottom: 1px solid rgb(201, 201, 201);
+    border-bottom: 1px solid rgb(188, 188, 188);
     font-size: 11pt;
 }
 
@@ -72,7 +72,7 @@ button:focus {
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
     font-size: 10pt;
-    color: rgb(201, 201, 201);
+    color: rgb(188, 188, 188);
     float: right;
     margin-right: 30px;
     margin-top: -37px;

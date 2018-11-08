@@ -88,12 +88,18 @@ if ($mysqli->connect_errno) {
             height: 15px;
             float: right;
         }
+        .resultsHeader{
+            width: 100%;
+            background-
+        }
     </style>
 </head>
 <body>
 <?php
 include_once 'header.php';
 ?>
+
+
 
 <div id="resultsDiv">
     <?php
