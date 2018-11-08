@@ -20,12 +20,16 @@ if ($mysqli->connect_errno) {
     <meta charset="UTF-8">
     <title>Pantry Pal</title>
     <style>
+        body{
+            background-image: none;
+            background-color: white;
+        }
         #resultsDiv {
             width: 80%;
             background-color: white;
             height: auto;
             min-height: 600px;
-            margin: 100px auto 0;
+            margin: 10px auto 0;
             padding: 40px;
             -webkit-border-radius: 20px;
             -moz-border-radius: 20px;
@@ -90,7 +94,21 @@ if ($mysqli->connect_errno) {
         }
         .resultsHeader{
             width: 100%;
-            background-
+            background-image:
+        }
+        .resultsHeader{
+            background-image: url("mainBG.jpg");
+            background-size: 140%;
+            background-position-y: -500px;
+            background-position-x: -30px;
+            background-position: fixed;
+            width: 100%;
+            height: 400px;
+        }
+        .resultsHeaderText{
+            color: white;
+            padding-top: 160px;
+            padding-left: 50px;
         }
     </style>
 </head>
@@ -99,12 +117,16 @@ if ($mysqli->connect_errno) {
 include_once 'header.php';
 ?>
 
-
+<div class="resultsHeader">
+<div class="resultsHeaderText">
+    <h1>Recipes You Can Make...</h1>
+</div>
+</div>
 
 <div id="resultsDiv">
     <?php
     if($_REQUEST) {
-        echo "<h3>Recipes containing: " . $_REQUEST["ingred1"] . ",  " . $_REQUEST["ingred2"] . ",  " . $_REQUEST["ingred3"] . "</h3><br><br>";
+        echo "<h3>Recipes containing: " . $_REQUEST["ingred1"] . ",  " . $_REQUEST["ingred2"] . ",  " . $_REQUEST["ingred3"] . "</h3>";
 
         $sql = "SELECT * FROM lewischr_recipes.all_data_view
     WHERE ingredient IN ('" . $_REQUEST["ingred1"] . "' , '" . $_REQUEST["ingred2"] . "', '" . $_REQUEST["ingred3"] . "') GROUP BY title";
