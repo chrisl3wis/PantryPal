@@ -178,7 +178,7 @@ include_once 'header.php';
 <div id="resultsDiv">
     <?php
     if($_REQUEST) {
-        echo "<h3>Recipes containing: " . $_REQUEST["ingred1"] . ",  " . $_REQUEST["ingred2"] . ",  " . $_REQUEST["ingred3"] . "</h3>";
+
 
         $sql = "SELECT * FROM lewischr_recipes.all_data_view
     WHERE ingredient IN ('" . $_REQUEST["ingred1"] . "' , '" . $_REQUEST["ingred2"] . "', '" . $_REQUEST["ingred3"] . "') GROUP BY title";
