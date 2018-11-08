@@ -25,17 +25,14 @@ if ($mysqli->connect_errno) {
             background-color: white;
         }
         #resultsDiv {
-            width: 80%;
             background-color: white;
             height: auto;
-            min-height: 600px;
-            margin: 10px auto 0;
-            padding: 40px;
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            border-radius: 20px;
+            padding: 10px;
+            float: left;
+            width: 80%;
 
         }
+
 
         .searchResult {
             width: 250px;
@@ -56,6 +53,14 @@ if ($mysqli->connect_errno) {
             position: relative;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
+        }
+        #filters{
+            width: 200px;
+            padding: 25px;
+            float: left;
+            margin-left: 30px;
+            margin-top: 30px;
+
         }
 
         body {
@@ -108,7 +113,17 @@ if ($mysqli->connect_errno) {
         .resultsHeaderText{
             color: white;
             padding-top: 160px;
-            padding-left: 50px;
+            padding-left: 70px;
+        }
+        .filterTag{
+            padding: 2px 10px 2px 10px;
+            background-color: #F4F4F4;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-right: 5px;
+            float: left;
+            color: #9E9E9E;
+            font-size: 10pt;
         }
     </style>
 </head>
@@ -121,8 +136,45 @@ include_once 'header.php';
 <div class="resultsHeaderText">
     <h1>Recipes You Can Make...</h1>
 </div>
-</div>
 
+</div>
+<div id="filters">
+<strong style="font-family: 'Montserrat', sans-serif; font-size: 14pt;">filters:</strong>
+    <br><br>
+    ingredients
+    <br>
+    <div class="filterTag">
+        penne &nbsp; x
+    </div>
+    <div class="filterTag">
+        pesto &nbsp; x
+    </div>
+    <div class="filterTag">
+        garlic &nbsp; x
+    </div>
+    <div style="clear: both;">
+
+    </div>
+    <br><br>
+
+    meal types
+    <br>
+    <div class="filterTag">
+        dinner &nbsp; x
+    </div>
+
+    <div style="clear: both;">
+
+    </div>
+    <br><br>
+
+    diet
+    <br>
+    <div class="filterTag">
+        vegan &nbsp; x
+    </div>
+
+</div>
 <div id="resultsDiv">
     <?php
     if($_REQUEST) {
