@@ -60,6 +60,9 @@ if ($mysqli->connect_errno) {
             float: left;
             margin-left: 30px;
             margin-top: 30px;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 60px;
 
         }
 
@@ -85,7 +88,7 @@ if ($mysqli->connect_errno) {
 
         .tags {
             padding: 2px 10px 2px 10px;
-            background-color: rgb(98, 168, 214);
+            background-color: #8AC1C6;
             border-radius: 10px;
             margin-top: 10px;
             margin-right: 5px;
