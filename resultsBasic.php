@@ -17,7 +17,7 @@ if ($mysqli->connect_errno) {
 <head>
     <link rel="stylesheet" type="text/css" href="generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="masonry.pkgd.min.js"></script>
 
 
 
@@ -34,6 +34,7 @@ if ($mysqli->connect_errno) {
             padding: 10px;
             float: left;
             width: 80%;
+            max-width: 1000px;
 
         }
 
@@ -115,7 +116,7 @@ if ($mysqli->connect_errno) {
             background-size: 140%;
             background-position-y: -500px;
             background-position-x: -30px;
-            background-position: fixed;
+
             width: 100%;
             height: 400px;
         }
@@ -184,6 +185,7 @@ include_once 'header.php';
     </div>
 
 </div>
+
 <div id="resultsDiv">
     <?php
     if($_REQUEST) {
@@ -237,11 +239,13 @@ include_once 'header.php';
     ?>
     <script src="masonry.pkgd.min.js"></script>
     <script>
-        $('.resultsDiv').masonry({
+        var elem = document.querySelector('.resultsDiv');
+        var msnry = new Masonry( elem, {
 
-            itemSelector: '.grid-item',
-            columnWidth: 250
+            itemSelector: '.searchResult',
+            columnWidth: 310
         });
+
 
     </script>
 </div>
