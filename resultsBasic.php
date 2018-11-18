@@ -109,7 +109,6 @@ if ($mysqli->connect_errno) {
             background-size: 140%;
             background-position-y: -500px;
             background-position-x: -30px;
-            background-position: fixed;
             width: 100%;
             height: 400px;
         }
@@ -227,6 +226,8 @@ include_once 'header.php';
             }
             echo '</div></div>';
         }
+    } else {
+        var_dump($mysqli);
     }
     ?>
 </div>
