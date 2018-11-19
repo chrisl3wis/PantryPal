@@ -23,117 +23,9 @@ if ($mysqli->connect_errno) {
     <title>Pantry Pal-Add Recipe</title>
     <style>
         body {
-            background-image: none;
-            background-color: white;
-        }
-
-        #resultsDiv {
-            background-color: white;
-            height: auto;
-            padding: 10px;
-            float: left;
-            width: 80%;
-
-        }
-
-        .searchResult {
-            width: 250px;
-            margin: 30px;
-            background-color: rgb(255, 255, 255);
-            border-radius: 10px;
-            padding-bottom: 15px;
-            -webkit-box-shadow: -1px 0px 7px 1px rgba(0, 0, 0, 0.1);
-            -moz-box-shadow: -1px 0px 7px 1px rgba(0, 0, 0, 0.1);
-            box-shadow: -1px 0px 7px 1px rgba(0, 0, 0, 0.1);
-            height: auto;
-            float: left;
-        }
-
-        .recipeImage {
-            width: 100%;
-            margin-bottom: 0px;
-            position: relative;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-
-        #filters {
-            width: 200px;
-            padding: 25px;
-            float: left;
-            margin-left: 30px;
-            margin-top: 30px;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 60px;
-
-        }
-
-        body {
+            background-image: unset;
             font-family: 'Montserrat', sans-serif;
             font-size: 11pt;
-        }
-
-        .recipeInfo {
-            width: 230px;
-            margin: 10px;
-            color: grey;
-
-        }
-
-        .recipeName {
-            font-size: 16pt;
-            line-height: 22pt;
-            font-weight: bold;
-            font-family: Lato, Helvetica, sans-serif;
-            color: black;
-        }
-
-        .tags {
-            padding: 2px 10px 2px 10px;
-            background-color: #8AC1C6;
-            border-radius: 10px;
-            margin-top: 10px;
-            margin-right: 5px;
-            float: left;
-            color: white;
-            font-size: 10pt;
-        }
-
-        .outLink {
-            height: 15px;
-            float: right;
-        }
-
-        .resultsHeader {
-            width: 100%;
-            background-image:
-        }
-
-        .resultsHeader {
-            background-image: url("mainBG.jpg");
-            background-size: 140%;
-            background-position-y: -500px;
-            background-position-x: -30px;
-            width: 100%;
-            height: 400px;
-        }
-
-        .resultsHeaderText {
-            color: white;
-            padding-top: 160px;
-            padding-left: 70px;
-        }
-
-        .filterTag {
-            padding: 2px 10px 2px 10px;
-            background-color: #F4F4F4;
-            border-radius: 5px;
-            margin-top: 10px;
-            margin-right: 5px;
-            float: left;
-            color: #9E9E9E;
-            font-size: 10pt;
         }
         .mealCheck{
             float: left;
@@ -165,102 +57,162 @@ if ($mysqli->connect_errno) {
             margin-top: 20px;
         }
     </style>
+    <script>
+
+    </script>
 </head>
 <body>
 
 <?php
 include_once 'header.php';
-//REVIEW[chris]  Insert: Title, Desc, URL, Time, ingredients, diets, meals
-//REVIEW[chris]  New ingredients, meals
 
 ?>
-<script>
-    $(function() {
-        $("#ing_input").autocomplete({
-            source: "search_ingred.php",
-            select: function( event, ui ) {
-                event.preventDefault();
-                $("#ing_input").val(ui.item.id);
-            }
-        });
-    });
-</script>
+
 <div id="content">
-<h1>Add New Recipe</h1>
+    <h1>Add New Recipe</h1>
 
-<form action="insert-recipe.php">
-    <label for="title">Add a new recipe: </label>
-    <input type="text" name="title" id="title" placeholder="Recipe Name">
+    <form action="insert-recipe.php">
+        <label for="title">Recipe Name: </label>
+        <input type="text" name="title" id="title" placeholder="Recipe Title">
 
-    <br>
-    <label for="desc">Description:</label>
-    <input type="text" name="desc" id="desc" placeholder="short and sweet please">
+        <br>
+        <label for="desc">Description:</label>
+        <input type="text" name="desc" id="desc" placeholder="short and sweet please">
 
-    <br>
-    <label for="url">Link to Recipe:</label>
-    <input type="text" name="url" id="url" placeholder="URL">
+        <br>
+        <label for="url">Link to Recipe:</label>
+        <input type="text" name="url" id="url" placeholder="URL">
 
-    <br>
+        <br>
 
-    <label for="time">Total Time (combine prep and cooking time), format as <em>HH:MM:SS</em>:</label>
-    <input type="text" name="time" id="time" placeholder="HH:MM:SS">
-    <?//REVIEW[chris] implement js auto-formatting?>
+        <label for="time">Total Time (combine prep and cooking time), format as <em>HH:MM:SS</em>:</label>
+        <input type="text" name="time" id="time" placeholder="HH:MM:SS">
+        <?php //REVIEW[chris] implement js auto-formatting?>
 
-    <br>
-    <label for="imgUrl">Link to Recipe Image:</label>
-    <input type="text" name="imgUrl" id="imgUrl" placeholder="URL">
+        <br>
+        <label for="imgUrl">Link to Recipe Image:</label>
+        <input type="text" name="imgUrl" id="imgUrl" placeholder="URL">
 
-    <br>
-    <label for="ing_input">--Add ingredients:</label>
-    <input type="text" name="ing" id="ing_input" placeholder="cheese">
-    <?//REVIEW[chris] not working yet...need multiple?>
+        <br>
 
-    <br><br>
-    <h3>Meals this recipe can be used in</h3>
-    <div id="meals">
-        <?php
-        $sql = "SELECT * FROM lewischr_recipes.meals";
+        <div class="ingredientList">
+            <table id="ingredients">
+                <tr id="row1">
+                    <td><input type="text" name="ingr[]" class="ing_input" id="ingr1" placeholder="Enter Ingredient">
+                        <input type="hidden" name="ingr_ids[]" id="ingr1_id" value="">
+                    </td>
+                    <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
+                </tr>
+            </table>
+            <?php //REVIEW[chris] implement way to add new ingredients?>
+        </div>
 
-        if($results = $mysqli->query($sql)) {
-            while ($currentrow = $results->fetch_assoc()) {
-                echo "<div class='mealCheck'><input type='checkbox' id='meal".$currentrow['ID']."' name='meals[]' value='" . $currentrow['ID'] . "'> 
+        <br><br>
+        <h3>Meals this recipe can be used in:</h3>
+        <div id="meals">
+            <?php
+            $sql = "SELECT * FROM lewischr_recipes.meals";
+
+            if($results = $mysqli->query($sql)) {
+                while ($currentrow = $results->fetch_assoc()) {
+                    echo "<div class='mealCheck'><input type='checkbox' id='meal".$currentrow['ID']."' name='meals[]' value='" . $currentrow['ID'] . "'> 
                         <label for='meal".$currentrow['ID']."'>" . $currentrow['meal_type'] . "</label>
                         </div>";
+                }
             }
-        }
-        ?>
-    </div>
+            ?>
+        </div>
 
 
-    <div id="diets">
-        <br><br>
-        <h3>Diets this recipe follows</h3>
-        <?php
-        $sql = "SELECT * FROM lewischr_recipes.diets";
+        <div id="diets">
+            <br><br>
+            <h3>Diets this recipe follows:</h3>
+            <?php
+            $sql = "SELECT * FROM lewischr_recipes.diets";
 
-        if($results = $mysqli->query($sql)) {
-            while ($currentrow = $results->fetch_assoc()) {
-                echo "<div class='dietCheck'><input type='checkbox' id='diet".$currentrow['ID']."' name='diets[]' value='" . $currentrow['ID'] . "'> 
+            if($results = $mysqli->query($sql)) {
+                while ($currentrow = $results->fetch_assoc()) {
+                    echo "<div class='dietCheck'><input type='checkbox' id='diet".$currentrow['ID']."' name='diets[]' value='" . $currentrow['ID'] . "'> 
                         <label for='diet".$currentrow['ID']."'>" . $currentrow['diet'] . "</label>
                         </div>";
+                }
+
             }
+            ?>
+        </div>
 
-        }
-        ?>
-    </div>
-
-    <br>
-    <div id="submit"><br>
-        <input  type="submit">
-        <?//REVIEW[chris] validate data before submit, post or something to hide values too? add hidden validated input ?>
-    </div>
+        <br>
+        <div id="submit"><br>
+            <input  type="submit">
+            <?php //REVIEW[chris] validate data before submit, post or something to hide values too? add hidden validated input ?>
+        </div>
 
 
 
 
-    <br>
-</form>
+        <br>
+    </form>
 </div>
 </body>
 </html>
 
+<script>
+    //auto complete
+
+    $(function() {
+        $(".ing_input").autocomplete({
+            source: "search_ingred.php",
+            select: function( event, ui ) {
+                event.preventDefault();
+                $(this).val(ui.item.value);
+                var ingr_id = $(this).attr("id");
+                $('#'+ingr_id+'_id').val(ui.item.id);
+            }
+        });
+    });
+
+    //add ingredient rows
+    $(document).ready(function(){
+        var ingCnt=1;
+        $('#add').click(function(){
+            ingCnt++;
+            $('#ingredients').append('<tr id="row'+ingCnt+'"><td>' +
+                '<input type="text" name="ingr[]" class="ing_input" id="ingr'+ingCnt+'" placeholder="Enter Ingredient">' +
+                '<input type="hidden" name="ingr_ids[]" id="ingr'+ingCnt+'_id" value=""></td>' +
+                '<td><button type="button" name="remove" id="'+ingCnt+'" class="btn_remove">X</button></td></tr>');
+            new add_auto(ingCnt);
+        });
+        $(document).on('click', '.btn_remove', function(){
+            var button_id = $(this).attr("id");
+            $('#row'+button_id+'').remove();
+        });
+        $('#submit').click(function(){
+            $.ajax({
+                url:"test-ing/name.php",
+                method:"POST",
+                data:$('#add_name').serialize(),
+                success:function(data)
+                {
+                    alert(data);
+                    $('#add_name')[0].reset();
+                }
+            });
+        });
+    });
+    function add_auto(ingCnt) {
+
+            $(function() {
+                $("#ingr"+ingCnt).autocomplete({
+                    source: "search_ingred.php",
+                    select: function( event, ui ) {
+                        event.preventDefault();
+                        $(this).val(ui.item.value);
+                        var ingr_id = $(this).attr("id");
+                        $('#'+ingr_id+'_id').val(ui.item.id);
+                    }
+                });
+            });
+    }
+
+
+</script>

@@ -36,8 +36,25 @@ if($results = $mysqli->query($sql)) {
 }else{
     exit();
 }
+
+$ingr_ids=$_REQUEST["ingr_ids"];
+
+echo "<hr>Ingredients SQL:<br>";
+for ($i = 0; $i<count($ingr_ids); $i++) {
+    $ingrSQL = "INSERT INTO lewischr_recipes.recipe_ingredient (ID, recipe_id, ingredient_ID) VALUES (NULL, '" . $newID . "', '" . $ingr_ids[$i] . "')";
+    echo $ingrSQL;
+    if($results = $mysqli->query($ingrSQL)) {
+        echo ".<br>";
+    }else{
+        echo "error ";
+        var_dump($mysqli);
+        exit();
+    }
+
+}
+
 $meals=$_REQUEST["meals"];
-$newID=6;
+
 echo "<hr>Meals SQL:<br>";
 for ($i = 0; $i<count($meals); $i++) {
     $mealSQL = "INSERT INTO lewischr_recipes.recipe_meal (ID, recipe_id, meal_id) VALUES (NULL, '" . $newID . "', '" . $meals[$i] . "')";
