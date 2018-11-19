@@ -235,6 +235,8 @@ include_once 'header.php';
             }
             echo '</div></div>';
         }
+    } else {
+        var_dump($mysqli);
     }
     ?>
     <script src="masonry.pkgd.min.js"></script>
