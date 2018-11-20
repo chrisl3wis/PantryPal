@@ -102,8 +102,8 @@ button:focus {
     border-radius: 30px;
     padding: 10px 50px 10px 50px;
     -webkit-box-shadow: 0 0 74px 2px var(--main-black-a);
-    -moz-box-shadow: 0 0 74px 2px var(--main-black-a);;
-    box-shadow: 0 0 74px 2px var(--main-black-a);;
+    -moz-box-shadow: 0 0 74px 2px var(--main-black-a);
+    box-shadow: 0 0 74px 2px var(--main-black-a);
 }
 .search{
     background-color: transparent;

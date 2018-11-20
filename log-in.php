@@ -42,6 +42,11 @@
             height: 35px;
             cursor: hand;
         }
+        .submit:hover{
+            color: #8AC1C6;
+            background-color: white;
+            border: #8AC1C6 2px solid;
+        }
         a{
 
             text-decoration: underline;
