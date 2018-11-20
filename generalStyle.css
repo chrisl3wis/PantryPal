@@ -14,9 +14,8 @@
 
 }
 body {
-    background-image: url("mainBG.jpg");
     background-size: 100%;
-    background-repeat: no-repeat;
+    background: url("mainBG.jpg") no-repeat;
     background-position-y: -200px;
     padding: 0;
     margin: 0;

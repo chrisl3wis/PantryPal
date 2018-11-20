@@ -30,8 +30,7 @@ echo "hello";
             height: 120px;
             float: left;
             background: #D26;
-            border: 2px solid #333;
-            border-color: hsla(0, 0%, 0%, 0.5);
+            border: 2px solid hsla(0, 0%, 0%, 0.5);
             border-radius: 5px;
         }
 

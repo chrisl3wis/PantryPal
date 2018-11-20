@@ -25,8 +25,7 @@ if ($mysqli->connect_errno) {
     <title>Pantry Pal</title>
     <style>
         body{
-            background-image: none;
-            background-color: white;
+            background: white none;
         }
         #resultsDiv {
             background-color: white;
@@ -34,8 +33,13 @@ if ($mysqli->connect_errno) {
             padding: 10px;
             float: left;
             width: 80%;
-            max-width: 1000px;
+            max-width: 1500px;
 
+        }
+        #resultsDiv:after {
+            content: '';
+            display: block;
+            clear: both;
         }
 
 
@@ -45,9 +49,9 @@ if ($mysqli->connect_errno) {
             background-color: rgb(255, 255, 255);
             border-radius: 10px;
             padding-bottom: 15px;
-            -webkit-box-shadow: -1px 0px 7px 1px rgba(0, 0, 0, 0.1);
-            -moz-box-shadow: -1px 0px 7px 1px rgba(0, 0, 0, 0.1);
-            box-shadow: -1px 0px 7px 1px rgba(0, 0, 0, 0.1);
+            -webkit-box-shadow: -1px 0 7px 1px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: -1px 0 7px 1px rgba(0, 0, 0, 0.1);
+            box-shadow: -1px 0 7px 1px rgba(0, 0, 0, 0.1);
             height: auto;
             float: left;
             display: block;
@@ -56,7 +60,7 @@ if ($mysqli->connect_errno) {
 
         .recipeImage {
             width: 100%;
-            margin-bottom: 0px;
+            margin-bottom: 0;
             position: relative;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
@@ -192,7 +196,7 @@ include_once 'header.php';
 
 
         $sql = "SELECT * FROM lewischr_recipes.all_data_view
-    WHERE ingredient IN ('" . $_REQUEST["ingred1"] . "' , '" . $_REQUEST["ingred2"] . "', '" . $_REQUEST["ingred3"] . "') GROUP BY title";
+    WHERE ingredient LIKE '%" . $_REQUEST["ingred1"] . "%' AND ingredient LIKE '%" . $_REQUEST["ingred2"] . "%' AND ingredient LIKE '%" . $_REQUEST["ingred3"] . "%' GROUP BY title";
     } else {
         $sql = "SELECT * FROM lewischr_recipes.all_data_view WHERE 1 group by ID";
     }
@@ -241,13 +245,12 @@ include_once 'header.php';
     ?>
     <script src="masonry.pkgd.min.js"></script>
     <script>
-        var elem = document.querySelector('.resultsDiv');
+        var elem = document.querySelector('#resultsDiv');
         var msnry = new Masonry( elem, {
 
             itemSelector: '.searchResult',
-            columnWidth: 310
+            columnWidth: 160
         });
-
 
     </script>
 </div>

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection SqlResolve */
 $connect = mysqli_connect("localhost", "root", "", "test_db");
 $number = count($_POST["name"]);
 if($number > 0)
@@ -17,5 +17,5 @@ else
 {
     echo "Please Enter Name";
 }
-?>
+
    

@@ -56,6 +56,13 @@ if ($mysqli->connect_errno) {
             clear: both;
             margin-top: 20px;
         }
+        #success{
+            background: rgba(160, 255, 166, 0.89);
+            border-radius: 10px;
+            padding: 15px;
+            width: 400px;
+            visibility: hidden;
+        }
     </style>
     <script>
 
@@ -66,12 +73,16 @@ if ($mysqli->connect_errno) {
 <?php
 include_once 'header.php';
 
+//REVIEW[chris] add "back to dashboard" btn
+
 ?>
 
 <div id="content">
     <h1>Add New Recipe</h1>
+    <div id="success">
+    </div>
 
-    <form action="insert-recipe.php">
+    <form id="insertForm">
         <label for="title">Recipe Name: </label>
         <input type="text" name="title" id="title" placeholder="Recipe Title">
 
@@ -99,7 +110,7 @@ include_once 'header.php';
             <table id="ingredients">
             </table>
             <input type="text" name="ingr-entry" class="ing_input" id="ingr-entry" placeholder="Enter Ingredient">
-            <input type="text" name="ingr_entry id" id="ingr-entry_id" value="" readonly>
+            <input type="hidden" name="ingr_entry id" id="ingr-entry_id" value="" readonly>
             <button type="button" name="add" id="add" class="btn btn-success">Add Ingredient</button>
         </div>
 
@@ -140,7 +151,7 @@ include_once 'header.php';
 
         <br>
         <div id="submit"><br>
-            <input  type="submit">
+            <input  type="button" value="Submit">
             <?php //REVIEW[chris] validate data before submit, post or something to hide values too? add hidden validated input ?>
         </div>
 
@@ -149,6 +160,8 @@ include_once 'header.php';
 
         <br>
     </form>
+
+
 </div>
 </body>
 </html>
@@ -175,7 +188,7 @@ include_once 'header.php';
             ingCnt++;
             let ingrName=document.querySelector('#ingr-entry');
             let ingrID=document.querySelector('#ingr-entry_id');
-            let idCol='<td><input type="text" name="ingr_ids[]" id="ingr'+ingCnt+'_id" value="'+ingrID.value +'" readonly></td>';
+            let idCol='<td><input type="hidden" name="ingr_ids[]" id="ingr'+ingCnt+'_id" value="'+ingrID.value +'" readonly></td>';
 
             if (ingrID.value==='') {
                 idCol += '<td><button type="button" name="db_insert" id="' + ingCnt + '_db_insert" class="btn_insert">+</button>' +
@@ -193,8 +206,8 @@ include_once 'header.php';
             document.getElementById(btnID).addEventListener("click", function() {
                 let rowNum= this.id.substring(0,this.id.indexOf("_"));
                 //console.log(rowNum);
-                let new_ingr_id = "#ingr"+rowNum
-                let ingr_name= document.querySelector(new_ingr_id).value
+                let new_ingr_id = "#ingr"+rowNum;
+                let ingr_name= document.querySelector(new_ingr_id).value;
                 //console.log(ingr_name);
 
                 var request = $.ajax({
@@ -206,6 +219,8 @@ include_once 'header.php';
 
                 request.done(function( msg ) {
                     document.querySelector(new_ingr_id+"_id").value=msg;
+                    console.log(btnID);
+                    $("#"+btnID).parent().remove();
                     //console.log(msg);
                 });
 
@@ -218,6 +233,32 @@ include_once 'header.php';
             var button_id = $(this).attr("id");
             $('#row'+button_id+'').remove();
         });
+        $('#submit').click(function(){
+            var request = $.ajax({
+                url: "insert-recipe-ajax.php",
+                method: "POST",
+                data: $('#insertForm').serialize(),
+
+            });
+
+            request.done(function( msg ) {
+                document.querySelector("#success").innerHTML=msg;
+                document.querySelector("#success").("visibility=true")
+                $('#insertForm')[0].reset();
+
+
+            });
+
+            request.fail(function( jqXHR, textStatus, data) {
+                console.log('jqXHR:');
+                console.log(jqXHR);
+                console.log('textStatus:');
+                console.log(textStatus);
+                console.log('data:');
+                console.log(data);
+            });
+        });
+
     });
 
 
