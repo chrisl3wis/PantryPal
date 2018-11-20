@@ -11,7 +11,7 @@
             width: 400px;
             padding: 15px;
             margin: auto;
-            margin-top: 10%;
+            margin-top: 11%;
             text-align: center;
             background-color: white;
             -webkit-border-radius: 2px;
