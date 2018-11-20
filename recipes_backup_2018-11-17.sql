@@ -1,3 +1,5 @@
+# noinspection SqlResolveForFile
+
 create table diets
 (
   ID   int auto_increment

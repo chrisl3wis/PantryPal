@@ -11,15 +11,9 @@ if ($mysqli->connect_errno) {
     echo "db connection error" . $mysqli->connect_error;
     exit("STOPPING page");
 }
-
-
         if($_POST != '')
         {
-            $sql="INSERT INTO lewischr_recipes.ingredients (ID, ingredient ) 
-VALUES (NULL, '".$_POST["name"]."')";
-            //echo "<hr>SQL:<br>" . $sql;
-
-
+            $sql="INSERT INTO lewischr_recipes.ingredients (ID, ingredient ) VALUES (NULL, '".$_POST["name"]."')";
 
             if($results = $mysqli->query($sql)) {
                 $newID = $mysqli->insert_id;
@@ -27,7 +21,4 @@ VALUES (NULL, '".$_POST["name"]."')";
             }else{
                 exit();
             }
-            //echo $_POST["name"];
         }
-
-?>
