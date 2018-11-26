@@ -243,8 +243,9 @@ include_once 'header.php';
 
             request.done(function( msg ) {
                 document.querySelector("#success").innerHTML=msg;
-                document.querySelector("#success").("visibility=true")
+                document.querySelector("#success").style.visibility = "visible";
                 $('#insertForm')[0].reset();
+                document.querySelector("#ingredients").innerHTML="";
 
 
             });
