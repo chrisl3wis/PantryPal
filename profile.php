@@ -18,10 +18,7 @@
             padding-top: 70px;
             padding-left: 70px;
         }
-        body{
 
-
-        }
         a {
             color: gray;
             font-size: 24px;
