@@ -62,13 +62,7 @@
         .more{
             font-size: 10pt;
         }
-        .select-style {
-            border: 1px solid #ccc;
-            width: 120px;
-            border-radius: 3px;
-            overflow: hidden;
-            background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
-        }
+
         .searchResult{
             width: 250px;
             margin: 30px;
