@@ -158,7 +158,7 @@ include_once 'header.php';
     ingredients
     <br>
     <div class="filterTag">
-        penne &nbsp; x
+        penne  &nbsp; x
     </div>
     <div class="filterTag">
         pesto &nbsp; x
