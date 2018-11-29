@@ -1,0 +1,2 @@
+INSERT INTO lewischr_recipes.failed_logins (username, login_count, last_time, address) VALUES ('clewis', null, 1543491429, '128.125.148.100');
+INSERT INTO lewischr_recipes.failed_logins (username, login_count, last_time, address) VALUES ('ccc', 1, 1543477057, '128.125.148.100');
