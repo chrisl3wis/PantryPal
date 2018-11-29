@@ -692,8 +692,38 @@ class FGMembersite
         }
         return true;
     }
-	
-	
+
+
+    function SendResetPasswordLink($user_rec)
+    {
+
+
+        $mailer = new PHPMailer();
+
+        $mailer->CharSet = 'utf-8';
+
+        $mailer->AddAddress($user_rec['email'],$user_rec['name']);
+
+        $mailer->Subject = "Your password reset request for ".$this->sitename;
+        $mailer->From = $this->GetFromAddress();
+
+        $link = $this->GetAbsoluteURLFolder().
+            '/resetpwd.php?email='.
+            urlencode($email).'&code='.
+            urlencode($this->GetResetPasswordCode($email));
+        $mailer->Body ="Hello ".$user_rec['name']."\r\n\r\n".
+            "There was a request to reset your password at ".$this->sitename."\r\n".
+            "Please click the link below to complete the request: \r\n".$link."\r\n".
+            "Regards,\r\n".
+            "Webmaster\r\n".
+            $this->sitename;
+
+        if(!$mailer->Send())
+        {
+            return false;
+        }
+        return true;
+    }
     
     function SendAdminIntimationOnRegComplete(&$user_rec)
     {

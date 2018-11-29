@@ -15,7 +15,7 @@ $fgmembersite->LogOut();
 
 <h2>You have logged out</h2>
 <p>
-<a href='login.php'>Login Again</a>
+<a href='log-in.php'>Login Again</a>
 </p>
 
 </body>
