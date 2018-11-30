@@ -17,8 +17,8 @@ if(isset($_POST['submitted']))
 <head>
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
       <title>Reset Password Request</title>
-      <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
-      <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
+      <link rel="STYLESHEET" type="text/css" href="../style/fg_membersite.css" />
+      <script type='text/javascript' src='../scripts/gen_validatorv31.js'></script>
 </head>
 <body>
 <!-- Form Code Start -->
@@ -33,7 +33,7 @@ if(isset($_POST['submitted']))
 
 <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
 <div class='container'>
-    <label for='username' >Your Email*:</label><br/>
+    <label for='email' >Your Email*:</label><br/>
     <input type='text' name='email' id='email' value='<?php echo $fgmembersite->SafeDisplay('email') ?>' maxlength="50" /><br/>
     <span id='resetreq_email_errorloc' class='error'></span>
 </div>
@@ -50,8 +50,8 @@ Uses the excellent form validation script from JavaScript-coder.com-->
 <script type='text/javascript'>
 // <![CDATA[
 
-    var frmvalidator  = new Validator("resetreq");
-    frmvalidator.EnableOnPageErrorDisplay();
+const frmvalidator = new Validator("resetreq");
+frmvalidator.EnableOnPageErrorDisplay();
     frmvalidator.EnableMsgsTogether();
 
     frmvalidator.addValidation("email","req","Please provide the email address used to sign-up");

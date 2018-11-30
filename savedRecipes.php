@@ -1,8 +1,9 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
-    <link rel="stylesheet" type="text/css" href="generalStyle.css">
+    <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
-    <style>
+    <style type="text/css">
         body{
             background-image: none;
         }
@@ -24,7 +25,7 @@
             padding: 50px;
         }
         .resultsHeader{
-            background-image: url("mainBG.jpg");
+            background-image: url("images/mainBG.jpg");
             background-size: 140%;
             background-position-y: -200px;
             background-position-x: -30px;
@@ -96,7 +97,7 @@
             font-size: 16pt;
             line-height: 22pt;
             font-weight: bold;
-            font-family: Lato;
+            font-family: Lato, sans-serif;
             color: black;
             text-decoration: none;
 
@@ -116,10 +117,11 @@
 
 
     </style>
+    <title>Saved Recipes</title>
 </head>
 <body>
 <?php
-include_once 'header.php';
+include_once './header.php';
 ?>
 <div class="resultsHeader">
     <div class="resultsHeaderText">
@@ -129,7 +131,7 @@ include_once 'header.php';
 </div>
 <div id="filterCont">
 <div id="filterText">
- <form>
+ <form action="">
 Filter by Ingredient: <input class="ingredient" type="text" name="ing1" placeholder="ingredient 1">
         <input class="ingredient" type="text" name="ing2" placeholder="ingredient 2">
         <input class="ingredient" type="text" name="ing3" placeholder="ingredient 3">
@@ -151,7 +153,7 @@ Filter by Ingredient: <input class="ingredient" type="text" name="ing1" placehol
 </div>
 <div id="savedCont">
     <div class="searchResult">
-        <img class="recipeImage" src="pestopasta.jpg">
+        <img class="recipeImage" src="pestopasta.jpg" alt="pesto">
         <div class="recipeInfo">
             <span class="recipeName"><strong>Pesto Pasta</strong><br></span>
             <em>recipe description goes right here</em>
@@ -162,7 +164,7 @@ Filter by Ingredient: <input class="ingredient" type="text" name="ing1" placehol
 
     </div>
     <div class="searchResult">
-        <img class="recipeImage" src="pestopasta.jpg">
+        <img class="recipeImage" src="pestopasta.jpg" alt="pesto">
         <div class="recipeInfo">
             <span class="recipeName"><strong>Pesto Pasta</strong><br></span>
             <em>recipe description goes right here</em>
@@ -174,7 +176,7 @@ Filter by Ingredient: <input class="ingredient" type="text" name="ing1" placehol
     </div>
 
     <div class="searchResult">
-        <img class="recipeImage" src="pestopasta.jpg">
+        <img class="recipeImage" src="pestopasta.jpg" alt="pesto">
         <div class="recipeInfo">
             <span class="recipeName"><strong>Pesto Pasta</strong><br></span>
             <em>recipe description goes right here</em>
@@ -185,7 +187,7 @@ Filter by Ingredient: <input class="ingredient" type="text" name="ing1" placehol
     </div>
 
     <div class="searchResult">
-        <img class="recipeImage" src="pestopasta.jpg">
+        <img class="recipeImage" src="pestopasta.jpg" alt="pesto">
         <div class="recipeInfo">
             <span class="recipeName"><strong>Pesto Pasta</strong><br></span>
             <em>recipe description goes right here</em>
@@ -195,7 +197,7 @@ Filter by Ingredient: <input class="ingredient" type="text" name="ing1" placehol
 </div>
 
     <div class="searchResult">
-        <img class="recipeImage" src="pestopasta.jpg">
+        <img class="recipeImage" src="pestopasta.jpg" alt="pesto">
         <div class="recipeInfo">
             <span class="recipeName"><strong>Pesto Pasta</strong><br></span>
             <em>recipe description goes right here</em>

@@ -1,11 +1,11 @@
 <?PHP
-require_once("./source/include/membersite_config.php");
+require_once("./include/membersite_config.php");
 
 if(isset($_POST['submitted']))
 {
     if($fgmembersite->RegisterUser())
     {
-        $fgmembersite->RedirectToURL("./source/thank-you.html");
+        $fgmembersite->RedirectToURL("./thank-you.html");
     }
 }
 
@@ -15,13 +15,13 @@ if(isset($_POST['submitted']))
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
     <title>Register for PantryPal</title>
-    <link rel="stylesheet" type="text/css" href="generalStyle.css">
-    <link rel="STYLESHEET" type="text/css" href="./source/style/fg_membersite.css" />
-    <link rel="STYLESHEET" type="text/css" href="./source/style/pwdwidget.css" />
-    <script src="./source/scripts/pwdwidget.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
+    <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
+    <link rel="STYLESHEET" type="text/css" href="style/pwdwidget.css" />
+    <script src="scripts/pwdwidget.js" type="text/javascript"></script>
     <style type="text/css">
         body{
-            background-image: url("loginflatlay.png");
+            background-image: url("images/loginflatlay.png");
             background-size: 110%;
         }
         #registerbox{
@@ -77,7 +77,7 @@ if(isset($_POST['submitted']))
 </head>
 <body>
 <?php
-include_once 'header.php';
+include_once './header.php';
 
 ?>
 <div id="registerbox">
@@ -91,7 +91,9 @@ include_once 'header.php';
 
                 <div class='short_explanation'>* required fields</div>
 
-                    <input type='text'  class='spmhidip' name='<?php echo $fgmembersite->GetSpamTrapInputName(); ?>' />
+                <label>
+                    <input type='text'  class='spmhidip' name='<?=$fgmembersite->GetSpamTrapInputName() ?>' />
+                </label>
 
 
                 <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
@@ -140,6 +142,6 @@ include_once 'header.php';
 
             // ]]>
         </script>
-</div>
+    </div>
 </body>
 </html>

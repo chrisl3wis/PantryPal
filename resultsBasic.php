@@ -15,9 +15,9 @@ if ($mysqli->connect_errno) {
 
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="generalStyle.css">
+    <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
-    <script src="masonry.pkgd.min.js"></script>
+    <script src="include/masonry.pkgd.min.js"></script>
 
 
 
@@ -116,7 +116,7 @@ if ($mysqli->connect_errno) {
             background-image:
         }
         .resultsHeader{
-            background-image: url("mainBG.jpg");
+            background-image: url("images/mainBG.jpg");
             background-size: 140%;
             background-position-y: -500px;
             background-position-x: -30px;
@@ -143,7 +143,7 @@ if ($mysqli->connect_errno) {
 </head>
 <body>
 <?php
-include_once 'header.php';
+include_once './header.php';
 ?>
 
 <div class="resultsHeader">
@@ -204,10 +204,10 @@ include_once 'header.php';
 
         while ($row = $result->fetch_assoc()) {
             echo '<div class="searchResult">
-            <img class="recipeImage" src="'.$row["imgURL"].'">
+            <img class="recipeImage" alt="Recipe Image'.$row['title'].'" src="'.$row["imgURL"].'" >
             <div class="recipeInfo">
             <span class="recipeName"><strong>' . $row['title'] . '</strong>
-            <a href="'.$row["url"].'" target="_blank" ><img class="outLink" src="Asset%204.png"> </a> 
+            <a href="'.$row["url"].'" target="_blank" ><img class="outLink" src="Asset%204.png" alt="link to recipe"> </a> 
             <br></span>
             <em>' . $row['description'] . '</em>
             <br>';
@@ -243,7 +243,7 @@ include_once 'header.php';
         var_dump($mysqli);
     }
     ?>
-    <script src="masonry.pkgd.min.js"></script>
+    <script src="include/masonry.pkgd.min.js"></script>
     <script>
         var elem = document.querySelector('#resultsDiv');
         var msnry = new Masonry( elem, {

@@ -1,9 +1,9 @@
 <?PHP
-require_once("./source/include/membersite_config.php");
+require_once("./include/membersite_config.php");
 
 if(!$fgmembersite->CheckLogin())
 {
-    $fgmembersite->RedirectToURL("login.php");
+    $fgmembersite->RedirectToURL("log-in.php");
     exit;
 }
 
@@ -24,7 +24,64 @@ if(isset($_POST['submitted']))
       <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
       <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
       <link rel="STYLESHEET" type="text/css" href="style/pwdwidget.css" />
-      <script src="scripts/pwdwidget.js" type="text/javascript"></script>       
+      <script src="scripts/pwdwidget.js" type="text/javascript"></script>
+    <style type="text/css">
+        fieldset{
+            width: 500px;
+            text-align: left;
+            margin-top: 28vh;
+            z-index: 10;
+            position: absolute;
+            margin-left: 5%;
+            background: #EEEEEE;
+        }
+        /*#logo{*/
+        /*width: 200px;*/
+        /*}*/
+        body{
+            background-image: url("images/loginflatlay.png");
+            background-size: 110%;
+        }
+        input{
+            /*width: 380px;*/
+
+            font-family: 'Montserrat', sans-serif;
+            font-style: italic;
+            border: none;
+            /*border-bottom: 1px solid var(--main-grey);*/
+            font-size: 11pt;
+            padding-left: 10px;
+            margin-bottom: 10px;
+            background: #cccccc;
+
+        }
+        .submit{
+            font-family: 'Montserrat', sans-serif;
+            background-color: #8AC1C6;
+            color: white;
+            font-size: 11pt;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            border: none;
+            width: 75px;
+            height: 35px;
+            cursor: hand;
+        }
+        .submit:hover{
+            color: #8AC1C6;
+            background-color: white;
+            border: #8AC1C6 2px solid;
+        }
+        a{
+
+            text-decoration: underline;
+            font-size: 10pt;
+            color: #8AC1C6;
+
+        }
+
+    </style>
 </head>
 <body>
 
@@ -52,14 +109,15 @@ if(isset($_POST['submitted']))
     <label for='newpwd' >New Password*:</label><br/>
     <div class='pwdwidgetdiv' id='newpwddiv' ></div>
     <noscript>
-    <input type='password' name='newpwd' id='newpwd' maxlength="50" /><br/>
+    <input type='password' name='newpwd' id='newpwd' maxlength="50">
     </noscript>
+    <br>
     <span id='changepwd_newpwd_errorloc' class='error'></span>
 </div>
 
 <br/><br/><br/>
 <div class='container'>
-    <input type='submit' name='Submit' value='Submit' />
+    <input type='submit' class="submit" name='Submit' value='Submit'>
 </div>
 
 </fieldset>
@@ -69,14 +127,14 @@ Uses the excellent form validation script from JavaScript-coder.com-->
 
 <script type='text/javascript'>
 // <![CDATA[
-    var pwdwidget = new PasswordWidget('oldpwddiv','oldpwd');
-    pwdwidget.enableGenerate = false;
-    pwdwidget.enableShowStrength=false;
-    pwdwidget.enableShowStrengthStr =false;
-    pwdwidget.MakePWDWidget();
+    var oldpwdwidget = new PasswordWidget('oldpwddiv','oldpwd');
+    oldpwdwidget.enableGenerate = false;
+    oldpwdwidget.enableShowStrength=false;
+    oldpwdwidget.enableShowStrengthStr =false;
+    oldpwdwidget.MakePWDWidget();
     
-    var pwdwidget = new PasswordWidget('newpwddiv','newpwd');
-    pwdwidget.MakePWDWidget();
+    var newpwdwidget = new PasswordWidget('newpwddiv','newpwd');
+    newpwdwidget.MakePWDWidget();
     
     
     var frmvalidator  = new Validator("changepwd");
@@ -91,7 +149,7 @@ Uses the excellent form validation script from JavaScript-coder.com-->
 </script>
 
 <p>
-<a href='login-home.php'>Home</a>
+<a href='profile.php'>Home</a>
 </p>
 
 </div>

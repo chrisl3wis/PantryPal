@@ -1,6 +1,6 @@
 <?PHP
-require_once("./source/include/membersite_config.php");
-include_once 'header.php';
+require_once("./include/membersite_config.php");
+include_once './header.php';
 
 if(!$fgmembersite->CheckLogin())
 {
@@ -14,8 +14,8 @@ if(!$fgmembersite->CheckLogin())
 <head>
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
       <title>Home page</title>
-      <link rel="STYLESHEET" type="text/css" href="./source/style/fg_membersite.css">
-    <link rel="stylesheet" type="text/css" href="generalStyle.css">
+      <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css">
+    <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
 
 </head>
 <body>

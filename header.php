@@ -1,5 +1,5 @@
 <?PHP
-require_once("./source/include/membersite_config.php");
+require_once("./include/membersite_config.php");
 
 //if(!$fgmembersite->CheckLogin())
 //{
@@ -8,8 +8,8 @@ require_once("./source/include/membersite_config.php");
 //}
 ?>
 <div id="header">
-    <a href="searchBasic.php"><img src="pantrypal.png" id="masthead"></a>
-    <a class="account" href="login-home.php"><?php
+    <a href="index.php"><img src="include/pantrypal.png" id="masthead" alt="PantryPal"></a>
+    <a class="account" href="profile.php"><?php
         if(!$fgmembersite->CheckLogin())
         {
             echo "log in";

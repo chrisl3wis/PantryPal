@@ -33,10 +33,10 @@ function PasswordWidget(divid,pwdname)
 
 function _MakePWDWidget()
 {
-	var code="";
-    var pwdname = this.pwdobjname;
+    let code = "";
+    const pwdname = this.pwdobjname;
 
-	this.pwdfieldid = pwdname+"_id";
+    this.pwdfieldid = pwdname+"_id";
 
 	code += "<input type='password' class='pwdfield' name='"+pwdname+"' id='"+this.pwdfieldid+"'>";
 
@@ -84,7 +84,7 @@ function _MakePWDWidget()
 
 	this._showPasswordStrength = passwordStrength;
 
-	this.pwdfieldobj.onkeyup=function(){ this.pwdwidget._onKeyUpPwdFields(); }
+	this.pwdfieldobj.onkeyup=function(){ this.pwdwidget._onKeyUpPwdFields(); };
 
 	this._showGeneatedPwd = showGeneatedPwd;
 
@@ -92,7 +92,7 @@ function _MakePWDWidget()
 	
 	this.generate_anch_obj.pwdwidget=this;
 
-	this.generate_anch_obj.onclick = function(){ this.pwdwidget._showGeneatedPwd(); }
+	this.generate_anch_obj.onclick = function(){ this.pwdwidget._showGeneatedPwd(); };
 
 	this._showpwdchars = showpwdchars;
 
@@ -100,13 +100,13 @@ function _MakePWDWidget()
 
 	this.show_anch_obj.pwdwidget = this;
 
-	this.show_anch_obj.onclick = function(){ this.pwdwidget._showpwdchars();}
+	this.show_anch_obj.onclick = function(){ this.pwdwidget._showpwdchars();};
 
 	this.pwdtxtfield_obj = document.getElementById(this.pwdtxtfieldid);
 
 	this.pwdtxtfield_obj.pwdwidget=this;
 
-	this.pwdtxtfield_obj.onkeyup=function(){ this.pwdwidget._onKeyUpPwdFields(); }
+	this.pwdtxtfield_obj.onkeyup=function(){ this.pwdwidget._onKeyUpPwdFields(); };
 	
 
 	this._updatePwdFieldValues = updatePwdFieldValues;
@@ -146,11 +146,11 @@ function updatePwdFieldValues()
 
 function showpwdchars()
 {
-	var innerText='';
-	var pwdfield = this.pwdfieldobj;
-	var pwdtxt = this.pwdtxtfield_obj;
-	var field;
-	if(1 == this.showing_pwd)
+    let innerText = '';
+    const pwdfield = this.pwdfieldobj;
+    const pwdtxt = this.pwdtxtfield_obj;
+    let field;
+    if(1 == this.showing_pwd)
 	{
 		this.showing_pwd=0;
 		innerText = this.txtMask;
@@ -176,20 +176,20 @@ function showpwdchars()
 
 function passwordStrength()
 {
-	var colors = new Array();
-	colors[0] = "#cccccc";
+    const colors = new Array();
+    colors[0] = "#cccccc";
 	colors[1] = "#ff0000";
 	colors[2] = "#ff5f5f";
 	colors[3] = "#56e500";
 	colors[4] = "#4dcd00";
 	colors[5] = "#399800";
 
-	var pwdfield = this.pwdfieldobj;
-	var password = pwdfield.value
+    const pwdfield = this.pwdfieldobj;
+    const password = pwdfield.value;
 
-	var score   = 0;
+    let score = 0;
 
-	if (password.length > 6) {score++;}
+    if (password.length > 6) {score++;}
 
 	if ( ( password.match(/[a-z]/) ) && 
 	     ( password.match(/[A-Z]/) ) ) {score++;}
@@ -199,11 +199,11 @@ function passwordStrength()
 	if ( password.match(/[^a-z\d]+/) )	{score++};
 
 	if (password.length > 12){ score++;}
-	
-	var color=colors[score];
-	var strengthdiv = this.pwdstrengthbar_obj;
-	
-	strengthdiv.style.background=colors[score];
+
+    const color = colors[score];
+    const strengthdiv = this.pwdstrengthbar_obj;
+
+    strengthdiv.style.background=colors[score];
 	
 	if (password.length <= 0)
 	{ 
@@ -214,14 +214,14 @@ function passwordStrength()
 		strengthdiv.style.width=(score+1)*10+'px';
 	}
 
-	var desc='';
-	if(password.length < 1){desc='';}
+    let desc = '';
+    if(password.length < 1){desc='';}
 	else if(score<3){ desc = this.txtWeak; }
 	else if(score<4){ desc = this.txtMedium; }
 	else if(score>=4){ desc= this.txtGood; }
 
-	var strengthstrdiv = this.pwdstrengthstr_obj;
-	strengthstrdiv.innerHTML = desc;
+    const strengthstrdiv = this.pwdstrengthstr_obj;
+    strengthstrdiv.innerHTML = desc;
 }
 
 function getRand(max) 
@@ -231,15 +231,15 @@ function getRand(max)
 
 function shuffleString(mystr)
 {
-	var arrPwd=mystr.split('');
+    const arrPwd = mystr.split('');
 
-	for(i=0;i< mystr.length;i++)
+    for(i=0;i< mystr.length;i++)
 	{
-		var r1= i;
-		var r2=getRand(mystr.length);
+        const r1 = i;
+        const r2 = getRand(mystr.length);
 
-		var tmp = arrPwd[r1];
-		arrPwd[r1] = arrPwd[r2];
+        const tmp = arrPwd[r1];
+        arrPwd[r1] = arrPwd[r2];
 		arrPwd[r2] = tmp;
 	}
 
@@ -248,8 +248,8 @@ function shuffleString(mystr)
 
 function showGeneatedPwd()
 {
-	var pwd = generatePWD();
-	this.pwdfieldobj.value= pwd;
+    const pwd = generatePWD();
+    this.pwdfieldobj.value= pwd;
 	this.pwdtxtfield_obj.value =pwd;
 
 	this._showPasswordStrength();
@@ -257,10 +257,10 @@ function showGeneatedPwd()
 
 function generatePWD()
 {
-    var maxAlpha = 26;
-	var strSymbols="~!@#$%^&*(){}?><`=-|][";
-	var password='';
-	for(i=0;i<3;i++)
+    const maxAlpha = 26;
+    const strSymbols = "~!@#$%^&*(){}?><`=-|][";
+    let password = '';
+    for(i=0;i<3;i++)
 	{
 		password += String.fromCharCode("a".charCodeAt(0) + getRand(maxAlpha));
 	}

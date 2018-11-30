@@ -1,6 +1,4 @@
 <?php
-
-
 $host = "webdev.iyaserver.com";
 $userid = "lewischr";
 $userpw = "Iya6521484446";
@@ -12,32 +10,32 @@ if ($mysqli->connect_errno) {
     echo "db connection error" . $mysqli->connect_error;
     exit("STOPPING page");
 }
-if(empty(trim($_REQUEST['title']))) {
+if(empty(trim($_POST['title']))) {
     echo "You must enter data.";
     exit();
-//    REVIEW[chris] implement header redirect after working validation and entry
+
 }
 
 $qCount=0;
 
-//var_dump($_REQUEST);
+//var_dump($_POST);
 
-//REVIEW[chris] REQUEST=title, desc, url, time,imgUrl, (ing[]) meals[], diets[]
+// REQUEST=title, desc, url, time,imgUrl, (ing[]) meals[], diets[]
 $sql="INSERT INTO lewischr_recipes.recipe (ID, title, description, url, cooktime, imgURL ) 
-VALUES (NULL, '".$_REQUEST["title"]."', '".$_REQUEST["desc"]."', '".$_REQUEST["url"]."', '".$_REQUEST["time"]."', '".$_REQUEST["imgUrl"]."')";
+VALUES (NULL, '".$_POST["title"]."', '".$_POST["desc"]."', '".$_POST["url"]."', '".$_POST["time"]."', '".$_POST["imgUrl"]."')";
 //echo "<hr>SQL:<br>" . $sql;
 
 
 
 if($results = $mysqli->query($sql)) {
     $newID = $mysqli->insert_id;
-    //echo "New recipe for " . $_REQUEST["title"] . " added. "." The new record has the ID of ".$newID;
+    //echo "New recipe for " . $_POST["title"] . " added. "." The new record has the ID of ".$newID;
     $qCount++;
 }else{
     exit();
 }
 
-$ingr_ids=$_REQUEST["ingr_ids"];
+$ingr_ids=$_POST["ingr_ids"];
 
 //echo "<hr>Ingredients SQL:<br>";
 for ($i = 0; $i<count($ingr_ids); $i++) {
@@ -53,7 +51,7 @@ for ($i = 0; $i<count($ingr_ids); $i++) {
 
 }
 
-$meals=$_REQUEST["meals"];
+$meals=$_POST["meals"];
 
 //echo "<hr>Meals SQL:<br>";
 for ($i = 0; $i<count($meals); $i++) {
@@ -68,7 +66,7 @@ for ($i = 0; $i<count($meals); $i++) {
     }
 
 }
-$diets=$_REQUEST["diets"];
+$diets=$_POST["diets"];
 //echo "<hr>Diets SQL:<br>";
 for ($i = 0; $i<count($diets); $i++) {
     $dietSQL = "INSERT INTO lewischr_recipes.recipe_diet (ID, recipe_id, diet_id) VALUES (NULL, '" . $newID . "', '" . $diets[$i] . "')";
@@ -82,7 +80,7 @@ for ($i = 0; $i<count($diets); $i++) {
     }
 }
 
-echo "New recipe \"" . $_REQUEST["title"] . "\" with ID ".$newID." added. <br>Completed ".$qCount." queries.";
+return "New recipe \"" . $_POST["title"] . "\" with ID ".$newID." added. <br>Completed ".$qCount." queries.";
 
 
 

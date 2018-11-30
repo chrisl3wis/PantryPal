@@ -1,10 +1,25 @@
-<html>
+<?PHP
+require_once("./include/membersite_config.php");
+include_once './header.php';
+
+if(!$fgmembersite->CheckLogin())
+{
+    $fgmembersite->RedirectToURL("log-in.php");
+    exit;
+}
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
-    <link rel="stylesheet" type="text/css" href="generalStyle.css">
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+    <title>Home page</title>
+    <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css">
+    <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
-    <style>
+    <style type="text/css">
         .resultsHeader{
-            background-image: url("mainBG.jpg");
+            background-image: url("images/mainBG.jpg");
             background-size: 140%;
             background-position-y: -200px;
             background-position-x: -30px;
@@ -24,27 +39,24 @@
             font-size: 24px;
         }
         #profilebox{
-            padding: 50px;
             background-color: white;
             width: 40%;
             height: 75%;
-            padding-top: 220px;
+            padding: 220px 50px 50px;
 
         }
         </style>
 </head>
 
 <body>
-<?php
-include_once 'header.php';
-?>
-
+<div id='fg_membersite_content'>
 <div id="profilebox">
-<h1>Hi There!</h1>
+<h1>Hi There <?= $fgmembersite->UserFullName(); ?>!</h1>
     <a href="savedRecipes.php">Your Saved Recipes</a> <br><br>
     <a href="mailto:help@pantrypal.com">Contact Us</a> <br><br>
-    <a href=""> Edit Settings</a> <br><br>
-    <a href="">Log Out</a>
+    <a href="change-pwd.php">Change password</a> <br><br>
+    <a href="logout.php">Log Out</a>
+</div>
 </div>
 </body>
 </html>

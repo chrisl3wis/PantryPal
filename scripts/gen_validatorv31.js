@@ -54,16 +54,16 @@ function sfm_enable_show_msgs_together()
 }
 function clear_all_validations()
 {
-   for(var itr=0;itr < this.formobj.elements.length;itr++)
+   for(let itr=0; itr < this.formobj.elements.length; itr++)
    {
       this.formobj.elements[itr].validationset = null;
    }
 }
 function form_submit_handler()
 {
-   var bRet = true;
+    let bRet = true;
     document.error_disp_handler.clear_msgs();
-   for(var itr=0;itr < this.elements.length;itr++)
+   for(let itr=0; itr < this.elements.length; itr++)
    {
       if(this.elements[itr].validationset &&
       !this.elements[itr].validationset.validate())
@@ -91,8 +91,8 @@ function form_submit_handler()
 }
 function add_validation(itemname,descriptor,errstr)
 {
-   var condition = null;
-   if(arguments.length > 3)
+    let condition = null;
+    if(arguments.length > 3)
    {
     condition = arguments[3]; 
    }
@@ -101,7 +101,7 @@ function add_validation(itemname,descriptor,errstr)
       alert("Error: The form object is not set properly");
       return;
    }//if
-   var itemobj = this.formobj[itemname];
+    let itemobj = this.formobj[itemname];
     if(itemobj.length && isNaN(itemobj.selectedIndex) )
     //for radio button; don't do for 'select' item
    {
@@ -159,9 +159,9 @@ function edh_EnableOnPageDisplay(single_box)
 }
 function edh_ShowMsg(msg,input_element)
 {
-   
-   var objmsg = new Array();
-   objmsg["input_element"] = input_element;
+
+    const objmsg = new Array();
+    objmsg["input_element"] = input_element;
    objmsg["msg"] =  msg;
    this.all_msgs.push(objmsg);
 }
@@ -176,9 +176,9 @@ function alert_clearmsg(msgs)
 }
 function alert_showmsg(msgs)
 {
-    var whole_msg="";
-    var first_elmnt=null;
-    for(var m in msgs)
+    let whole_msg = "";
+    let first_elmnt = null;
+    for(let m in msgs)
     {
         if(null == first_elmnt)
         {
@@ -206,33 +206,33 @@ function SingleBoxErrorDisplay()
 
 function sb_div_clearmsg(msgs)
 {
-   var divname = form_error_div_name(msgs);
-   show_div_msg(divname,"");
+    const divname = form_error_div_name(msgs);
+    show_div_msg(divname,"");
 }
 
 function sb_div_showmsg(msgs)
 {
-   var whole_msg="<ul>\n";
-   for(var m in msgs)
+    let whole_msg = "<ul>\n";
+    for(let m in msgs)
     {
         whole_msg += "<li>" + msgs[m]["msg"] + "</li>\n";
     }
    whole_msg += "</ul>";
-   var divname = form_error_div_name(msgs);
-   show_div_msg(divname,whole_msg);
+    const divname = form_error_div_name(msgs);
+    show_div_msg(divname,whole_msg);
 }
 function form_error_div_name(msgs)
 {
-   var input_element= null;
+    let input_element = null;
 
-   for(var m in msgs)
+    for(let m in msgs)
    {
     input_element = msgs[m]["input_element"];
     if(input_element){break;}
    }
 
-   var divname ="";
-   if(input_element)
+    let divname = "";
+    if(input_element)
    {
     divname = input_element.form._sfm_form_name + "_errorloc";
    }
@@ -246,32 +246,32 @@ function DivMsgDisplayer()
 }
 function div_clearmsg(msgs)
 {
-    for(var m in msgs)
+    for(let m in msgs)
     {
-        var divname = element_div_name(msgs[m]["input_element"]);
+        const divname = element_div_name(msgs[m]["input_element"]);
         show_div_msg(divname,"");
     }
 }
 function element_div_name(input_element)
 {
-  var divname = input_element.form._sfm_form_name + "_" + 
-                   input_element.name + "_errorloc";
+    let divname = input_element.form._sfm_form_name + "_" +
+        input_element.name + "_errorloc";
 
-  divname = divname.replace(/[\[\]]/gi,"");
+    divname = divname.replace(/[\[\]]/gi,"");
 
   return divname;
 }
 function div_showmsg(msgs)
 {
-    var whole_msg;
-    var first_elmnt=null;
-    for(var m in msgs)
+    let whole_msg;
+    let first_elmnt = null;
+    for(let m in msgs)
     {
         if(null == first_elmnt)
         {
             first_elmnt = msgs[m]["input_element"];
         }
-        var divname = element_div_name(msgs[m]["input_element"]);
+        const divname = element_div_name(msgs[m]["input_element"]);
         show_div_msg(divname,msgs[m]["msg"]);
     }
     if(null != first_elmnt)
@@ -348,8 +348,8 @@ function add_validationdesc(desc,error,condition)
 }
 function vset_validate()
 {
-    var bRet = true;
-    for(var itr=0;itr<this.vSet.length;itr++)
+    let bRet = true;
+    for(let itr=0; itr<this.vSet.length; itr++)
     {
         bRet = bRet && this.vSet[itr].validate();
         if(!bRet && !this.msgs_together)
@@ -361,20 +361,20 @@ function vset_validate()
 }
 function validateEmail(email)
 {
-    var splitted = email.match("^(.+)@(.+)$");
+    const splitted = email.match("^(.+)@(.+)$");
     if(splitted == null) return false;
     if(splitted[1] != null )
     {
-      var regexp_user=/^\"?[\w-_\.]*\"?$/;
-      if(splitted[1].match(regexp_user) == null) return false;
+        const regexp_user = /^"?[\w-_\.]*\"?$/;
+        if(splitted[1].match(regexp_user) == null) return false;
     }
     if(splitted[2] != null)
     {
-      var regexp_domain=/^[\w-\.]*\.[A-Za-z]{2,4}$/;
-      if(splitted[2].match(regexp_domain) == null) 
+        const regexp_domain = /^[\w-\.]*\.[A-Za-z]{2,4}$/;
+        if(splitted[2].match(regexp_domain) == null)
       {
-       var regexp_ip =/^\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\]$/;
-       if(splitted[2].match(regexp_ip) == null) return false;
+          const regexp_ip = /^\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\]$/;
+          if(splitted[2].match(regexp_ip) == null) return false;
       }// if
       return true;
     }
@@ -383,12 +383,12 @@ return false;
 
 function IsCheckSelected(objValue,chkValue)
 {
-    var selected=false;
-   var objcheck = objValue.form.elements[objValue.name];
+    let selected = false;
+    const objcheck = objValue.form.elements[objValue.name];
     if(objcheck.length)
    {
-      var idxchk=-1;
-      for(var c=0;c < objcheck.length;c++)
+       let idxchk = -1;
+       for(let c=0; c < objcheck.length; c++)
       {
          if(objcheck[c].value == chkValue)
          {
@@ -416,8 +416,8 @@ function IsCheckSelected(objValue,chkValue)
 }
 function TestDontSelectChk(objValue,chkValue,strError)
 {
-   var pass = true;
-   pass = IsCheckSelected(objValue,chkValue)?false:true;
+    let pass = true;
+    pass = !IsCheckSelected(objValue, chkValue);
 
    if(pass==false)
    {
@@ -432,9 +432,9 @@ function TestDontSelectChk(objValue,chkValue,strError)
 }
 function TestShouldSelectChk(objValue,chkValue,strError)
 {
-   var pass = true;
+    let pass = true;
 
-   pass = IsCheckSelected(objValue,chkValue)?true:false;
+    pass = IsCheckSelected(objValue,chkValue)?true:false;
 
    if(pass==false)
    {
@@ -449,7 +449,7 @@ function TestShouldSelectChk(objValue,chkValue,strError)
 }
 function TestRequiredInput(objValue,strError)
 {
- var ret = true;
+    let ret = true;
     if(eval(objValue.value.length) == 0) 
     { 
        if(!strError || strError.length ==0) 
@@ -463,7 +463,7 @@ return ret;
 }
 function TestMaxLen(objValue,strMaxLen,strError)
 {
- var ret = true;
+    let ret = true;
     if(eval(objValue.value.length) > eval(strMaxLen)) 
     { 
       if(!strError || strError.length ==0) 
@@ -477,7 +477,7 @@ return ret;
 }
 function TestMinLen(objValue,strMinLen,strError)
 {
- var ret = true;
+    let ret = true;
     if(eval(objValue.value.length) <  eval(strMinLen)) 
     { 
       if(!strError || strError.length ==0) 
@@ -491,9 +491,9 @@ return ret;
 }
 function TestInputType(objValue,strRegExp,strError,strDefaultError)
 {
-   var ret = true;
+    let ret = true;
 
-    var charpos = objValue.value.search(strRegExp); 
+    const charpos = objValue.value.search(strRegExp);
     if(objValue.value.length > 0 &&  charpos >= 0) 
     { 
      if(!strError || strError.length ==0) 
@@ -507,8 +507,8 @@ function TestInputType(objValue,strRegExp,strError,strDefaultError)
 }
 function TestEmail(objValue,strError)
 {
-var ret = true;
-     if(objValue.value.length > 0 && !validateEmail(objValue.value)   ) 
+    let ret = true;
+    if(objValue.value.length > 0 && !validateEmail(objValue.value)   )
      { 
        if(!strError || strError.length ==0) 
        { 
@@ -521,8 +521,8 @@ return ret;
 }
 function TestLessThan(objValue,strLessThan,strError)
 {
-var ret = true;
-     if(isNaN(objValue.value)) 
+    let ret = true;
+    if(isNaN(objValue.value))
      { 
        sfm_show_error_msg(objValue.name +": Should be a number ",objValue); 
        ret = false; 
@@ -541,8 +541,8 @@ return ret;
 }
 function TestGreaterThan(objValue,strGreaterThan,strError)
 {
-var ret = true;
-     if(isNaN(objValue.value)) 
+    let ret = true;
+    if(isNaN(objValue.value))
      { 
        sfm_show_error_msg(objValue.name+": Should be a number ",objValue); 
        ret = false; 
@@ -561,7 +561,7 @@ return ret;
 }
 function TestRegExp(objValue,strRegExp,strError)
 {
-var ret = true;
+    let ret = true;
     if( objValue.value.length > 0 && 
         !objValue.value.match(strRegExp) ) 
     { 
@@ -576,8 +576,8 @@ return ret;
 }
 function TestDontSelect(objValue,dont_sel_value,strError)
 {
-var ret = true;
-     if(objValue.value == null) 
+    let ret = true;
+    if(objValue.value == null)
      { 
        sfm_show_error_msg("Error: dontselect command for non-select Item",objValue); 
        ret = false; 
@@ -596,9 +596,9 @@ return ret;
 }
 function TestSelectOneRadio(objValue,strError)
 {
-   var objradio = objValue.form.elements[objValue.name];
-   var one_selected=false;
-   for(var r=0;r < objradio.length;r++)
+    const objradio = objValue.form.elements[objValue.name];
+    let one_selected = false;
+    for(let r=0; r < objradio.length; r++)
    {
      if(objradio[r].checked == "1")
      {
@@ -619,16 +619,16 @@ return one_selected;
 
 function TestFileExtension(objValue,cmdvalue,strError)
 {
-    var ret=false;
-    var found=false;
+    let ret = false;
+    let found = false;
 
     if(objValue.value.length <= 0)
     {//The 'required' validation is not done here
         return true;
     }
-   
-    var extns = cmdvalue.split(";");
-    for(var i=0;i < extns.length;i++)
+
+    const extns = cmdvalue.split(";");
+    for(let i=0; i < extns.length; i++)
     {
         ext = objValue.value.substr(objValue.value.length - extns[i].length,extns[i].length);
         ext = ext.toLowerCase();
@@ -655,11 +655,11 @@ function TestFileExtension(objValue,cmdvalue,strError)
 
 
 function validateInput(strValidateStr,objValue,strError) 
-{ 
-    var ret = true;
-    var epos = strValidateStr.search("="); 
-    var  command  = ""; 
-    var  cmdvalue = ""; 
+{
+    let ret = true;
+    const epos = strValidateStr.search("=");
+    let command = "";
+    let cmdvalue = "";
     if(epos >= 0) 
     { 
      command  = strValidateStr.substring(0,epos); 
@@ -674,19 +674,19 @@ function validateInput(strValidateStr,objValue,strError)
         case "req": 
         case "required": 
          { 
-         ret = TestRequiredInput(objValue,strError)
+         ret = TestRequiredInput(objValue,strError);
            break;             
          }//case required 
         case "maxlength": 
         case "maxlen": 
           { 
-          ret = TestMaxLen(objValue,cmdvalue,strError)
+          ret = TestMaxLen(objValue,cmdvalue,strError);
              break; 
           }//case maxlen 
         case "minlength": 
         case "minlen": 
            { 
-          ret = TestMinLen(objValue,cmdvalue,strError)
+          ret = TestMinLen(objValue,cmdvalue,strError);
              break; 
             }//case minlen 
         case "alnum": 
@@ -748,17 +748,17 @@ function validateInput(strValidateStr,objValue,strError)
          }
         case "dontselect": 
          { 
-          ret = TestDontSelect(objValue,cmdvalue,strError)
+          ret = TestDontSelect(objValue,cmdvalue,strError);
              break; 
          }
       case "dontselectchk":
       {
-         ret = TestDontSelectChk(objValue,cmdvalue,strError)
+         ret = TestDontSelectChk(objValue,cmdvalue,strError);
          break;
       }
       case "shouldselchk":
       {
-         ret = TestShouldSelectChk(objValue,cmdvalue,strError)
+         ret = TestShouldSelectChk(objValue,cmdvalue,strError);
          break;
       }
       case "selone_radio":
@@ -776,7 +776,7 @@ function validateInput(strValidateStr,objValue,strError)
 }
 function VWZ_IsListItemSelected(listname,value)
 {
- for(var i=0;i < listname.options.length;i++)
+ for(let i=0; i < listname.options.length; i++)
  {
   if(listname.options[i].selected == true &&
    listname.options[i].value == value) 
@@ -790,7 +790,7 @@ function VWZ_IsChecked(objcheck,value)
 {
  if(objcheck.length)
  {
-     for(var c=0;c < objcheck.length;c++)
+     for(let c=0; c < objcheck.length; c++)
      {
        if(objcheck[c].checked == "1" && 
         objcheck[c].value == value)

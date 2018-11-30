@@ -15,7 +15,7 @@ if ($mysqli->connect_errno) {
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="generalStyle.css">
+    <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -71,7 +71,7 @@ if ($mysqli->connect_errno) {
 <body>
 
 <?php
-include_once 'header.php';
+include_once './header.php';
 
 //REVIEW[chris] add "back to dashboard" btn
 

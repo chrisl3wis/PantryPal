@@ -5,7 +5,7 @@ if(isset($_GET['code']))
 {
    if($fgmembersite->ConfirmUser($_GET['code']))
    {
-        $fgmembersite->RedirectToURL("thank-you-regd.html");
+        $fgmembersite->RedirectToURL("./thank-you-regd.html");
    }
 }
 
