@@ -139,6 +139,10 @@ if ($mysqli->connect_errno) {
             color: #9E9E9E;
             font-size: 10pt;
         }
+        .saveRecipe{
+            position: absolute;
+            width: 20px;
+        }
     </style>
 </head>
 <body>
@@ -147,13 +151,13 @@ include_once './header.php';
 ?>
 
 <div class="resultsHeader">
-<div class="resultsHeaderText">
-    <h1>Recipes You Can Make...</h1>
-</div>
+    <div class="resultsHeaderText">
+        <h1>Recipes You Can Make...</h1>
+    </div>
 
 </div>
 <div id="filters">
-<strong style="font-family: 'Montserrat', sans-serif; font-size: 14pt;">filters:</strong>
+    <strong style="font-family: 'Montserrat', sans-serif; font-size: 14pt;">filters:</strong>
     <br><br>
     ingredients
     <br>
@@ -203,11 +207,12 @@ include_once './header.php';
     if ($result = $mysqli->query($sql)) {
 
         while ($row = $result->fetch_assoc()) {
-            echo '<div class="searchResult">
+            echo '<a href="'.$row["url"].'" target="_blank" ><div class="searchResult">
             <img class="recipeImage" alt="Recipe Image'.$row['title'].'" src="'.$row["imgURL"].'" >
+            <img class="saveRecipe" src="unsaved.png" alt="Save Recipes">
             <div class="recipeInfo">
             <span class="recipeName"><strong>' . $row['title'] . '</strong>
-            <a href="'.$row["url"].'" target="_blank" ><img class="outLink" src="Asset%204.png" alt="link to recipe"> </a> 
+              
             <br></span>
             <em>' . $row['description'] . '</em>
             <br>';
@@ -253,6 +258,7 @@ include_once './header.php';
         });
 
     </script>
+    </a>
 </div>
 
 </body>
