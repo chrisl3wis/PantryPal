@@ -41,7 +41,7 @@ if(isset($_POST['submitted']))
         .registerFill{
             width: 250px;
             /*height: 45px;*/
-            font-family: 'Montserrat', sans-serif !important;;
+            font-family: 'Montserrat', sans-serif !important;
             font-style: italic;
             border: none !important;
             border-bottom: 1px solid var(--main-grey) !important;

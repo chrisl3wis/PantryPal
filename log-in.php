@@ -38,16 +38,28 @@
                 background-size: 110%;
             }
             .loginFill{
-                /*width: 380px;*/
+                width: 380px !important;
 
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Montserrat', sans-serif !important;
                 font-style: italic;
                 border: none;
-                /*border-bottom: 1px solid var(--main-grey);*/
-                font-size: 11pt;
+                border-bottom: 1px solid var(--main-grey)!important;
+                font-size: 12pt;
                 padding-left: 10px;
                 margin-bottom: 10px;
-                background: #cccccc;
+                /*background: #cccccc;*/
+
+            }
+            .passFill{
+                width: 380px !important;
+
+                font-family: 'Montserrat', sans-serif !important;
+                border: none;
+                border-bottom: 1px solid var(--main-grey)!important;
+                font-size: 12pt;
+                padding-left: 10px;
+                margin-bottom: 10px;
+                /*background: #cccccc;*/
 
             }
             .submit{
@@ -70,10 +82,13 @@
             }
             a{
 
-                text-decoration: underline;
+
                 font-size: 10pt;
                 color: #8AC1C6;
 
+            }
+            a:hover{
+                text-decoration: underline;
             }
             .register{
                 font-size: 10pt;
@@ -85,8 +100,12 @@
                 height: 100%;
                 position: fixed;
                 top: 0px;
+                left: -100px;
                 z-index: 0;
 
+            }
+            label{
+                font-size: 11pt;  margin-top: 30px; font-weight: normal; font-style: italic; color: #bcbcbc;
             }
 
         </style>
@@ -95,30 +114,31 @@
 <div id="loginTitle">
     <h1>Welcome!</h1>
     <form id='login' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
-        <fieldset>
-            <legend>Login</legend>
+
             <input type='hidden' name='submitted' id='submitted' value='1'/>
 
-            <div class='short_explanation'>* required fields</div>
+           <!-- <div class='short_explanation'>* required fields</div>-->
 
             <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
             <div class='container'>
-                <label for='username' >UserName*:</label><br/>
+                <label for='username' >Username</label><br/>
                 <input type='text' name='username' class="loginFill" id='username' value='<?php echo $fgmembersite->SafeDisplay('username') ?>' maxlength="50" /><br/>
                 <span id='login_username_errorloc' class='error'></span>
             </div>
+        <br><br>
             <div class='container'>
-                <label for='password' >Password*:</label><br/>
-                <input type='password' name='password' class="loginFill" id='password' maxlength="50" /><br/>
+                <label for='password' >Password</label><br/>
+                <input type='password' name='password' class="passFill" id='password' maxlength="50" /><br/>
                 <span id='login_password_errorloc' class='error'></span>
             </div>
-
+<br>
             <div class='container'>
                 <input type='submit' class="submit" name='Submit' value='Submit' />
             </div>
-            <br><div class='short_explanation register'><a href='./source/reset-pwd-req.php'>Forgot Password?</a></div>
-            <br><div class='short_explanation register'><a href='register.php'>Sign Up</a></div>
-        </fieldset>
+        <br>
+            <br><div class='short_explanation register'><a href='./source/reset-pwd-req.php'>Forgot Your Password?</a></div>
+            <br><div class='short_explanation register'>Don't have an account? <a href='register.php'>Sign up here.</a></div>
+
     </form>
 </div>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 658.71 775">
