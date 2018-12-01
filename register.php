@@ -26,7 +26,7 @@ if(isset($_POST['submitted']))
         }
         #registerbox{
             width: 400px;
-            margin: 11% auto auto;
+            margin: 7% auto auto;
             text-align: center;
             background-color: white;
             -webkit-border-radius: 2px;
@@ -39,19 +39,31 @@ if(isset($_POST['submitted']))
 
         }
         .registerFill{
-            /*width: 300px;*/
+            width: 250px;
             /*height: 45px;*/
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat', sans-serif !important;;
             font-style: italic;
-            border: none;
-            border-bottom: 1px solid var(--main-grey);
-            font-size: 11pt;
+            border: none !important;
+            border-bottom: 1px solid var(--main-grey) !important;
+            font-size: 11pt !important;
             padding-left: 10px;
+        color: black !important;
             /*background: #cccccc;*/
 
 
-
         }
+        .pwdfield{
+            width: 250px;
+            /*height: 45px;*/
+            font-family: 'Montserrat', sans-serif !important;
+            border: none !important;
+            border-bottom: 1px solid var(--main-grey) !important;
+            font-size: 11pt !important;
+            padding-left: 10px;
+            color: black !important;
+        }
+
+
         .submit{
             font-family: 'Montserrat', sans-serif;
             background-color: #8AC1C6;
@@ -84,12 +96,11 @@ include_once './header.php';
     <h1>Sign Up</h1>
     <div id='fg_membersite'>
         <form id='register' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
-            <fieldset >
-                <legend>Register</legend>
+
 
                 <input type='hidden' name='submitted' id='submitted' value='1'/>
 
-                <div class='short_explanation'>* required fields</div>
+
 
                 <label>
                     <input type='text'  class='spmhidip' name='<?=$fgmembersite->GetSpamTrapInputName() ?>' />
@@ -98,39 +109,44 @@ include_once './header.php';
 
                 <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
                 <div class='container'>
-                    <label for='forename' >Your First Name*: </label><br/>
-                    <input type='text' name='forename' class="registerFill" id='forename' value='<?php echo $fgmembersite->SafeDisplay('forename') ?>' maxlength="50" /><br/>
+                    <label for='forename' class='info' style='font-size: 11pt;  margin-top: 30px; font-weight: normal; font-style: italic; color: #bcbcbc;'> Your First Name </label><br/>
+                    <input type='text' name='forename' class="registerFill" id='forename'  value='<?php echo $fgmembersite->SafeDisplay('forename') ?>' maxlength="50" /><br/>
                     <span id='register_name_errorloc' class='error'></span>
                 </div>
+            <br>
                 <div class='container'>
-                    <label for='surename' >Your Last Name*: </label><br/>
+                    <label for='surename' style='font-size: 11pt;  margin-top: 30px; font-weight: normal; font-style: italic; color: #bcbcbc;' >Your Last Name </label><br/>
                     <input type='text' name='surename' class="registerFill" id='surename' value='<?php echo $fgmembersite->SafeDisplay('surename') ?>' maxlength="50" /><br/>
                     <span id='register_name_errorloc' class='error'></span>
                 </div>
+            <br>
                 <div class='container'>
-                    <label for='email' >Email Address*:</label><br/>
+                    <label for='email'style='font-size: 11pt;  margin-top: 30px; font-weight: normal; font-style: italic; color: #bcbcbc;' >Email Address</label><br/>
                     <input type='text' name='email' class="registerFill" id='email' value='<?php echo $fgmembersite->SafeDisplay('email') ?>' maxlength="50" /><br/>
                     <span id='register_email_errorloc' class='error'></span>
                 </div>
+            <br>
                 <div class='container'>
-                    <label for='username' >UserName*:</label><br/>
+                    <label for='username' style='font-size: 11pt;  margin-top: 30px; font-weight: normal; font-style: italic; color: #bcbcbc;' >UserName</label><br/>
                     <input type='text' name='username' class="registerFill" id='username' value='<?php echo $fgmembersite->SafeDisplay('username') ?>' maxlength="50" /><br/>
                     <span id='register_username_errorloc' class='error'></span>
                 </div>
-                <div class='container'>
-                    <label for='password' >Password*:</label><br/>
+                <div class='container' style='margin-left: -25px;'>
+                    <label for='password' style='float: left; margin-left: 190px;font-size: 11pt; margin-top: 30px; font-weight: normal; font-style: italic; color: #bcbcbc;' >Password</label><br/>
                     <div class='pwdwidgetdiv' id='thepwddiv' ></div>
                     <noscript>
-                        <input type='password' name='password' class="registerFill" id='password' maxlength="50" />
+                        <input type='password' name='password' class="registerFill" id='password'  maxlength="50" />
                     </noscript>
                     <div id='register_password_errorloc' class='error' style='clear:both'></div>
                 </div>
+                <br>
 
                 <div class='container'>
                     <input type='submit' class="submit" name='Submit' value='create my account' />
                 </div>
+            <!--<div class='short_explanation'>* required fields</div>-->
 
-            </fieldset>
+
         </form>
         <!-- client-side Form Validations:
         Uses the excellent form validation script from JavaScript-coder.com-->
