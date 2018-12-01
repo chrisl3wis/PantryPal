@@ -65,6 +65,14 @@ if ($mysqli->connect_errno) {
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
         }
+        .recipeImage2 {
+            position: relative;
+            width: 100%;
+            margin-bottom: 0;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+
+        }
         #filters{
             width: 200px;
             padding: 25px;
@@ -86,6 +94,7 @@ if ($mysqli->connect_errno) {
             width: 230px;
             margin: 10px;
             color: grey;
+            clear: both;
 
         }
 
@@ -141,7 +150,12 @@ if ($mysqli->connect_errno) {
         }
         .saveRecipe{
             position: absolute;
+            float: left;
             width: 20px;
+            margin-left: 10px;
+            margin-top: 10px;
+            opacity: 0.8;
+            display: block;
         }
     </style>
 </head>
@@ -208,8 +222,13 @@ include_once './header.php';
 
         while ($row = $result->fetch_assoc()) {
             echo '<a href="'.$row["url"].'" target="_blank" ><div class="searchResult">
+            <img class="saveRecipe" src="images/saved.png" alt="Save Recipes">
+            <div>
+            
             <img class="recipeImage" alt="Recipe Image'.$row['title'].'" src="'.$row["imgURL"].'" >
-            <img class="saveRecipe" src="unsaved.png" alt="Save Recipes">
+            
+            </div>
+            
             <div class="recipeInfo">
             <span class="recipeName"><strong>' . $row['title'] . '</strong>
               
