@@ -260,7 +260,7 @@ include_once './header.php';
             else {
                 var_dump($mysqli);
             }
-            echo '<img class="saveRecipe" src="images/unsaved.png" alt="Save Recipes"></div></div>';
+            echo '<img class="saveRecipe" src="images/saved.png" alt="Save Recipes"></div></div>';
         }
     } else {
         var_dump($mysqli);
