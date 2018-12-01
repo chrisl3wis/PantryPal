@@ -35,7 +35,7 @@
             /*}*/
             body{
                 background-image: url("images/loginflatlay.png");
-                background-size: 110%;
+                background-size: 120vw;
             }
             .loginFill{
                 width: 380px !important;

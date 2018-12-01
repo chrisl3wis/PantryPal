@@ -22,7 +22,8 @@ if(isset($_POST['submitted']))
     <style type="text/css">
         body{
             background-image: url("images/loginflatlay.png");
-            background-size: 110%;
+            background-size: 120vw;
+
         }
         #registerbox{
             width: 400px;
