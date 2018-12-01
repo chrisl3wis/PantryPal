@@ -149,12 +149,10 @@ if ($mysqli->connect_errno) {
             font-size: 10pt;
         }
         .saveRecipe{
-            position: absolute;
-            float: left;
+            float: right;
             width: 20px;
             margin-left: 10px;
             margin-top: 10px;
-            opacity: 0.8;
             display: block;
         }
     </style>
@@ -222,10 +220,11 @@ include_once './header.php';
 
         while ($row = $result->fetch_assoc()) {
             echo '<a href="'.$row["url"].'" target="_blank" ><div class="searchResult">
-            <img class="saveRecipe" src="images/saved.png" alt="Save Recipes">
+            
             <div>
             
             <img class="recipeImage" alt="Recipe Image'.$row['title'].'" src="'.$row["imgURL"].'" >
+            
             
             </div>
             
@@ -261,7 +260,7 @@ include_once './header.php';
             else {
                 var_dump($mysqli);
             }
-            echo '</div></div>';
+            echo '<img class="saveRecipe" src="images/unsaved.png" alt="Save Recipes"></div></div>';
         }
     } else {
         var_dump($mysqli);
