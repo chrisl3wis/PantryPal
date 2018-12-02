@@ -129,7 +129,11 @@ include_once './header.php';
     </div>
 
 </div>
-<div id="filterCont">
+<!--
+
+ (html for the filters and ingredients search within saved recipes)
+
+ <div id="filterCont">
 <div id="filterText">
  <form action="">
 Filter by Ingredient: <input class="ingredient" type="text" name="ing1" placeholder="ingredient 1">
@@ -150,7 +154,7 @@ Filter by Ingredient: <input class="ingredient" type="text" name="ing1" placehol
 
 
 </div>
-</div>
+</div> -->
 <div id="savedCont">
     <div class="searchResult">
         <img class="recipeImage" src="pestopasta.jpg" alt="pesto">
