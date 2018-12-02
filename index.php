@@ -43,7 +43,7 @@ include_once './header.php';
     <input type="text" class="ingredientFill" name="ingred3" placeholder="ingredient #3">
     <br><br>
 
-    <a href="">advanced search >></a>
+    <a href="advancedSearch.php">advanced search >></a>
     <br><br><br>
 
     <input type="submit" class="search" value="search">
