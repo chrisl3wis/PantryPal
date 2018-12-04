@@ -1,16 +1,59 @@
 <html>
 <head>
     <link rel="stylesheet" href="pantryStyle.css">
+    <style>
+        .resultsHeader{
+            background-image: url("images/mainBG.jpg");
+            background-size: 120%;
+            background-position-y: -800px;
+            background-position-x: -30px;
+            width: 100%;
+            height: 300px;
+        }
+        .resultsHeaderText{
+            text-align: left;
+            color: white;
+            padding-top: 70px;
+            padding-left: 0px;
+        }
+    </style>
 </head>
 <body>
-<div style="background-color:#badee2; width: 100%; padding:50px 50px 50px 0px">
-    <h1>How To Use PantryPal!</h1><br>
-    <p style="text-align: center; margin: auto; width: 750px">Welcome to the site! Navigating should be pretty easy, but here are some simple tips.</p>
-    <br>
+<?PHP
+require_once("./include/membersite_config.php");
+
+//if(!$fgmembersite->CheckLogin())
+//{
+//    $fgmembersite->RedirectToURL("login.php");
+//    exit;
+//}
+?>
+<div id="header">
+    <a href="index.php"><img src="include/pantrypal.png" id="masthead" alt="PantryPal"></a>
+    <a class="account" href="profile.php"><?php
+        if(!$fgmembersite->CheckLogin())
+        {
+            echo "log in";
+        }
+        else{
+            echo "welcome back, ". $fgmembersite->UserFullName();
+        }
+        ?></a>
+    <!--Maybe if signed in have "Hello, Chris"-->
+</div><br><br><br>
+<div class="resultsHeader">
+    <div class="resultsHeaderText" style="padding-top: 120px;">
+        <h1>How To Use PantryPal</h1>
+    </div>
 </div>
+<!--<div style="background-color:#badee2; width: 100%; padding:50px 50px 50px 0px">-->
+<!--    <h1>How To Use PantryPal!</h1><br>-->
+<!--    <p style="text-align: center; margin: auto; width: 750px">Welcome to the site! Navigating should be pretty easy, but here are some simple tips.</p>-->
+<!--    <br>-->
+<!--</div>-->
 <div style=" padding: 50px 30px 30px 30px">
     <div style="width:850px; height: 400px; margin: auto">
-        <img style="width: 400px; float: left; border-radius: 20px; margin: 0px 50px 0px 0px" src="Ingredients.png">
+        <img style="width: 400px; float: left; border-radius: 20px; margin: 0px 50px 0px 0px; box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.15);" src="Ingredients.png">
         <p style="line-height: 150%; padding-top: 150px">Start by choosing a few ingredients! Look in your pantry, fridge, cabinets, etc. to find what food you have to cook with. This can vary from main proteins like chicken, to vegetables like broccoli, seasonings like rosemary, and more!</p>
     </div>
 </div>
@@ -26,7 +69,7 @@
         <p style="line-height: 150%; padding-top: 190px">After you click on the arrow, the recipe on it's original site will pop up with the exact ingredients, directions, and sometimes reviews. You can read more about the recipe and start cooking yourself! Some of the recipes will require a few extra ingredients on top of what you entered, but hopefully this will help give you a good starting point.</p>
     </div>
 </div>
-<div style="background-color:#69ccd7; width: 100%; padding:30px 50px 10px 0px; float: center; text-align: center; margin: auto"">
+<div style="background-color:#badee2; width: 100%; padding:30px 50px 10px 0px; float: center; text-align: center; margin: auto"">
 <h2>We hope this helps! Happy cooking :)</h2><br>
 </div>
 <div style=" padding: 30px 30px 50px 30px; float: center; text-align: center; margin: auto">

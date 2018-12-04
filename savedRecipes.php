@@ -127,7 +127,6 @@ include_once './header.php';
     <div class="resultsHeaderText">
         <h1>Your Saved Recipes</h1>
     </div>
-
 </div>
 <!--
 
