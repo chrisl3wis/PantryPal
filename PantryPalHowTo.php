@@ -70,7 +70,7 @@ require_once("./include/membersite_config.php");
     </div>
 </div>
 <div style="background-color:#badee2; width: 100%; padding:30px 50px 10px 0px; float: center; text-align: center; margin: auto"">
-<h2>We hope this helps! Happy cooking :)</h2><br>
+<h2>Happy cooking :)</h2><br>
 </div>
 <div style=" padding: 30px 30px 50px 30px; float: center; text-align: center; margin: auto">
     <br> &copy; PantryPal Inc.<br>
