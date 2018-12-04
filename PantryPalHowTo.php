@@ -54,7 +54,7 @@ require_once("./include/membersite_config.php");
 <div style=" padding: 50px 30px 30px 30px">
     <div style="width:850px; height: 400px; margin: auto">
         <img style="width: 400px; float: left; border-radius: 20px; margin: 0px 50px 0px 0px; box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.15);" src="Ingredients.png">
-        <p style="line-height: 150%; padding-top: 150px">Start by choosing a few ingredients! Look in your pantry, fridge, cabinets, etc. to find what food you have to cook with. This can vary from main proteins like chicken, to vegetables like broccoli, seasonings like rosemary, and more!</p>
+        <p style="line-height: 150%; padding-top: 150px">Start by choosing a few ingredients! Look in your pantry, fridge, cabinets, etc. to find what food you have to cook with. This can vary from main proteins like chicken, to vegetables like broccoli, seasonings like sesame, and more!</p>
     </div>
 </div>
 <div style=" padding: 0px 30px 0px 30px">
