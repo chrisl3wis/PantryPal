@@ -21,20 +21,14 @@
         <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
         <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
         <script type='text/javascript' src='/scripts/gen_validatorv31.js'></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="STYLESHEET" type="text/css" href="style/textPages.css">
         <style type="text/css">
-            #loginTitle{
-                width: 500px;
-                text-align: left;
-                margin-top: 28vh;
-                z-index: 10;
-                position: absolute;
-                margin-left: 5%;
-            }
-            /*#logo{*/
-                /*width: 200px;*/
-            /*}*/
-            body{
-                background: url("images/loginflatlay.png") repeat-y;
+            /*!*#logo{*!*/
+                /*!*width: 200px;*!*/
+            /*!*}*!*/
+            body {
+                background: url("images/mainBG.jpg") repeat-y;
                 background-size: cover;
             }
             .loginFill{
@@ -90,34 +84,49 @@
             a:hover{
                 text-decoration: underline;
             }
-            .register{
+            .register {
                 font-size: 10pt;
                 color: grey;
                 font-style: italic;
             }
+            label{
+                font-size: 11pt;  margin-top: 30px; font-weight: normal; font-style: italic; color: #bcbcbc;
+            }
             svg{
-                width: 50%;
+                /*width: 50%;*/
+                min-width: 800px;
                 height: 100%;
                 position: fixed;
                 top: 0px;
                 left: -100px;
                 z-index: 0;
-
             }
-            label{
-                font-size: 11pt;  margin-top: 30px; font-weight: normal; font-style: italic; color: #bcbcbc;
+            @media screen and (max-device-width: 450px){
+                svg{
+                    width: 0%; !important;
+                }
+                body{
+                    background: url("images/mainBG.jpg") repeat-y;
+                    background-size: 120%;
+                    background-repeat: no-repeat;
+                    padding: 10px;
+                }
+                .standardTitle {
+                    width: 85%;
+                }
+
             }
 
         </style>
     </head>
 <body>
-<div id="loginTitle">
-    <h1>Welcome!</h1>
-    <form id='login' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
+<div class="standardTitle">
+        <h1>Welcome!</h1>
+        <form id='login' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
 
             <input type='hidden' name='submitted' id='submitted' value='1'/>
 
-           <!-- <div class='short_explanation'>* required fields</div>-->
+            <!-- <div class='short_explanation'>* required fields</div>-->
 
             <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
             <div class='container'>
@@ -125,22 +134,23 @@
                 <input type='text' name='username' class="loginFill" id='username' value='<?php echo $fgmembersite->SafeDisplay('username') ?>' maxlength="50" /><br/>
                 <span id='login_username_errorloc' class='error'></span>
             </div>
-        <br><br>
+            <br><br>
             <div class='container'>
                 <label for='password' >Password :</label><br/>
                 <input type='password' name='password' class="passFill" id='password' maxlength="50" /><br/>
                 <span id='login_password_errorloc' class='error'></span>
             </div>
-<br>
+            <br>
             <div class='container'>
                 <input type='submit' class="submit" name='Submit' value='Submit' />
             </div>
-        <br>
+            <br>
             <br><div class='short_explanation register'><a href='./source/reset-pwd-req.php'>Forgot Your Password?</a></div>
             <br><div class='short_explanation register'>Don't have an account? <a href='register.php'>Sign up here.</a></div>
 
-    </form>
-</div>
+        </form>
+    </div>
+
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 658.71 775">
     <defs>
         <style>.cls-1,.cls-2{fill:#fff;}.cls-1{opacity:0.92;}.cls-2{opacity:0.72;}</style>
