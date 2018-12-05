@@ -1,3 +1,6 @@
+<?php
+require_once './header.php';
+?>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="style/generalStyle.css">

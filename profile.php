@@ -18,6 +18,7 @@ if(!$fgmembersite->CheckLogin())
     <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
     <style type="text/css">
+<<<<<<< HEAD
         .resultsHeader{
             background-image: url("images/mainBG.jpg");
             background-size: 140%;
@@ -33,6 +34,8 @@ if(!$fgmembersite->CheckLogin())
             padding-left: 70px;
         }
 
+=======
+>>>>>>> 1eff42a7279b04d302024bed446946c0318bb737
         a {
             color: gray;
             font-size: 24px;

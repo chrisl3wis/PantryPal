@@ -1,11 +1,12 @@
 <?PHP
 require_once("./include/membersite_config.php");
+require_once './header.php';
 
 if(isset($_POST['submitted']))
 {
     if($fgmembersite->RegisterUser())
     {
-        $fgmembersite->RedirectToURL("./thank-you.html");
+        $fgmembersite->RedirectToURL("./thank-you.php");
     }
 }
 

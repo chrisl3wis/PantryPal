@@ -1,5 +1,6 @@
 <?PHP
 require_once("./include/membersite_config.php");
+require_once ('./header.php');
 
 if(!$fgmembersite->CheckLogin())
 {
@@ -11,10 +12,10 @@ if(isset($_POST['submitted']))
 {
    if($fgmembersite->ChangePassword($_POST['oldpwd'], $_POST['newpwd']))
    {
-        $fgmembersite->RedirectToURL("changed-pwd.html");
+        $fgmembersite->RedirectToURL("changed-pwd.php");
    }
 }
-
+require_once './header.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
@@ -39,9 +40,11 @@ if(isset($_POST['submitted']))
         /*width: 200px;*/
         /*}*/
         body{
-            background-image: url("images/loginflatlay.png");
-            background-size: 110%;
+            background: url("images/loginflatlay.png") repeat-y;
+            background-size: cover;
+            height: max-content;
         }
+
         input{
             /*width: 380px;*/
 
@@ -156,6 +159,7 @@ Uses the excellent form validation script from JavaScript-coder.com-->
 <!--
 Form Code End (see html-form-guide.com for more info.)
 -->
+
 
 </body>
 </html>

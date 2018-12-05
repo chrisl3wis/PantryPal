@@ -1,7 +1,7 @@
 <?PHP
 
     require_once("./include/membersite_config.php");
-    include_once './header.php';
+    require_once './header.php';
 
 
     if(isset($_POST['submitted']))
@@ -34,8 +34,8 @@
                 /*width: 200px;*/
             /*}*/
             body{
-                background-image: url("images/loginflatlay.png");
-                background-size: 120vw;
+                background: url("images/loginflatlay.png") repeat-y;
+                background-size: cover;
             }
             .loginFill{
                 width: 380px !important;
