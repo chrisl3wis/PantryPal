@@ -23,6 +23,9 @@ require_once './header.php';
             padding-top: 70px;
             padding-left: 0px;
         }
+        body{
+            background: none;
+        }
     </style>
     <title>How To Use PantryPal</title>
 </head>

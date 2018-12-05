@@ -26,6 +26,16 @@ if($mysqli -> connect_errno){
     <meta charset="UTF-8">
     <title>Pantry Pal</title>
     <style>
+        #question{
+            width: 50px;
+            opacity: 0.8;
+            position: fixed;
+            bottom: 15px;
+            right: -5px;
+        }
+        #question img{
+            width: 25px;
+        }
         @media screen and (max-width: 400px){
            #search_div{
                width: 240px;
@@ -37,6 +47,7 @@ if($mysqli -> connect_errno){
             h1{
                 font-size: 27pt;
             }
+
         }
     </style>
 </head>
@@ -58,6 +69,9 @@ if($mysqli -> connect_errno){
 
     <input type="submit" class="search" value="search">
     </form>
+</div>
+<div id="question">
+    <a href="PantryPalHowTo.php"><img src="images/question.png" alt="Questions?"></a>
 </div>
 </body>
 </html>
