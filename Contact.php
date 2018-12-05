@@ -1,12 +1,6 @@
-<?PHP
-require_once("./include/membersite_config.php");
-require_once './header.php';
-?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<html>
 <head>
-    <link rel="stylesheet" href="./style/pantryStyle.css">
+    <link rel="stylesheet" href="pantryStyle.css">
     <style>
         .resultsHeader{
             background-image: url("images/mainBG.jpg");
@@ -15,20 +9,25 @@ require_once './header.php';
             background-position-x: -30px;
             width: 100%;
             height: 300px;
-            background-repeat: no-repeat;
-            background-position: fixed;
         }
         .resultsHeaderText{
             text-align: left;
             color: white;
-            padding-top: 120px;
+            padding-top: 70px;
             padding-left: 0px;
         }
     </style>
-    <title>Feedback</title>
 </head>
 <body>
+<?PHP
+require_once("./include/membersite_config.php");
 
+//if(!$fgmembersite->CheckLogin())
+//{
+//    $fgmembersite->RedirectToURL("login.php");
+//    exit;
+//}
+?>
 <div id="header">
     <a href="index.php"><img src="include/pantrypal.png" id="masthead" alt="PantryPal"></a>
     <a class="account" href="profile.php"><?php
