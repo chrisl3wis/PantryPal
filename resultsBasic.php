@@ -16,6 +16,7 @@ if ($mysqli->connect_errno) {
 
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
     <script src="scripts/masonry.pkgd.min.js"></script>
@@ -26,7 +27,7 @@ if ($mysqli->connect_errno) {
     <title>Pantry Pal</title>
     <style>
         body{
-            background: white unset;
+            background: white none;
         }
         #resultsDiv {
             background-color: white;
@@ -149,12 +150,42 @@ if ($mysqli->connect_errno) {
             color: #9E9E9E;
             font-size: 10pt;
         }
+        .filtertype{
+            float: none;
+            margin-left: 5px;
+        }
+        .filtertype2{
+            margin-left: 5px;
+        }
         .saveRecipe{
             float: right;
             width: 20px;
             margin-left: 10px;
             margin-top: 10px;
             display: block;
+        }
+        @media screen and (max-width: 400px){
+        .resultsHeader{
+            background: none;
+        }
+            h1{
+                color: black;
+                margin-top: -50;
+            }
+            #filters{
+                margin-top: -180px;
+                margin-left: 0;
+            }
+            .filterTag{
+                float: none;
+                width: 65px;
+            }
+            .filtertype{
+                float: left;
+            }
+            .filtertype2{
+                margin-left: 190px;
+            }
         }
     </style>
 </head>
@@ -172,7 +203,7 @@ include_once './header.php';
 <div id="filters">
     <strong style="font-family: 'Montserrat', sans-serif; font-size: 14pt;">filters:</strong>
     <br><br>
-    ingredients
+    <div class="filtertype">ingredients
     <br>
     <div class="filterTag">
         penne  &nbsp; x
@@ -187,8 +218,8 @@ include_once './header.php';
 
     </div>
     <br><br>
-
-    meal types
+    </div>
+    <div class="filtertype">meal types
     <br>
     <div class="filterTag">
         dinner &nbsp; x
@@ -198,13 +229,14 @@ include_once './header.php';
 
     </div>
     <br><br>
-
-    diet
-    <br>
-    <div class="filterTag">
-        vegan &nbsp; x
     </div>
-
+    <div class="filtertype2">diet
+        <br>
+        <div class="filterTag">
+            vegan &nbsp; x
+        </div>
+        </div>
+</div>
 </div>
 
 <div id="resultsDiv">

@@ -22,8 +22,23 @@ if($mysqli -> connect_errno){
 ?>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Pantry Pal</title>
+    <style>
+        @media screen and (max-width: 400px){
+           #search_div{
+               width: 240px;
+               height: 450px;
+           }
+            .ingredientFill{
+                width: 220px;
+            }
+            h1{
+                font-size: 27pt;
+            }
+        }
+    </style>
 </head>
 <body>
 

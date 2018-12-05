@@ -21,6 +21,7 @@ class Login extends MySQLDatabase
 	public $registrationStart;
 	public $membershipStart;
 	public $id;
+	public $username;
 	
 	public $errors = array();
 	
@@ -45,15 +46,16 @@ class Login extends MySQLDatabase
 		$surname = $this->escape_value($this->surname);
 		$email = strtolower($this->escape_value($this->email));
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
-		$password = $this->password;
+        $username = strtolower($this->escape_value($this->username));
+        $password = $this->password;
 		$resetpassword = $this->escape_value($this->resetpassword);
 		$confirmcode = $this->escape_value($this->confirmcode);
 		$registrationStart = $this->escape_value($this->registrationStart);
 		$membershipStart = $this->escape_value($this->membershipStart);
-		
+
 		try
 		{ 
-			return $this->createUser($forename, $surname, $email, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
+			return $this->createUser($forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
 		}
 		catch (Exception $e){
 			
@@ -64,24 +66,24 @@ class Login extends MySQLDatabase
 	}
 	
 		
-	private function createUser($forename, $surname, $email, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart){
+	private function createUser($forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart){
 		
 		global $database;
 		
-		$sql = "INSERT INTO ".self::$table_name." (forename, surname, email, password, resetpassword, confirmcode, registrationStart, membershipStart) 
-				VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		$sql = "INSERT INTO ".self::$table_name." (forename, surname, email, username, password, resetpassword, confirmcode, registrationStart, membershipStart) 
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				
 		if ($stmt = $database->get_connection()->prepare($sql)) {
 			
-			$stmt->bind_param('ssssssss', $forename, $surname, $email, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
+			$stmt->bind_param('sssssssss', $forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
 			
 			if ( false===$stmt) {
-			 	throw new Exception("Exception thrown (Login:createUser) Error logged as: ".$stmt->error ,E_ALL);
+			 	throw new Exception("Exception thrown (Login:createUser:statement) Error logged as: ".$stmt->error ,E_ALL);
 			}
 			
 			$stmt->execute();
 			if ($stmt->errno) {
-				throw new Exception("Exception thrown (Login:createUser) Error logged as: ".$stmt->error ,E_ALL);
+				throw new Exception("Exception thrown (Login:createUser:execute) Error logged as: ".$stmt->error ,E_ALL);
 			}
 						
 			return (mysqli_affected_rows($database->get_connection()) == 1) ? true : false;
@@ -100,6 +102,7 @@ class Login extends MySQLDatabase
 		$forename = $this->escape_value($this->forename);
 		$surname = $this->escape_value($this->surname);
 		$email = strtolower($this->escape_value($this->email));
+        $username = strtolower($this->escape_value($this->username));
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
 		$password = $this->password;
 		$resetpassword = $this->escape_value($this->resetpassword);
@@ -109,7 +112,7 @@ class Login extends MySQLDatabase
 		
 		try
 		{ 
-			return $this->updateUser($forename, $surname, $email, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
+			return $this->updateUser($forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
 		}
 		catch (Exception $e){
 			
@@ -121,16 +124,16 @@ class Login extends MySQLDatabase
 	
 	
 	
-	private function updateUser($forename, $surname, $email, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart){
+	private function updateUser($forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart){
 		
 		global $database;
 		
-		$sql = "UPDATE ".self::$table_name." SET forename=?, surname=?, email=?, password=?, resetpassword=?, confirmcode=?, registrationStart=?, membershipStart=?
+		$sql = "UPDATE ".self::$table_name." SET forename=?, surname=?, email=?, username=?, password=?, resetpassword=?, confirmcode=?, registrationStart=?, membershipStart=?
 				WHERE email=? LIMIT 1 ";
 		
 		if ($stmt = $database->get_connection()->prepare($sql)) {
 			
-			$stmt->bind_param('sssssssss', $forename, $surname, $email, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $email);
+			$stmt->bind_param('ssssssssss', $forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $email);
 			if ( false===$stmt) {
 			 	throw new Exception("Exception thrown (Login:updateUser) Error logged as: ".$stmt->error ,E_ALL);
 			}
@@ -233,7 +236,7 @@ class Login extends MySQLDatabase
 			return false;
 		}
 						
-		$sql  = "SELECT id, forename, surname, email, password, resetpassword, confirmcode, registrationStart, membershipStart FROM ". self::$table_name ." WHERE {$field} = ?  ";
+		$sql  = "SELECT id, forename, surname, email, username, password, resetpassword, confirmcode, registrationStart, membershipStart FROM ". self::$table_name ." WHERE {$field} = ?  ";
 		
 		if ($stmt = $database->get_connection()->prepare($sql)) {
 			
@@ -249,7 +252,7 @@ class Login extends MySQLDatabase
 
 		    $stmt->store_result();
 	
-		    $stmt->bind_result($id, $forename, $surname, $email, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
+		    $stmt->bind_result($id, $forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
 			if ($stmt->errno) {
 				throw new Exception("Exception thrown bind_result(Login:get_user_for_field_with_value) Error logged as: ".$stmt->error ,E_ALL);		
 			}
@@ -262,6 +265,7 @@ class Login extends MySQLDatabase
 			$this->forename = $forename;
 			$this->surname = $surname;
 			$this->email = $email;
+            $this->username = $username;
 			$this->password = $password;
 			$this->resetpassword = $resetpassword;
 			$this->confirmcode = $confirmcode;
