@@ -23,7 +23,7 @@ require_once './header.php';
             padding-left: 0px;
         }
     </style>
-    <title>Contact Us</title>
+    <title>Feedback</title>
 </head>
 <body>
 
