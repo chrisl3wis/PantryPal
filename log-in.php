@@ -106,14 +106,26 @@
                     width: 0%; !important;
                 }
                 body{
-                    background: url("images/mainBG.jpg") repeat-y;
+                    background: white none;
                     background-size: 120%;
                     background-repeat: no-repeat;
                     padding: 10px;
                 }
                 .standardTitle {
                     width: 85%;
+                    margin-top: 100px;
+                    width: 300px;
+                    margin-left: 10px;
+                    padding-left: 0px;
                 }
+                .passFill{
+                    width: 300px !important;
+                }
+                .loginFill{
+                    width: 300px !important;
+                }
+
+
 
             }
 
