@@ -8,6 +8,7 @@ require_once './header.php';
 <head>
     <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         body{
             background-image: none;
@@ -117,6 +118,26 @@ require_once './header.php';
             float: left;
             color: white;
             font-size: 10pt;
+        }
+        @media screen and (max-width: 400px){
+            h1{
+                font-size: 20pt;
+
+            }
+            .resultsHeaderText{
+                padding-left: 0px;
+                padding-top: 90px;
+
+            }
+            .resultsHeader{
+                background-size: 180%;
+            }
+            .searchResult{
+                margin-left: 10px;
+            }
+
+
+
         }
 
 
