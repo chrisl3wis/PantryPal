@@ -25,7 +25,7 @@ require_once './header.php';
         }
         @media screen and (max-width: 400px){
             .charts{
-                margin-left: -30px;
+                margin-left: -31px;
                 width: 400px;
                 float: left;
                 margin-top: 40px;
