@@ -5,9 +5,9 @@ defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
 /*********** Need to change site root!! **************/
 // on a mac it would be something like:
-defined('SITE_ROOT') ? null : define('SITE_ROOT', DS.'Users'.DS.'davidberriman'.DS.'Sites'.DS.'RegistrationForm');
+//defined('SITE_ROOT') ? null : define('SITE_ROOT', DS.'Users'.DS.'davidberriman'.DS.'Sites'.DS.'RegistrationForm');
 // on a server it might be something like:
-// defined('SITE_ROOT') ? null : define('SITE_ROOT', DS.'home'.DS.'my_acccont_name'.DS);
+ defined('SITE_ROOT') ? null : define('SITE_ROOT', DS.'home'.DS.'lewischr'.DS);
 
 defined('LIB_PATH') ? null : define('LIB_PATH', SITE_ROOT.DS.'include');
 
@@ -22,7 +22,7 @@ defined('DB_NAME')   ? null : define("DB_NAME", "lewischr_recipes");
 mb_internal_encoding('UTF-8');
 mb_http_output('UTF-8');
 mb_http_input('UTF-8');
-date_default_timezone_set('Europe/London');
+date_default_timezone_set('America/Los_Angeles');
 
 defined('WEBSITE_EMAIL') ? null : define("WEBSITE_EMAIL", "admin@mySite.com");
 defined('WEBSITE_NAME') ? null : define("WEBSITE_NAME", "mySite.com");
