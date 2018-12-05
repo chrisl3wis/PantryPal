@@ -16,6 +16,7 @@
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
         <title>Login</title>
         <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
@@ -143,7 +144,7 @@
 </div>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 658.71 775">
     <defs>
-        <style>.cls-1,.cls-2{fill:#fff;}.cls-1{opacity:0.92;}.cls-2{opacity:0.72;}</style>
+        <style>.cls-1,.cls-2{fill:#fff;height: 100%}.cls-1{opacity:0.92;}.cls-2{opacity:0.72;}</style>
     </defs>
     <title>Asset 1</title>
     <g id="Layer_2" data-name="Layer 2">
