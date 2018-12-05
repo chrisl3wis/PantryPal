@@ -5,7 +5,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
     <title>
-        All Recipes
+        All Users
     </title>
     <style>
         body {
