@@ -60,6 +60,9 @@ class ErrorLog extends MySQLDatabase
 		{
 			$this->saveError($error);
 		}
+        $this->saveError($error);
+        $this->logError($error);
+
 		
 	}
 	

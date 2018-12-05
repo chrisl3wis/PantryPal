@@ -1,21 +1,22 @@
 <?PHP
 
-    require_once("./include/membersite_config.php");
-    require_once './header.php';
+require_once("./include/membersite_config.php");
+require_once './header.php';
 
 
-    if(isset($_POST['submitted']))
+if(isset($_POST['submitted']))
+{
+    if($fgmembersite->Login())
     {
-        if($fgmembersite->Login())
-        {
-            $fgmembersite->RedirectToURL("./profile.php");
-        }
+        $fgmembersite->RedirectToURL("./profile.php");
     }
+}
 
     ?>
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
         <title>Login</title>
         <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
@@ -34,51 +35,51 @@
             .loginFill{
                 width: 380px !important;
 
-                font-family: 'Montserrat', sans-serif !important;
-                font-style: italic;
-                border: none;
-                border-bottom: 1px solid var(--main-grey)!important;
-                font-size: 12pt;
-                padding-left: 10px;
-                margin-bottom: 10px;
-                /*background: #cccccc;*/
+            font-family: 'Montserrat', sans-serif !important;
+            font-style: italic;
+            border: none;
+            border-bottom: 1px solid var(--main-grey)!important;
+            font-size: 12pt;
+            padding-left: 10px;
+            margin-bottom: 10px;
+            /*background: #cccccc;*/
 
-            }
-            .passFill{
-                width: 380px !important;
+        }
+        .passFill{
+            width: 380px !important;
 
-                font-family: 'Montserrat', sans-serif !important;
-                border: none;
-                border-bottom: 1px solid var(--main-grey)!important;
-                font-size: 12pt;
-                padding-left: 10px;
-                margin-bottom: 10px;
-                /*background: #cccccc;*/
+            font-family: 'Montserrat', sans-serif !important;
+            border: none;
+            border-bottom: 1px solid var(--main-grey)!important;
+            font-size: 12pt;
+            padding-left: 10px;
+            margin-bottom: 10px;
+            /*background: #cccccc;*/
 
-            }
-            .submit{
-                font-family: 'Montserrat', sans-serif;
-                background-color: #8AC1C6;
-                color: white;
-                font-size: 11pt;
-                -webkit-border-radius: 2px;
-                -moz-border-radius: 2px;
-                border-radius: 2px;
-                border: none;
-                width: 75px;
-                height: 35px;
-                cursor: hand;
-            }
-            .submit:hover{
-                color: #8AC1C6;
-                background-color: white;
-                border: #8AC1C6 2px solid;
-            }
-            a{
+        }
+        .submit{
+            font-family: 'Montserrat', sans-serif;
+            background-color: #8AC1C6;
+            color: white;
+            font-size: 11pt;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            border: none;
+            width: 75px;
+            height: 35px;
+            cursor: hand;
+        }
+        .submit:hover{
+            color: #8AC1C6;
+            background-color: white;
+            border: #8AC1C6 2px solid;
+        }
+        a{
 
 
-                font-size: 10pt;
-                color: #8AC1C6;
+            font-size: 10pt;
+            color: #8AC1C6;
 
             }
             a:hover{
@@ -130,8 +131,8 @@
 
             }
 
-        </style>
-    </head>
+    </style>
+</head>
 <body>
 <div class="standardTitle">
         <h1>Welcome!</h1>
@@ -166,7 +167,7 @@
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 658.71 775">
     <defs>
-        <style>.cls-1,.cls-2{fill:#fff;}.cls-1{opacity:0.92;}.cls-2{opacity:0.72;}</style>
+        <style>.cls-1,.cls-2{fill:#fff;height: 100%}.cls-1{opacity:0.92;}.cls-2{opacity:0.72;}</style>
     </defs>
     <title>Asset 1</title>
     <g id="Layer_2" data-name="Layer 2">

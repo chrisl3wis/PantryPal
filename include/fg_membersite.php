@@ -122,12 +122,7 @@ class FGMembersite
            return false;
         }
 		
-		// check that the captcha was correct
-		if($_POST['captcha'] != $_SESSION['digit']){
-			$this->HandleError("Sorry, the Image letters were incorrect!");
-            return false;
-		}
-        
+
         $formvars = array();
         
         if(!$this->ValidateRegistrationSubmission())
@@ -572,7 +567,6 @@ class FGMembersite
         $retvar = 'usr_'.substr($retvar,0,10);
         return $retvar;
     }
-	    
 	
     function UpdateDBRecForConfirmation(&$user_rec, $code)
     {
@@ -771,7 +765,6 @@ class FGMembersite
         $validator->addValidation("email","email","The input for Email should be a valid email value");
         $validator->addValidation("email","req","Please fill in Email");
         $validator->addValidation("username","req","Please fill in Username");
-  
         $validator->addValidation("password","req","Please fill in Password");
 
         if(!$validator->ValidateForm())
@@ -979,6 +972,7 @@ class FGMembersite
 		$user->forename = htmlentities($formvars['forename']);
 		$user->surname = htmlentities($formvars['surename']);
 		$user->email = $formvars['email'];
+		$user->username = $formvars['username'];
 		$user->password = password_hash($formvars['password'], PASSWORD_DEFAULT);
 		$user->resetpassword = NULL;
 		$user->confirmcode = $confirmcode;
@@ -987,7 +981,7 @@ class FGMembersite
 
 	    if(!$user->create())
 	    {
-	        $this->HandleError("There was an error creating your account. Please contact support");
+	        $this->HandleError("There was an error creating your account. Please contact support" );
 	        return false;
 	    }
 		
