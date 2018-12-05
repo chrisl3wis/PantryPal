@@ -141,7 +141,7 @@ require_once './header.php';
     <br>
     <div class="team">
         <br><h2>Team</h2>
-        <img id="image" src="Pantry.png">
+        <img id="image" src="images/Pantry.png">
     </div>
     <div class="footer">
         <br> &copy; PantryPal Inc.<br>

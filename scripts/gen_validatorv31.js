@@ -134,13 +134,13 @@ function sfm_ErrorDisplayHandler()
   this.EnableOnPageDisplay= edh_EnableOnPageDisplay;
   this.ShowMsg=edh_ShowMsg;
   this.FinalShowMsg=edh_FinalShowMsg;
-  this.all_msgs=new Array();
+  this.all_msgs=[];
   this.clear_msgs=edh_clear_msgs;
 }
 function edh_clear_msgs()
 {
     this.msgdisplay.clearmsg(this.all_msgs);
-    this.all_msgs = new Array();
+    this.all_msgs = [];
 }
 function edh_FinalShowMsg()
 {
@@ -160,7 +160,7 @@ function edh_EnableOnPageDisplay(single_box)
 function edh_ShowMsg(msg,input_element)
 {
 
-    const objmsg = new Array();
+    const objmsg = [];
     objmsg["input_element"] = input_element;
    objmsg["msg"] =  msg;
    this.all_msgs.push(objmsg);
@@ -335,7 +335,7 @@ function vdesc_validate()
 }
 function ValidationSet(inputitem,msgs_together)
 {
-    this.vSet=new Array();
+    this.vSet=[];
    this.add= add_validationdesc;
    this.validate= vset_validate;
    this.itemobj = inputitem;

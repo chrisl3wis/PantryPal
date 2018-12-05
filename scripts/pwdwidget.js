@@ -176,7 +176,7 @@ function showpwdchars()
 
 function passwordStrength()
 {
-    const colors = new Array();
+    const colors = [];
     colors[0] = "#cccccc";
 	colors[1] = "#ff0000";
 	colors[2] = "#ff5f5f";
@@ -196,9 +196,10 @@ function passwordStrength()
 
 	if (password.match(/\d+/)){ score++;}
 
-	if ( password.match(/[^a-z\d]+/) )	{score++};
-
-	if (password.length > 12){ score++;}
+if (password.match(/[^a-z\d]+/)) {
+        score++
+    }
+    if (password.length > 12){ score++;}
 
     const color = colors[score];
     const strengthdiv = this.pwdstrengthbar_obj;
