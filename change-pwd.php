@@ -25,6 +25,7 @@ require_once './header.php';
       <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
       <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
       <link rel="STYLESHEET" type="text/css" href="style/pwdwidget.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="scripts/pwdwidget.js" type="text/javascript"></script>
     <style type="text/css">
         fieldset{

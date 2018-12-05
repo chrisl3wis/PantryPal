@@ -4,7 +4,7 @@
     margin-top: 200px;
     z-index: 10;
     position: absolute;
-    margin-left: 5%;
+    margin-left: 7.5%;
 }
 body {
     background: url("images/loginflatlay.png") repeat-y;
@@ -13,13 +13,13 @@ body {
 a{
     font-size: 10pt;
     color: #8AC1C6;
-
 }
 a:hover{
     text-decoration: underline;
 }
 svg{
-    width: 50%;
+    /*width: 50%;*/
+    min-width: 500px; !important;
     height: 100%;
     position: fixed;
     top: 0px;

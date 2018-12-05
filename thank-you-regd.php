@@ -15,6 +15,15 @@ require_once './header.php';
             background: url("images/loginflatlay.png") repeat-y;
             background-size: cover;
         }
+        svg{
+            /*width: 50%;*/
+            min-width: 800px; !important;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: -100px;
+            z-index: 0;
+        }
         @media screen and (max-device-width: 600px){
             svg{
                 width: 0%; !important;
@@ -23,6 +32,9 @@ require_once './header.php';
                 background: url("images/loginflatlay.png") repeat-y;
                 background-size: 120%;
                 background-repeat: no-repeat;
+            }
+            .standardTitle {
+                width: 85%;
             }
         }
     </style>

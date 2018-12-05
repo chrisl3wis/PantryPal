@@ -10,11 +10,21 @@ $fgmembersite->LogOut();
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
       <title>Logout</title>
       <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="STYLESHEET" type="text/css" href="style/textPages.css">
     <style>
         body {
             background: url("images/loginflatlay.png") repeat-y;
             background-size: cover;
+        }
+        svg{
+            /*width: 50%;*/
+            min-width: 800px; !important;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: -100px;
+            z-index: 0;
         }
         @media screen and (max-device-width: 600px){
             svg{
@@ -24,6 +34,9 @@ $fgmembersite->LogOut();
                 background: url("images/loginflatlay.png") repeat-y;
                 background-size: 120%;
                 background-repeat: no-repeat;
+            }
+            .standardTitle {
+                width: 85%;
             }
         }
     </style>
