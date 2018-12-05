@@ -6,6 +6,7 @@ require_once './header.php';
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
     <link rel="stylesheet" href="pantryStyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         .resultsHeader{
             background-image: url("images/mainBG.jpg");
@@ -14,6 +15,8 @@ require_once './header.php';
             background-position-x: -30px;
             width: 100%;
             height: 300px;
+            background-repeat: no-repeat;
+            background-position: fixed;
         }
         .resultsHeaderText{
             text-align: left;
@@ -36,6 +39,27 @@ require_once './header.php';
             content: "";
             display: table;
             clear: both;
+        }
+        @media screen and (max-device-width: 450px){
+            svg{
+                width: 0%; !important;
+            }
+            body{
+                background: url("images/mainBG.jpg") repeat-y;
+                background-size: 0%;
+                background-repeat: no-repeat;
+            }
+            .standardTitle {
+                width: 90%;
+            }
+            #profilebox{
+                background-color: white;
+                width: 90%;
+                height: 75%;
+                padding: 120px 50px 50px;
+
+            }
+
         }
     </style>
     <title>

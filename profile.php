@@ -18,7 +18,24 @@ if(!$fgmembersite->CheckLogin())
     <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css">
     <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
+
+        .resultsHeader{
+            background-image: url("images/mainBG.jpg");
+            background-size: 140%;
+            background-position-y: -200px;
+            background-position-x: -30px;
+            width: 100%;
+            height: 200px;
+        }
+        .resultsHeaderText{
+            text-align: center;
+            color: white;
+            padding-top: 70px;
+            padding-left: 70px;
+        }
+
         a {
             color: gray;
             font-size: 24px;
@@ -45,6 +62,27 @@ if(!$fgmembersite->CheckLogin())
                 margin-right: 100px;
             }
         }
+@media screen and (max-device-width: 450px){
+    svg{
+        width: 0%; !important;
+    }
+    body{
+        background: url("images/mainBG.jpg") repeat-y;
+        background-size: 0%;
+        background-repeat: no-repeat;
+    }
+    .standardTitle {
+        width: 90%;
+    }
+    #profilebox{
+        background-color: white;
+        width: 90%;
+        height: 75%;
+        padding: 120px 50px 50px;
+
+    }
+
+}
         </style>
 </head>
 
@@ -53,8 +91,10 @@ if(!$fgmembersite->CheckLogin())
 <div id="profilebox">
 <h1>Hi There <?= $fgmembersite->UserFullName(); ?>!</h1>
     <a href="savedRecipes.php">Your Saved Recipes</a> <br><br>
+    <a href="new-recipe.php">Add Recipes</a> <br><br>
     <a href="mailto:help@pantrypal.com">Contact Us</a> <br><br>
     <a href="change-pwd.php">Change password</a> <br><br>
+
     <a href="logout.php">Log Out</a>
 </div>
 </div>
