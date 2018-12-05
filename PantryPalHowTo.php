@@ -6,6 +6,7 @@ require_once './header.php';
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
     <link rel="stylesheet" href="pantryStyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .resultsHeader{
             background-image: url("images/mainBG.jpg");
@@ -20,8 +21,40 @@ require_once './header.php';
         .resultsHeaderText{
             text-align: left;
             color: white;
-            padding-top: 70px;
+            padding-top: 120px;
             padding-left: 0px;
+        }
+        @media screen and (max-device-width: 450px){
+            body{
+                background: url("images/mainBG.jpg") repeat-y;
+                background-size: 300%;
+                background-repeat: no-repeat;
+            }
+            .standardTitle {
+                width: 90%;
+            }
+            #profilebox{
+                background-color: white;
+                width: 90%;
+                height: 75%;
+                padding: 120px 50px 50px;
+
+            }
+            .column {
+                float: left;
+                width: 90%;
+                text-align: left; float: center; margin: auto; line-height: 200%; padding-top: 0px;
+            }
+            .textbox{
+                background-color: #badee2; border-radius: 10px; font-size: 12pt; float: center; margin: auto;
+            }
+            .team{
+                padding: 10px 15px 10px 0px; float: center; text-align: center; margin: auto;
+            }
+            .footer{
+                float: center; text-align: center; margin: auto;
+            }
+
         }
     </style>
     <title>How To Use PantryPal</title>

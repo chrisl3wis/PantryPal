@@ -21,7 +21,7 @@ require_once './header.php';
         .resultsHeaderText{
             text-align: left;
             color: white;
-            padding-top: 70px;
+            padding-top: 120px;
             padding-left: 0px;
         }
     </style>
