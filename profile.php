@@ -18,22 +18,6 @@ if(!$fgmembersite->CheckLogin())
     <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
     <style type="text/css">
-        .resultsHeader{
-            background-image: url("images/mainBG.jpg");
-            background-size: 140%;
-            background-position-y: -200px;
-            background-position-x: -30px;
-
-            width: 100%;
-            height: 200px;
-        }
-        .resultsHeaderText{
-            text-align: center;
-            color: white;
-            padding-top: 70px;
-            padding-left: 70px;
-        }
-
         a {
             color: gray;
             font-size: 24px;

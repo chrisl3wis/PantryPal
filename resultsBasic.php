@@ -1,5 +1,4 @@
 <?php
-
 $host = "webdev.iyaserver.com";
 $userid = "lewischr";
 $userpw = "Iya6521484446";
@@ -17,7 +16,7 @@ if ($mysqli->connect_errno) {
 <head>
     <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
-    <script src="include/masonry.pkgd.min.js"></script>
+    <script src="scripts/masonry.pkgd.min.js"></script>
 
 
 
@@ -25,7 +24,7 @@ if ($mysqli->connect_errno) {
     <title>Pantry Pal</title>
     <style>
         body{
-            background: white none;
+            background: white unset;
         }
         #resultsDiv {
             background-color: white;
@@ -266,7 +265,7 @@ include_once './header.php';
         var_dump($mysqli);
     }
     ?>
-    <script src="include/masonry.pkgd.min.js"></script>
+    <script src="scripts/masonry.pkgd.min.js"></script>
     <script>
         var elem = document.querySelector('#resultsDiv');
         var msnry = new Masonry( elem, {

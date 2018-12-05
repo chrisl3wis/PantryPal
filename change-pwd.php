@@ -1,5 +1,6 @@
 <?PHP
 require_once("./include/membersite_config.php");
+require_once ('./header.php');
 
 if(!$fgmembersite->CheckLogin())
 {
@@ -39,8 +40,9 @@ if(isset($_POST['submitted']))
         /*width: 200px;*/
         /*}*/
         body{
-            background-image: url("images/loginflatlay.png");
-            background-size: 110%;
+            background: url("images/loginflatlay.png") repeat-y;
+            background-size: cover;
+            height: max-content;
         }
         input{
             /*width: 380px;*/

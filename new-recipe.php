@@ -171,7 +171,7 @@ include_once './header.php';
 
     $(function() {
         $("#ingr-entry").autocomplete({
-            source: "search_ingred.php",
+            source: "./include/search_ingred.php",
             select: function( event, ui ) {
                 event.preventDefault();
                 $(this).val(ui.item.value);
@@ -211,7 +211,7 @@ include_once './header.php';
                 //console.log(ingr_name);
 
                 var request = $.ajax({
-                    url: "new-ingredient-ajax.php",
+                    url: "./include/new-ingredient-ajax.php",
                     method: "POST",
                     data: { name : ingr_name },
 
@@ -235,7 +235,7 @@ include_once './header.php';
         });
         $('#submit').click(function(){
             var request = $.ajax({
-                url: "insert-recipe-ajax.php",
+                url: "./include/insert-recipe-ajax.php",
                 method: "POST",
                 data: $('#insertForm').serialize(),
 

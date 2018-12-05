@@ -1,4 +1,14 @@
 <?php
+require_once("formvalidator.php");
+require_once("sanitize.php");
+
+function clean($data)
+{
+    $sanitize = new Sanitize();
+    $data = $sanitize->clean($data);
+    return $data;
+}
+
 $host = "webdev.iyaserver.com";
 $userid = "lewischr";
 $userpw = "Iya6521484446";
@@ -19,10 +29,20 @@ if(empty(trim($_POST['title']))) {
 $qCount=0;
 
 //var_dump($_POST);
+$title= $mysqli->real_escape_string(clean($_POST["title"]));
+$desc= $mysqli->real_escape_string(clean($_POST["desc"]));
+$url= $mysqli->real_escape_string(clean($_POST["url"]));
+$time= $mysqli->real_escape_string(clean($_POST["time"]));
+$imgUrl= $mysqli->real_escape_string(clean($_POST["imgUrl"]));
+
 
 // REQUEST=title, desc, url, time,imgUrl, (ing[]) meals[], diets[]
+//$sql="INSERT INTO lewischr_recipes.recipe (ID, title, description, url, cooktime, imgURL )
+//VALUES (NULL, '".clean($_POST["title"])."', '".clean($_POST["desc"])."', '".clean($_POST["url"])."', '".clean($_POST["time"])."', '".clean($_POST["imgUrl"])."')";
+
 $sql="INSERT INTO lewischr_recipes.recipe (ID, title, description, url, cooktime, imgURL ) 
-VALUES (NULL, '".$_POST["title"]."', '".$_POST["desc"]."', '".$_POST["url"]."', '".$_POST["time"]."', '".$_POST["imgUrl"]."')";
+VALUES (NULL,'$title','$desc', '$url', '$time', '$imgUrl')";
+
 //echo "<hr>SQL:<br>" . $sql;
 
 
@@ -32,7 +52,8 @@ if($results = $mysqli->query($sql)) {
     //echo "New recipe for " . $_POST["title"] . " added. "." The new record has the ID of ".$newID;
     $qCount++;
 }else{
-    exit();
+    var_dump($mysqli);
+exit();
 }
 
 $ingr_ids=$_POST["ingr_ids"];
@@ -80,7 +101,7 @@ for ($i = 0; $i<count($diets); $i++) {
     }
 }
 
-return "New recipe \"" . $_POST["title"] . "\" with ID ".$newID." added. <br>Completed ".$qCount." queries.";
+echo "New recipe \"" . $_POST["title"] . "\" with ID ".$newID." added. <br>Completed ".$qCount." queries.";
 
 
 
