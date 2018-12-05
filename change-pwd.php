@@ -82,33 +82,79 @@ require_once './header.php';
             color: #8AC1C6;
 
         }
+        #pwBox{
+            background-color: white;
+            width: 400px;
+            padding: 30px;
+            text-align: left;
+
+            margin-top: 25vh;
+            z-index: 10;
+            position: absolute;
+            margin-left: 35%;
+            -webkit-border-radius: 10pt;
+            -moz-border-radius: 10pt;
+            border-radius: 10pt;
+
+        }
+        .pwdfield{
+            width: 380px !important;
+            font-family: 'Montserrat', sans-serif !important;
+            font-style: italic;
+            font-size: 12pt;
+            padding-left: 10px;
+            margin-bottom: 10px;
+            background: white;
+            margin-left: -80px;
+            border: none !important;
+            border-bottom: 1px solid var(--main-grey)!important;
+
+
+
+        }
+        label{
+            font-size: 11pt;  margin-top: 30px; font-weight: normal; font-style: italic; color: #bcbcbc;
+        }
+        input{
+            border: none;s
+        }
+        #oldpwd_show_anch{
+            margin-left: -80px;
+        }
+        #newpwd_show_anch{
+            margin-left: -80px;
+        }
+        #newpwd_gen_anch{
+            margin-left: -50px;
+        }
 
     </style>
 </head>
 <body>
 
 <!-- Form Code Start -->
+<div id="pwBox">
 <div id='fg_membersite'>
+
 <form id='changepwd' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
-<fieldset >
-<legend>Change Password</legend>
+
+
 
 <input type='hidden' name='submitted' id='submitted' value='1'/>
-
-<div class='short_explanation'>* required fields</div>
+    <h3>Change Password</h3>
 
 <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
 <div class='container'>
-    <label for='oldpwd' >Old Password*:</label><br/>
+    <label for='oldpwd' >Old Password:</label><br/>
     <div class='pwdwidgetdiv' id='oldpwddiv' ></div><br/>
     <noscript>
-    <input type='password' name='oldpwd' id='oldpwd' maxlength="50" />
+    <input type='password' class="loginFill" name='oldpwd' id='oldpwd' maxlength="50" />
     </noscript>    
     <span id='changepwd_oldpwd_errorloc' class='error'></span>
 </div>
 
 <div class='container'>
-    <label for='newpwd' >New Password*:</label><br/>
+    <label for='newpwd' >New Password:</label><br/>
     <div class='pwdwidgetdiv' id='newpwddiv' ></div>
     <noscript>
     <input type='password' name='newpwd' id='newpwd' maxlength="50">
@@ -117,12 +163,15 @@ require_once './header.php';
     <span id='changepwd_newpwd_errorloc' class='error'></span>
 </div>
 
-<br/><br/><br/>
+
+<br/><br/>
 <div class='container'>
     <input type='submit' class="submit" name='Submit' value='Submit'>
 </div>
+    </div>
 
-</fieldset>
+
+
 </form>
 <!-- client-side Form Validations:
 Uses the excellent form validation script from JavaScript-coder.com-->
@@ -151,7 +200,7 @@ Uses the excellent form validation script from JavaScript-coder.com-->
 </script>
 
 <p>
-<a href='profile.php'>Home</a>
+<a href='profile.php'> < Back to Profile</a>
 </p>
 
 </div>
