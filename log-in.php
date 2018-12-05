@@ -119,10 +119,10 @@
                     padding-left: 0px;
                 }
                 .passFill{
-                    width: 300px !important;
+                    width: 301px !important;
                 }
                 .loginFill{
-                    width: 300px !important;
+                    width: 301px !important;
                 }
 
 

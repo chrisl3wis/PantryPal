@@ -96,7 +96,7 @@ require_once './header.php';
             margin-left: 35%;
             -webkit-border-radius: 10pt;
             -moz-border-radius: 10pt;
-            border-radius: 10pt;
+            border-radius: 11pt;
 
         }
         .pwdfield{
