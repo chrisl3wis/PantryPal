@@ -1,0 +1,31 @@
+.standardTitle{
+    width: 500px;
+    text-align: left;
+    margin-top: 200px;
+    z-index: 10;
+    position: absolute;
+    margin-left: 7.5%;
+}
+body {
+    background: url("images/loginflatlay.png") repeat-y;
+    background-size: cover;
+}
+a{
+    font-size: 10pt;
+    color: #8AC1C6;
+}
+a:hover{
+    text-decoration: underline;
+}
+svg{
+    /*width: 50%;*/
+    min-width: 500px; !important;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: -100px;
+    z-index: 0;
+}
+label{
+    font-size: 11pt;  margin-top: 30px; font-weight: normal; font-style: italic; color: #bcbcbc;
+}

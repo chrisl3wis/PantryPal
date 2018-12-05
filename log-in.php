@@ -121,13 +121,13 @@
 
             <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
             <div class='container'>
-                <label for='username' >Username</label><br/>
+                <label for='username' >Username :</label><br/>
                 <input type='text' name='username' class="loginFill" id='username' value='<?php echo $fgmembersite->SafeDisplay('username') ?>' maxlength="50" /><br/>
                 <span id='login_username_errorloc' class='error'></span>
             </div>
         <br><br>
             <div class='container'>
-                <label for='password' >Password</label><br/>
+                <label for='password' >Password :</label><br/>
                 <input type='password' name='password' class="passFill" id='password' maxlength="50" /><br/>
                 <span id='login_password_errorloc' class='error'></span>
             </div>

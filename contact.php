@@ -46,7 +46,7 @@ require_once './header.php';
     </div>
 </div>
 <div style="width: 50%; padding:30px 30px 30px 0px; float: center; text-align: left; margin: auto"">
-<form action="http://www.usc.edu/cgi-bin/feedback_form/aegoldbe@usc.edu/user_feedback/">
+<form action="mailto:pantrypal.dev2@gmail.com">
     <div class="label"> Name :
         <input type="text" style="width: 200px; padding: 10px; height: 30px; border-radius: 5px; -moz-box-shadow:inset 0 0 0px #000000; -webkit-box-shadow: inset 0 0 0px #000000; border: 1px solid gray; box-shadow:inset 0 0 0px #000000;" name="fullname" class="medtext" placeholder="John Smith" required="1" title="First Last">
     </div><br>
@@ -95,7 +95,7 @@ require_once './header.php';
     <div class="label">
         <textarea style="resize: none; width: 100%; padding: 10px; height: 60px; border-radius: 5px; border: 1px solid gray" name="email" placeholder="Additional Comments?"></textarea>
     </div><br>
-    <input type="submit" class="button" value="Submit" style=" width: 70px">
+    <input type="submit" class="button" value="Submit" style=" width: 70px" action="mailto:pantrypal.dev2@gmail.com">
 </form>
 </div>
 <div style="padding: 0px 30px 50px 30px; float: center; text-align: center; margin: auto">

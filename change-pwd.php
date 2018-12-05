@@ -25,6 +25,7 @@ require_once './header.php';
       <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
       <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
       <link rel="STYLESHEET" type="text/css" href="style/pwdwidget.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="scripts/pwdwidget.js" type="text/javascript"></script>
     <style type="text/css">
         fieldset{
@@ -44,6 +45,7 @@ require_once './header.php';
             background-size: cover;
             height: max-content;
         }
+
         input{
             /*width: 380px;*/
 
@@ -207,6 +209,7 @@ Uses the excellent form validation script from JavaScript-coder.com-->
 <!--
 Form Code End (see html-form-guide.com for more info.)
 -->
+
 
 </body>
 </html>
