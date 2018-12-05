@@ -21,6 +21,16 @@ if(!$fgmembersite->CheckLogin())
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
 
+        #additional {
+            font-size: 11pt;
+            position: absolute;
+            bottom: 25px;
+        }
+        #additional a{
+            font-size: 11pt;
+            color: gray;
+            opacity: 0.6;
+        }
         .resultsHeader{
             background-image: url("images/mainBG.jpg");
             background-size: 140%;
@@ -82,6 +92,7 @@ if(!$fgmembersite->CheckLogin())
 
     }
 
+
 }
         </style>
 </head>
@@ -92,10 +103,17 @@ if(!$fgmembersite->CheckLogin())
 <h1>Hi There <?= $fgmembersite->UserFullName(); ?>!</h1>
     <a href="savedRecipes.php">Your Saved Recipes</a> <br><br>
     <a href="new-recipe.php">Add Recipes</a> <br><br>
-    <a href="mailto:help@pantrypal.com">Contact Us</a> <br><br>
+
     <a href="change-pwd.php">Change password</a> <br><br>
 
     <a href="logout.php">Log Out</a>
+
+    <br><br><br>
+    <div id="additional">
+    <a href="mailto:help@pantrypal.com">Contact Us</a> <br>
+    <a href="feedback.php">Send Feedback</a> <br>
+    <a href="PantryPalAbout.php">About PantryPal</a> <br>
+        </div>
 </div>
 </div>
 </body>
