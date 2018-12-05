@@ -136,8 +136,6 @@ require_once './header.php';
                 margin-left: 10px;
             }
 
-
-
         }
 
 
