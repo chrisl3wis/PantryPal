@@ -17,6 +17,7 @@ if(!$fgmembersite->CheckLogin())
     <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css">
     <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
 <<<<<<< HEAD
         .resultsHeader{
@@ -47,6 +48,27 @@ if(!$fgmembersite->CheckLogin())
             padding: 220px 50px 50px;
 
         }
+@media screen and (max-device-width: 450px){
+    svg{
+        width: 0%; !important;
+    }
+    body{
+        background: url("images/mainBG.jpg") repeat-y;
+        background-size: 0%;
+        background-repeat: no-repeat;
+    }
+    .standardTitle {
+        width: 90%;
+    }
+    #profilebox{
+        background-color: white;
+        width: 90%;
+        height: 75%;
+        padding: 120px 50px 50px;
+
+    }
+
+}
         </style>
 </head>
 
