@@ -14,6 +14,8 @@ require_once './header.php';
             background-position-x: -30px;
             width: 100%;
             height: 300px;
+            background-repeat: no-repeat;
+            background-position: fixed;
         }
         .resultsHeaderText{
             text-align: left;
