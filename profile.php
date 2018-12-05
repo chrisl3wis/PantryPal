@@ -37,8 +37,10 @@ if(!$fgmembersite->CheckLogin())
 <div id="profilebox">
 <h1>Hi There <?= $fgmembersite->UserFullName(); ?>!</h1>
     <a href="savedRecipes.php">Your Saved Recipes</a> <br><br>
+    <a href="new-recipe.php">Add Recipes</a> <br><br>
     <a href="mailto:help@pantrypal.com">Contact Us</a> <br><br>
     <a href="change-pwd.php">Change password</a> <br><br>
+
     <a href="logout.php">Log Out</a>
 </div>
 </div>
