@@ -28,7 +28,7 @@ if($mysqli -> connect_errno){
     <style>
         #question{
             width: 50px;
-            opacity: 0.8;
+            opacity: 0.88;
             position: fixed;
             bottom: 15px;
             right: -5px;
