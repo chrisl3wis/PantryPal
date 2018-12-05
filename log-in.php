@@ -12,33 +12,28 @@ if(isset($_POST['submitted']))
     }
 }
 
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<head>
-    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-    <title>Login</title>
-    <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
-    <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
-    <script type='text/javascript' src='/scripts/gen_validatorv31.js'></script>
-    <style type="text/css">
-        #loginTitle{
-            width: 500px;
-            text-align: left;
-            margin-top: 28vh;
-            z-index: 10;
-            position: absolute;
-            margin-left: 5%;
-        }
-        /*#logo{*/
-        /*width: 200px;*/
-        /*}*/
-        body{
-            background: url("images/loginflatlay.png") repeat-y;
-            background-size: cover;
-        }
-        .loginFill{
-            width: 380px !important;
+    ?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+        <title>Login</title>
+        <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
+        <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
+        <script type='text/javascript' src='/scripts/gen_validatorv31.js'></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="STYLESHEET" type="text/css" href="style/textPages.css">
+        <style type="text/css">
+            /*!*#logo{*!*/
+                /*!*width: 200px;*!*/
+            /*!*}*!*/
+            body {
+                background: url("images/mainBG.jpg") repeat-y;
+                background-size: cover;
+            }
+            .loginFill{
+                width: 380px !important;
 
             font-family: 'Montserrat', sans-serif !important;
             font-style: italic;
@@ -86,64 +81,93 @@ if(isset($_POST['submitted']))
             font-size: 10pt;
             color: #8AC1C6;
 
-        }
-        a:hover{
-            text-decoration: underline;
-        }
-        .register{
-            font-size: 10pt;
-            color: grey;
-            font-style: italic;
-        }
-        svg{
-            width: 50%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: -100px;
-            z-index: 0;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+            .register {
+                font-size: 10pt;
+                color: grey;
+                font-style: italic;
+            }
+            label{
+                font-size: 11pt;  margin-top: 30px; font-weight: normal; font-style: italic; color: #bcbcbc;
+            }
+            svg{
+                /*width: 50%;*/
+                min-width: 800px;
+                height: 100%;
+                position: fixed;
+                top: 0px;
+                left: -100px;
+                z-index: 0;
+            }
+            @media screen and (max-device-width: 450px){
+                svg{
+                    width: 0%; !important;
+                }
+                body{
+                    background: white none;
+                    background-size: 120%;
+                    background-repeat: no-repeat;
+                    padding: 10px;
+                }
+                .standardTitle {
+                    width: 85%;
+                    margin-top: 100px;
+                    width: 300px;
+                    margin-left: 10px;
+                    padding-left: 0px;
+                }
+                .passFill{
+                    width: 300px !important;
+                }
+                .loginFill{
+                    width: 300px !important;
+                }
 
-        }
-        label{
-            font-size: 11pt;  margin-top: 30px; font-weight: normal; font-style: italic; color: #bcbcbc;
-        }
+
+
+
+            }
 
     </style>
 </head>
 <body>
-<div id="loginTitle">
-    <h1>Welcome!</h1>
-    <form id='login' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
+<div class="standardTitle">
+        <h1>Welcome!</h1>
+        <form id='login' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
 
-        <input type='hidden' name='submitted' id='submitted' value='1'/>
+            <input type='hidden' name='submitted' id='submitted' value='1'/>
 
-        <!-- <div class='short_explanation'>* required fields</div>-->
+            <!-- <div class='short_explanation'>* required fields</div>-->
 
-        <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
-        <div class='container'>
-            <label for='username' >Username or email</label><br>
-            <input type='text' name='username' class="loginFill" id='username' value='<?php echo $fgmembersite->SafeDisplay('username') ?>' maxlength="50"><br>
-            <span id='login_username_errorloc' class='error'></span>
-        </div>
-        <div><br><br></div>
-        <div class='container'>
-            <label for='password' >Password</label><br/>
-            <input type='password' name='password' class="passFill" id='password' maxlength="50" /><br/>
-            <span id='login_password_errorloc' class='error'></span>
-        </div>
-        <div><br></div>
-        <div class='container'>
-            <input type='submit' class="submit" name='Submit' value='Submit' />
-        </div>
-        <div><br></div>
-        <div class='short_explanation register'><a href='./source/reset-pwd-req.php'>Forgot Your Password?</a><br></div>
-        <div class='short_explanation register'>Don't have an account? <a href='register.php'>Sign up here.</a><br></div>
+            <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
+            <div class='container'>
+                <label for='username' >Username :</label><br/>
+                <input type='text' name='username' class="loginFill" id='username' value='<?php echo $fgmembersite->SafeDisplay('username') ?>' maxlength="50" /><br/>
+                <span id='login_username_errorloc' class='error'></span>
+            </div>
+            <br><br>
+            <div class='container'>
+                <label for='password' >Password :</label><br/>
+                <input type='password' name='password' class="passFill" id='password' maxlength="50" /><br/>
+                <span id='login_password_errorloc' class='error'></span>
+            </div>
+            <br>
+            <div class='container'>
+                <input type='submit' class="submit" name='Submit' value='Submit' />
+            </div>
+            <br>
+            <br><div class='short_explanation register'><a href='./source/reset-pwd-req.php'>Forgot Your Password?</a></div>
+            <br><div class='short_explanation register'>Don't have an account? <a href='register.php'>Sign up here.</a></div>
 
-    </form>
-</div>
+        </form>
+    </div>
+
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 658.71 775">
     <defs>
-        <style>.cls-1,.cls-2{fill:#fff;}.cls-1{opacity:0.92;}.cls-2{opacity:0.72;}</style>
+        <style>.cls-1,.cls-2{fill:#fff;height: 100%}.cls-1{opacity:0.92;}.cls-2{opacity:0.72;}</style>
     </defs>
     <title>Asset 1</title>
     <g id="Layer_2" data-name="Layer 2">
