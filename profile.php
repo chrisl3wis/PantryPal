@@ -23,7 +23,6 @@ if(!$fgmembersite->CheckLogin())
             background-size: 140%;
             background-position-y: -200px;
             background-position-x: -30px;
-
             width: 100%;
             height: 200px;
         }
