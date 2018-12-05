@@ -1,4 +1,9 @@
-<html>
+<?PHP
+require_once("./include/membersite_config.php");
+require_once './header.php';
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
     <link rel="stylesheet" href="pantryStyle.css">
     <style>
@@ -17,17 +22,10 @@
             padding-left: 0px;
         }
     </style>
+    <title>How To Use PantryPal</title>
 </head>
 <body>
-<?PHP
-require_once("./include/membersite_config.php");
 
-//if(!$fgmembersite->CheckLogin())
-//{
-//    $fgmembersite->RedirectToURL("login.php");
-//    exit;
-//}
-?>
 <div id="header">
     <a href="index.php"><img src="include/pantrypal.png" id="masthead" alt="PantryPal"></a>
     <a class="account" href="profile.php"><?php

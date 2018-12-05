@@ -1,5 +1,6 @@
 <?PHP
 require_once("./include/membersite_config.php");
+require_once './header.php';
 
 $fgmembersite->LogOut();
 ?>

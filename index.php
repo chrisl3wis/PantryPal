@@ -1,5 +1,6 @@
-
 <?php
+require_once './header.php';
+
 $host = "webdev.iyaserver.com";
 $userid = "lewischr";
 $userpw = "Iya6521484446";
@@ -23,9 +24,6 @@ if($mysqli -> connect_errno){
 <head>
     <meta charset="UTF-8">
     <title>Pantry Pal</title>
-    <?php
-    include_once './header.php';
-    ?>
 </head>
 <body>
 

@@ -1,11 +1,5 @@
 <?PHP
 require_once("./include/membersite_config.php");
-
-//if(!$fgmembersite->CheckLogin())
-//{
-//    $fgmembersite->RedirectToURL("login.php");
-//    exit;
-//}
 ?>
 <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
 <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat" rel="stylesheet">

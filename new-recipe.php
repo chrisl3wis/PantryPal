@@ -1,4 +1,6 @@
 <?php
+require_once './header.php';
+//REVIEW[chris] add "back to dashboard" btn
 
 $host = "webdev.iyaserver.com";
 $userid = "lewischr";
@@ -69,14 +71,6 @@ if ($mysqli->connect_errno) {
     </script>
 </head>
 <body>
-
-<?php
-include_once './header.php';
-
-//REVIEW[chris] add "back to dashboard" btn
-
-?>
-
 <div id="content">
     <h1>Add New Recipe</h1>
     <div id="success">
