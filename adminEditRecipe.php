@@ -145,7 +145,7 @@ while ($row = $result->fetch_assoc()) {
 
                     echo "<div class='mealCheck'><input type='checkbox' id='meal".$currentrow['ID']."' name='meals[]' value='" . $currentrow['ID'] ."'". $checked. ">
                         <label for='meal".$currentrow['ID']."'>" . $currentrow['meal_type'] . "</label>";
-                    var_dump($mealResult);
+//                    var_dump($mealResult);
 
                     echo "</div>";
                 }

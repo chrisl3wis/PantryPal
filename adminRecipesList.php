@@ -119,8 +119,8 @@ if ($mysqli->connect_errno) {
             <div class="recipeID">' . $row['ID'] . '</div>
             <div class="recipeName">' . $row['title'] . '</div>
             <div class="recipeDesc">' . $row['description'] . '</div>
-            <div class="recipeEdit"><a href="adminEditRecipe.php?recipeid=' . $row['id'] . '">edit</a></div>
-            <div class="recipeDelete"><a href="adminEditRecipe.php?delete=true&recipeid=' . $row['id'] . '">remove</a></div>
+            <div class="recipeEdit"><a href="adminEditRecipe.php?recipeid=' . $row['ID'] . '">edit</a></div>
+            <div class="recipeDelete"><a href="adminEditRecipe.php?delete=true&recipeid=' . $row['ID'] . '">remove</a></div>
         </div>';
         }
 
