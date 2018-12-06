@@ -7,6 +7,9 @@ if(!$fgmembersite->CheckLogin())
     $fgmembersite->RedirectToURL("log-in.php");
     exit;
 }
+if($fgmembersite->CheckAdminLogin()){
+    //show admin links...
+}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -111,7 +114,6 @@ if(!$fgmembersite->CheckLogin())
     <br><br><br>
     <div id="additional">
     <a href="mailto:help@pantrypal.com">Contact Us</a> <br>
-    <a href="feedback.php">Send Feedback</a> <br>
     <a href="about.php">About PantryPal</a> <br>
         </div>
 </div>

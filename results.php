@@ -13,8 +13,6 @@ if ($mysqli->connect_errno) {
     exit("STOPPING page");
 }
 
-
-
 ?>
 
 <html lang="en">
@@ -152,14 +150,18 @@ if ($mysqli->connect_errno) {
 
     for ($i = 0; $i<count($ingreds); $i++) {
 
-        $query .= !empty($ingreds[$i]) ? "ingredient LIKE '%$ingreds[$i]%'" : $i==1? "1":"";
-        if ($i<count($ingreds) && !empty($ingreds[$i+1])) $query .= " OR ";
+        if(!empty($ingreds[$i])){
+            $query.= "ingredient LIKE '%$ingreds[$i]%'";
+            if (!empty($ingreds[$i+1])) $query .= " OR ";
+        }
 
     }
+    $query .= empty($query) ? " 1 " : "";
 
     $sql = "SELECT * FROM lewischr_recipes.all_data_view
     WHERE $query GROUP BY title";
 
+//    echo $sql;
 
 
     if ($result = $mysqli->query($sql)) {
@@ -211,23 +213,15 @@ if ($mysqli->connect_errno) {
     <script>
 
         let elem = document.querySelector('#resultsDiv');
-        let msnry = new Masonry(elem, {
-
-            itemSelector: '.searchResult',
-            columnWidth: 160,
-            gutterWidth: 20
-        });
-        // const msnry = new Masonry(elem, {
-        //
-        //     itemSelector: '.searchResult',
-        //     columnWidth: 160,
-        //     gutterWidth: 20
-        // });
 
         document.addEventListener('click',function () {
-            msnry.reloadItems();
+            let msnry = new Masonry(elem, {
+
+                itemSelector: '.searchResult',
+                columnWidth: 160,
+                gutterWidth: 20
+            });
         });
-        setTimeout(msnry.off(),2000);
 
 
     </script>

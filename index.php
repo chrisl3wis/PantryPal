@@ -67,7 +67,6 @@ if($mysqli -> connect_errno){
     <input type="text" class="ingredientFill" name="ingreds[]" placeholder="ingredient #3">
     <br><br>
 
-    <a href="advancedSearch.php">advanced search ></a>
     <br><br><br>
 
     <input type="submit" class="search" value="search">

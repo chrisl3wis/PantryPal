@@ -1,4 +1,8 @@
-<?php
+<?php /** @noinspection PhpUndefinedVariableInspection */
+/** @noinspection PhpUndefinedVariableInspection */
+/** @noinspection PhpUndefinedVariableInspection */
+/** @noinspection PhpUndefinedVariableInspection */
+/** @noinspection PhpUndefinedVariableInspection */
 # ========================================================================#
 #
 #  Class for interacting with the login database table 
@@ -254,8 +258,10 @@ class Login extends MySQLDatabase
 			}
 
 		    $stmt->store_result();
-	
-		    $stmt->bind_result($id, $forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $admin);
+
+            /** @noinspection PhpUndefinedVariableInspection */
+            /** @noinspection PhpUndefinedVariableInspection */
+            $stmt->bind_result($id, $forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $admin);
 			if ($stmt->errno) {
 				throw new Exception("Exception thrown bind_result(Login:get_user_for_field_with_value) Error logged as: ".$stmt->error ,E_ALL);		
 			}

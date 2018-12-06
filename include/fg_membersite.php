@@ -376,9 +376,9 @@ class FGMembersite
             return false;
         }
 
-        $adminsessionvar = $this->GetAdminSessionVar();
+        $admsessionvar = $this->GetAdminSessionVar();
 
-        if(empty($_SESSION[$adminsessionvar]))
+        if(empty($_SESSION[$admsessionvar]))
         {
             return false;
         }
@@ -1072,7 +1072,7 @@ class FGMembersite
 	          $_SESSION['name_of_user']  = $storedName;
 	          $_SESSION['email_of_user'] = $storedEmail;
 	          if($admin) {
-	              $_SESSION['admin']
+	              $_SESSION['admin'];
               }
 		  
 			  if($confirm == "y"){
