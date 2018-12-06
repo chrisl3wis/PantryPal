@@ -266,19 +266,19 @@ require_once './header.php';
 <div class="standardTitle">
     <div class="howtorow">
         <div class="row1">
-            <img id="img1" src="Ingredients.png">
+            <img id="img1" src="./images/Ingredients.png">
             <p id="txt1">Start by choosing a few ingredients! Look in your pantry, fridge, cabinets, etc. to find what food you have to cook with. This can vary from main proteins like chicken, to vegetables like broccoli, seasonings like sesame, and more!</p>
         </div>
     </div>
     <div class="howtorow">
         <div class="row2">
-            <img id="img2" src="Chicken.png">
+            <img id="img2" src="./images/Chicken.png">
             <p id="txt2">Then pick a recipe that you like! All of them should match the ingredients that you searched and now you just have to choose what's best. For example, here is a Sesame Chicken "card" that you can take a look at. Click the arrow on the right to read more, and get the actual recipe.</p>
         </div>
     </div>
     <div class="howtorow">
         <div class="row3">
-            <img id="img3" src="Recipe.png">
+            <img id="img3" src="./images/Recipe.png">
             <p id="txt3">After you click on the arrow, the recipe on it's original site will pop up with the exact ingredients, directions, and sometimes reviews. You can read more about the recipe and start cooking yourself! Some of the recipes will require a few extra ingredients on top of what you entered, but hopefully this will help give you a good starting point.</p>
         </div>
     </div><br>

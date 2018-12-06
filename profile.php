@@ -103,6 +103,7 @@ $admin=$fgmembersite->CheckAdminLogin();
                 "<h1>Admin Tasks</h1>".
                 "<a href='adminRecipesList.php' class='fontSize'>All Recipes List/Edit Recipes</a> <br><br>".
                 "<a href='adminUserList.php' class='fontSize'>User List</a> <br><br>".
+                "<a href='dataviz.php' class='fontSize'>Data Visualization</a> <br><br>".
                 "</div>".
                 "</div><br><br>";
         }
