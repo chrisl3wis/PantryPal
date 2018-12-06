@@ -1,9 +1,9 @@
 <?php
 require_once './header.php';
 
-if(!$fgmembersite->CheckLogin())
+if(!$fgmembersite->CheckAdminLogin())
 {
-    $fgmembersite->RedirectToURL("log-in.php");
+    $fgmembersite->RedirectToURL("profile.php");
     exit;
 }
 

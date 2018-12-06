@@ -162,7 +162,13 @@ while ($row = $result->fetch_assoc()) {
 
             if($results = $mysqli->query($sql)) {
                 while ($currentrow = $results->fetch_assoc()) {
-                    echo "<div class='dietCheck'><input type='checkbox' id='diet".$currentrow['ID']."' name='diets[]' value='" . $currentrow['ID'] . "'> 
+                    $dietID = $currentrow['ID'];
+                    $dietsql = "SELECT ID FROM lewischr_recipes.recipe_diet WHERE recipe_id=".$ID." AND diet_id=".$dietID;
+                    $dietResult = $mysqli->query($dietsql) ;
+                    $checked = $dietResult->fetch_assoc()
+                        ? ' checked' : '';
+
+                    echo "<div class='dietCheck'><input type='checkbox' id='diet".$currentrow['ID']."' name='diets[]' value='" . $currentrow['ID'] ."'". $checked.  "> 
                         <label for='diet".$currentrow['ID']."'>" . $currentrow['diet'] . "</label>
                         </div>";
                 }

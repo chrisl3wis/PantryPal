@@ -344,6 +344,15 @@ class FGMembersite
 		}
         
         $_SESSION[$this->GetLoginSessionVar()] = $username;
+        if(isset($_SESSION['admin'])){
+            $_SESSION[$this->GetAdminSessionVar()] = $username;
+
+            $_SESSION['admin']=NULL;
+
+            unset($_SESSION['admin']);
+        }
+
+
 
 
         
@@ -414,6 +423,12 @@ class FGMembersite
         
         $_SESSION[$sessionvar]=NULL;
         
+        unset($_SESSION[$sessionvar]);
+
+        $sessionvar = $this->GetAdminSessionVar();
+
+        $_SESSION[$sessionvar]=NULL;
+
         unset($_SESSION[$sessionvar]);
     }
 	
@@ -1072,7 +1087,7 @@ class FGMembersite
 	          $_SESSION['name_of_user']  = $storedName;
 	          $_SESSION['email_of_user'] = $storedEmail;
 	          if($admin) {
-	              $_SESSION['admin'];
+	              $_SESSION['admin'] = true;
               }
 		  
 			  if($confirm == "y"){
@@ -1088,44 +1103,7 @@ class FGMembersite
 			return false;
 		}	
 	}
-    function CheckAdminInDB($email,$password){
 
-        $user = new Login();
-
-        // make username / email lower case for easy login
-        $email = strtolower($email);
-
-        if(!$user->get_user_for_field_with_value("email" , $email)&&!$user->get_user_for_field_with_value("username" , $email))
-        {
-            $this->HandleError("Error logging in. The username or password does not match");
-            return false;
-        }
-
-
-        $storedName  = $user->forename ." ". $user->surname;
-        $storedEmail = $user->email;
-        $storedpassword = $user->password;
-        $confirm = $user->confirmcode;
-        $admin = $user->admin;
-
-        $passwordVerify = new Password();
-        if($passwordVerify->isPasswordValidForUser($password, $user))
-        {
-            $_SESSION['name_of_user']  = $storedName;
-            $_SESSION['email_of_user'] = $storedEmail;
-
-            if($admin){
-                return true;
-            }else{
-                $this->RedirectToURL("profile.php");
-                return false;
-            }
-        }else
-        {
-            $this->HandleError("Error logging in. The user does not have access.");
-            return false;
-        }
-    }
 	
 	
 	

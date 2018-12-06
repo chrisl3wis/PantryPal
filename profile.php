@@ -1,15 +1,15 @@
 <?PHP
 require_once("./include/membersite_config.php");
-include_once './header.php';
+require_once './header.php';
 
 if(!$fgmembersite->CheckLogin())
 {
     $fgmembersite->RedirectToURL("log-in.php");
     exit;
 }
-if($fgmembersite->CheckAdminLogin()){
-    //show admin links...
-}
+
+$admin=$fgmembersite->CheckAdminLogin();
+
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -34,20 +34,6 @@ if($fgmembersite->CheckAdminLogin()){
             color: gray;
             opacity: 0.6;
         }
-        .resultsHeader{
-            background-image: url("images/mainBG.jpg");
-            background-size: 140%;
-            background-position-y: -200px;
-            background-position-x: -30px;
-            width: 100%;
-            height: 200px;
-        }
-        .resultsHeaderText{
-            text-align: center;
-            color: white;
-            padding-top: 70px;
-            padding-left: 70px;
-        }
 
         a {
             color: gray;
@@ -60,10 +46,14 @@ if($fgmembersite->CheckAdminLogin()){
             padding: 220px 50px 50px;
 
         }
-        @media screen and (max-width: 400px){
-        body{
-            background: none;
+        #logout{
+            font-weight: bold;
+            color: darkgray;
         }
+        @media screen and (max-width: 400px){
+            body{
+                background: none;
+            }
             body{
                 background: none;
             }
@@ -75,48 +65,57 @@ if($fgmembersite->CheckAdminLogin()){
                 margin-right: 100px;
             }
         }
-@media screen and (max-device-width: 450px){
-    svg{
-        width: 0%; !important;
-    }
-    body{
-        background: url("images/mainBG.jpg") repeat-y;
-        background-size: 0%;
-        background-repeat: no-repeat;
-    }
-    .standardTitle {
-        width: 90%;
-    }
-    #profilebox{
-        background-color: white;
-        width: 90%;
-        height: 75%;
-        padding: 120px 50px 50px;
+        @media screen and (max-device-width: 450px){
+            svg{
+                width: 0%; !important;
+            }
+            body{
+                background: url("images/mainBG.jpg") repeat-y;
+                background-size: 0%;
+                background-repeat: no-repeat;
+            }
+            #profilebox{
+                background-color: white;
+                width: 90%;
+                height: 75%;
+                padding: 120px 50px 50px;
 
-    }
+            }
 
 
-}
-        </style>
+        }
+    </style>
 </head>
 
 <body>
 <div id='fg_membersite_content'>
-<div id="profilebox">
-<h1>Hi There <?= $fgmembersite->UserFullName(); ?>!</h1>
-    <a href="savedRecipes.php">Your Saved Recipes</a> <br><br>
-    <a href="new-recipe.php">Add Recipes</a> <br><br>
+    <div id="profilebox">
+        <h1>Hi There <?= $fgmembersite->UserFullName(); ?>!</h1>
 
-    <a href="change-pwd.php">Change password</a> <br><br>
+        <a href="savedRecipes.php">Your Saved Recipes</a> <br><br>
+        <a href="new-recipe.php">Add Recipes</a> <br><br>
+        <a href="change-pwd.php">Change password</a> <br><br>
 
-    <a href="logout.php">Log Out</a>
+        <?php
+        if ($admin) {
+            echo "<div id='fg_membersite_content'>".
+                "<div id='adminbox'>".
+                "<h1>Admin Tasks</h1>".
+                "<a href='adminRecipesList.php' class='fontSize'>All Recipes List/Edit Recipes</a> <br><br>".
+                "<a href='adminUserList.php' class='fontSize'>User List</a> <br><br>".
+                "</div>".
+                "</div><br><br>";
+        }
+        ?>
 
-    <br><br><br>
-    <div id="additional">
-    <a href="mailto:help@pantrypal.com">Contact Us</a> <br>
-    <a href="about.php">About PantryPal</a> <br>
+        <a id='logout' href="logout.php">Log Out</a>
+
+        <br><br><br>
+        <div id="additional">
+            <a href="mailto:pantrypal.dev2@gmail.com">Contact Us</a> <br>
+            <a href="about.php">About PantryPal</a> <br>
         </div>
-</div>
+    </div>
 </div>
 </body>
 </html>
