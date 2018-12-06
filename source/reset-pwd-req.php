@@ -1,5 +1,6 @@
 <?PHP
 require_once("../include/membersite_config.php");
+require_once './header2.php';
 
 $emailsent = false;
 if(isset($_POST['submitted']))
@@ -58,7 +59,7 @@ if(isset($_POST['submitted']))
     <!-- Form Code Start -->
     <div id='fg_membersite'>
         <form id='resetreq' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
-            <fieldset style="border: none; margin-left: -70px; margin-top: 100px;">
+            <fieldset style="border: none; margin-left: -70px; margin-top: 130px;">
                 <h2 style="font-size: 20pt;">Reset Password</h2>
 
                 <input type='hidden' name='submitted' id='submitted' value='1'/>
