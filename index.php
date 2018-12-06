@@ -43,6 +43,7 @@ if($mysqli -> connect_errno){
            #search_div{
                width: 240px;
                height: 450px;
+               left: 20px;
            }
             .ingredientFill{
                 width: 220px;
@@ -50,6 +51,7 @@ if($mysqli -> connect_errno){
             h1{
                 font-size: 27pt;
             }
+
 
         }
     </style>
