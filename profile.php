@@ -112,7 +112,7 @@ if(!$fgmembersite->CheckLogin())
     <div id="additional">
     <a href="mailto:help@pantrypal.com">Contact Us</a> <br>
     <a href="feedback.php">Send Feedback</a> <br>
-    <a href="PantryPalAbout.php">About PantryPal</a> <br>
+    <a href="about.php">About PantryPal</a> <br>
         </div>
 </div>
 </div>

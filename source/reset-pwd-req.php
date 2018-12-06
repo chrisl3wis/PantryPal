@@ -1,6 +1,6 @@
 <?PHP
 require_once("../include/membersite_config.php");
-require_once './header2.php';
+require_once '../header.php';
 
 $emailsent = false;
 if(isset($_POST['submitted']))

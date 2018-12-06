@@ -22,6 +22,9 @@ if($mysqli -> connect_errno){
 ?>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Pantry Pal</title>
@@ -56,22 +59,38 @@ if($mysqli -> connect_errno){
 <div id="search_div">
     <h1>What's in Your <br> Pantry Today?</h1>
     <br>
-    <form action="resultsBasic.php">
-    <input type="text" class="ingredientFill" name="ingred1" placeholder="ingredient #1">
+    <form action="results.php">
+    <input type="text" class="ingredientFill" name="ingreds[]" placeholder="ingredient #1">
     <br><br><br>
-    <input type="text" class="ingredientFill" name="ingred2" placeholder="ingredient #2">
+    <input type="text" class="ingredientFill" name="ingreds[]" placeholder="ingredient #2">
     <br><br><br>
-    <input type="text" class="ingredientFill" name="ingred3" placeholder="ingredient #3">
+    <input type="text" class="ingredientFill" name="ingreds[]" placeholder="ingredient #3">
     <br><br>
 
-    <a href="advancedSearch.php">advanced search >></a>
+    <a href="advancedSearch.php">advanced search ></a>
     <br><br><br>
 
     <input type="submit" class="search" value="search">
     </form>
 </div>
 <div id="question">
-    <a href="PantryPalHowTo.php"><img src="images/question.png" alt="Questions?"></a>
+    <a href="howto.php"><img src="images/question.png" alt="Questions?"></a>
 </div>
 </body>
+<script>
+    //auto complete
+
+    $(function() {
+        $(".ingredientFill").autocomplete({
+            source: "./include/search_ingred.php",
+            select: function( event, ui ) {
+                event.preventDefault();
+                $(this).val(ui.item.value);
+                //var ingr_id = $(this).attr("id");
+                $('#ingr-entry_id').val(ui.item.id);
+            }
+        });
+    });
+</script>
 </html>
+

@@ -12,6 +12,9 @@ if ($mysqli->connect_errno) {
     echo "db connection error" . $mysqli->connect_error;
     exit("STOPPING page");
 }
+
+
+
 ?>
 
 <html lang="en">
@@ -20,11 +23,8 @@ if ($mysqli->connect_errno) {
     <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
     <script src="scripts/masonry.pkgd.min.js"></script>
-
-
-
     <meta charset="UTF-8">
-    <title>Pantry Pal</title>
+    <title>Pantry Pal: Search Results</title>
     <style>
         body{
             background: white none;
@@ -44,7 +44,6 @@ if ($mysqli->connect_errno) {
             clear: both;
         }
 
-
         .searchResult {
             width: 250px;
             margin: 30px;
@@ -58,6 +57,7 @@ if ($mysqli->connect_errno) {
             float: left;
             display: block;
             clear: both;
+            box-sizing: content-box;
         }
 
         .recipeImage {
@@ -66,25 +66,6 @@ if ($mysqli->connect_errno) {
             position: relative;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
-        }
-        .recipeImage2 {
-            position: relative;
-            width: 100%;
-            margin-bottom: 0;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-
-        }
-        #filters{
-            width: 200px;
-            padding: 25px;
-            float: left;
-            margin-left: 30px;
-            margin-top: 30px;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 60px;
-
         }
 
         body {
@@ -118,10 +99,7 @@ if ($mysqli->connect_errno) {
             color: white;
             font-size: 10pt;
         }
-        .outLink {
-            height: 15px;
-            float: right;
-        }
+
         .resultsHeader{
             width: 100%;
             background-image:
@@ -140,23 +118,7 @@ if ($mysqli->connect_errno) {
             padding-top: 160px;
             padding-left: 70px;
         }
-        .filterTag{
-            padding: 2px 10px 2px 10px;
-            background-color: #F4F4F4;
-            border-radius: 5px;
-            margin-top: 10px;
-            margin-right: 5px;
-            float: left;
-            color: #9E9E9E;
-            font-size: 10pt;
-        }
-        .filtertype{
-            float: none;
-            margin-left: 5px;
-        }
-        .filtertype2{
-            margin-left: 5px;
-        }
+
         .saveRecipe{
             float: right;
             width: 20px;
@@ -165,102 +127,48 @@ if ($mysqli->connect_errno) {
             display: block;
         }
         @media screen and (max-width: 400px){
-        .resultsHeader{
-            background: none;
-        }
+            .resultsHeader{
+                background: none;
+            }
             h1{
                 color: black;
-                margin-top: -50;
-            }
-            #filters{
-                margin-top: -180px;
-                margin-left: 0;
-            }
-            .filterTag{
-                float: none;
-                width: 65px;
-            }
-            .filtertype{
-                float: left;
-            }
-            .filtertype2{
-                margin-left: 190px;
+                margin-top: -50px;
             }
         }
     </style>
 </head>
 <body>
-<?php
-include_once './header.php';
-?>
-
 <div class="resultsHeader">
     <div class="resultsHeaderText">
         <h1>Recipes You Can Make...</h1>
     </div>
 
 </div>
-<div id="filters">
-    <strong style="font-family: 'Montserrat', sans-serif; font-size: 14pt;">filters:</strong>
-    <br><br>
-    <div class="filtertype">ingredients
-    <br>
-    <div class="filterTag">
-        penne  &nbsp; x
-    </div>
-    <div class="filterTag">
-        pesto &nbsp; x
-    </div>
-    <div class="filterTag">
-        garlic &nbsp; x
-    </div>
-    <div style="clear: both;">
-
-    </div>
-    <br><br>
-    </div>
-    <div class="filtertype">meal types
-    <br>
-    <div class="filterTag">
-        dinner &nbsp; x
-    </div>
-
-    <div style="clear: both;">
-
-    </div>
-    <br><br>
-    </div>
-    <div class="filtertype2">diet
-        <br>
-        <div class="filterTag">
-            vegan &nbsp; x
-        </div>
-        </div>
-</div>
-</div>
-
 <div id="resultsDiv">
     <?php
-    if($_REQUEST) {
+
+    $ingreds = $_REQUEST['ingreds'];
 
 
-        $sql = "SELECT * FROM lewischr_recipes.all_data_view
-    WHERE ingredient LIKE '%" . $_REQUEST["ingred1"] . "%' AND ingredient LIKE '%" . $_REQUEST["ingred2"] . "%' AND ingredient LIKE '%" . $_REQUEST["ingred3"] . "%' GROUP BY title";
-    } else {
-        $sql = "SELECT * FROM lewischr_recipes.all_data_view WHERE 1 group by ID";
+    for ($i = 0; $i<count($ingreds); $i++) {
+
+        $query .= !empty($ingreds[$i]) ? "ingredient LIKE '%$ingreds[$i]%'" : $i==1? "1":"";
+        if ($i<count($ingreds) && !empty($ingreds[$i+1])) $query .= " OR ";
+
     }
+
+    $sql = "SELECT * FROM lewischr_recipes.all_data_view
+    WHERE $query GROUP BY title";
+
+
+
     if ($result = $mysqli->query($sql)) {
+        echo "<div id='numResults'>".$result->num_rows." results found </div>";
 
         while ($row = $result->fetch_assoc()) {
-            echo '<a href="'.$row["url"].'" target="_blank" ><div class="searchResult">
-            
-            <div>
-            
-            <img class="recipeImage" alt="Recipe Image'.$row['title'].'" src="'.$row["imgURL"].'" >
-            
-            
+            echo '<a href="'.$row['url'].'" target="_blank" ><div class="searchResult"><div>
+            <img class="recipeImage" alt="Recipe Image'.$row['title'].'" src="'.$row['imgURL'].'" >
             </div>
-            
             <div class="recipeInfo">
             <span class="recipeName"><strong>' . $row['title'] . '</strong>
               
@@ -293,7 +201,7 @@ include_once './header.php';
             else {
                 var_dump($mysqli);
             }
-            echo '<img class="saveRecipe" src="images/saved.png" alt="Save Recipes"></div></div>';
+            echo '<img class="saveRecipe" src="images/saved.png" alt="Save Recipes"></div></div></a>';
         }
     } else {
         var_dump($mysqli);
@@ -301,15 +209,28 @@ include_once './header.php';
     ?>
     <script src="scripts/masonry.pkgd.min.js"></script>
     <script>
-        var elem = document.querySelector('#resultsDiv');
-        var msnry = new Masonry( elem, {
+
+        let elem = document.querySelector('#resultsDiv');
+        let msnry = new Masonry(elem, {
 
             itemSelector: '.searchResult',
-            columnWidth: 160
+            columnWidth: 160,
+            gutterWidth: 20
         });
+        // const msnry = new Masonry(elem, {
+        //
+        //     itemSelector: '.searchResult',
+        //     columnWidth: 160,
+        //     gutterWidth: 20
+        // });
+
+        document.addEventListener('click',function () {
+            msnry.reloadItems();
+        });
+        setTimeout(msnry.off(),2000);
+
 
     </script>
-    </a>
 </div>
 
 </body>

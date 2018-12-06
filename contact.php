@@ -29,7 +29,7 @@ require_once("./include/membersite_config.php");
 //}
 ?>
 <div id="header">
-    <a href="index.php"><img src="include/pantrypal.png" id="masthead" alt="PantryPal"></a>
+    <a href="index.php"><img src="images/pantrypal.png" id="masthead" alt="PantryPal"></a>
     <a class="account" href="profile.php"><?php
         if(!$fgmembersite->CheckLogin())
         {

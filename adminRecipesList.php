@@ -1,4 +1,26 @@
-<html>
+<?php
+require_once './header.php';
+
+if(!$fgmembersite->CheckLogin())
+{
+    $fgmembersite->RedirectToURL("log-in.php");
+    exit;
+}
+
+$host = "webdev.iyaserver.com";
+$userid = "lewischr";
+$userpw = "Iya6521484446";
+$db = "lewischr_recipes";
+
+$mysqli = new mysqli ($host, $userid, $userpw, $db);
+
+if ($mysqli->connect_errno) {
+    echo "db connection error" . $mysqli->connect_error;
+    exit("STOPPING page");
+}
+?>
+
+<html lang="en-us">
 <head>
     <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css">
     <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
@@ -31,27 +53,32 @@
             height: 45px;
             clear: both;
         }
+        .recipeID{
+            float: left;
+            width: 5%;
+            margin: 10px;
+            clear: both;
+        }
         .recipeName{
             float: left;
-            width: 20%;
-            margin: 15px;
-            clear: both;
+            width: 15%;
+            margin: 10px;
         }
         .recipeDesc{
             float: left;
-            width: 50%;
-            margin: 15px;
+            width: 45%;
+            margin: 1px;
         }
         .recipeEdit{
             float: left;
-            width: 10%;
-            margin: 15px;
+            width: 8%;
+            margin: 10px;
             text-align: center;
         }
         .recipeDelete{
             float: left;
-            width: 10%;
-            margin: 15px;
+            width: 8%;
+            margin: 10px;
             text-align: center;
 
         }
@@ -71,41 +98,35 @@
     </style>
 </head>
 <body>
-<?php
-require_once './header.php';
-?>
 <div id="recipeBox">
-<h1>All Recipes in Database</h1>
+    <h1>All Recipes in Database</h1>
     <div id="recipeList">
         <!-- titles -->
+        <div class="recipeID"><strong>ID</strong></div>
         <div class="recipeName"><strong>Name</strong></div>
         <div class="recipeDesc"><strong>Description</strong></div>
         <div class="recipeEdit"><strong>Edit</strong></div>
         <div class="recipeDelete"><strong>Delete</strong></div>
         <div style="clear: both"></div>
-        <!-- put loop here -->
-        <div class="recipeRow">
-        <div class="recipeName">Delicious Spaghetti</div>
-        <div class="recipeDesc">Here is where the description would go right here yay</div>
-        <div class="recipeEdit"><a href="">edit</a></div>
-            <div class="recipeDelete"><a href="">remove</a></div>
+        <?php
+
+        $sql = "SELECT * FROM lewischr_recipes.recipe
+        WHERE 1";
+
+        $result = $mysqli->query($sql) or die($mysqli->error);
+        while ($row = $result->fetch_assoc()){
+            echo '<div class="recipeRow">
+            <div class="recipeID">' . $row['ID'] . '</div>
+            <div class="recipeName">' . $row['title'] . '</div>
+            <div class="recipeDesc">' . $row['description'] . '</div>
+            <div class="recipeEdit"><a href="adminEditRecipe.php?recipeid=' . $row['id'] . '">edit</a></div>
+            <div class="recipeDelete"><a href="adminEditRecipe.php?delete=true&recipeid=' . $row['id'] . '">remove</a></div>
+        </div>';
+        }
+
+        ?>
+
     </div>
-        <div class="recipeRow">
-            <div class="recipeName">Delicious Spaghetti</div>
-            <div class="recipeDesc">Here is where the description would go right here yay</div>
-            <div class="recipeEdit"><a href="">edit</a></div>
-            <div class="recipeDelete"><a href="">remove</a></div>
-        </div>
-        <div class="recipeRow">
-            <div class="recipeName">Delicious Spaghetti</div>
-            <div class="recipeDesc">Here is where the description would go right here yay</div>
-            <div class="recipeEdit"><a href="">edit</a></div>
-            <div class="recipeDelete"><a href="">remove</a></div>
-        </div>
-
-
-
-</div>
 </div>
 </body>
 

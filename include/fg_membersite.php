@@ -344,6 +344,8 @@ class FGMembersite
 		}
         
         $_SESSION[$this->GetLoginSessionVar()] = $username;
+
+
         
         return true;
     }
@@ -361,6 +363,26 @@ class FGMembersite
             return false;
          }
          return true;
+    }
+
+    function CheckAdminLogin()
+    {
+        if(!isset($_SESSION)){ session_start(); }
+
+        $sessionvar = $this->GetLoginSessionVar();
+
+        if(empty($_SESSION[$sessionvar]))
+        {
+            return false;
+        }
+
+        $adminsessionvar = $this->GetAdminSessionVar();
+
+        if(empty($_SESSION[$adminsessionvar]))
+        {
+            return false;
+        }
+        return true;
     }
     
 	
@@ -567,6 +589,12 @@ class FGMembersite
         $retvar = 'usr_'.substr($retvar,0,10);
         return $retvar;
     }
+    function GetAdminSessionVar()
+    {
+        $retvar = md5($this->rand_key);
+        $retvar = 'admin_'.substr($retvar,0,10);
+        return $retvar;
+    }
 	
     function UpdateDBRecForConfirmation(&$user_rec, $code)
     {
@@ -703,8 +731,8 @@ class FGMembersite
 
         $link = $this->GetAbsoluteURLFolder().
             '/resetpwd.php?email='.
-            urlencode($email).'&code='.
-            urlencode($this->GetResetPasswordCode($email));
+            urlencode($user_rec['email']).'&code='.
+            urlencode($this->GetResetPasswordCode($user_rec['email']));
         $mailer->Body ="Hello ".$user_rec['name']."\r\n\r\n".
             "There was a request to reset your password at ".$this->sitename."\r\n".
             "Please click the link below to complete the request: \r\n".$link."\r\n".
@@ -978,6 +1006,7 @@ class FGMembersite
 		$user->confirmcode = $confirmcode;
 		$user->registrationStart = date("Y-m-d H:i:s");
 		$user->membershipStart = NULL;
+		$user->admin = false;
 
 	    if(!$user->create())
 	    {
@@ -1035,12 +1064,16 @@ class FGMembersite
 		$storedEmail = $user->email;
 		$storedpassword = $user->password;
 		$confirm = $user->confirmcode;
+		$admin = $user->admin;
 		
 		$passwordVerify = new Password();
 		if($passwordVerify->isPasswordValidForUser($password, $user))
 		{
 	          $_SESSION['name_of_user']  = $storedName;
 	          $_SESSION['email_of_user'] = $storedEmail;
+	          if($admin) {
+	              $_SESSION['admin']
+              }
 		  
 			  if($confirm == "y"){
 				  return true;
@@ -1055,6 +1088,44 @@ class FGMembersite
 			return false;
 		}	
 	}
+    function CheckAdminInDB($email,$password){
+
+        $user = new Login();
+
+        // make username / email lower case for easy login
+        $email = strtolower($email);
+
+        if(!$user->get_user_for_field_with_value("email" , $email)&&!$user->get_user_for_field_with_value("username" , $email))
+        {
+            $this->HandleError("Error logging in. The username or password does not match");
+            return false;
+        }
+
+
+        $storedName  = $user->forename ." ". $user->surname;
+        $storedEmail = $user->email;
+        $storedpassword = $user->password;
+        $confirm = $user->confirmcode;
+        $admin = $user->admin;
+
+        $passwordVerify = new Password();
+        if($passwordVerify->isPasswordValidForUser($password, $user))
+        {
+            $_SESSION['name_of_user']  = $storedName;
+            $_SESSION['email_of_user'] = $storedEmail;
+
+            if($admin){
+                return true;
+            }else{
+                $this->RedirectToURL("profile.php");
+                return false;
+            }
+        }else
+        {
+            $this->HandleError("Error logging in. The user does not have access.");
+            return false;
+        }
+    }
 	
 	
 	

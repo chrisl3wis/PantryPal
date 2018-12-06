@@ -6,7 +6,7 @@ require_once './header.php';
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+    <style type="text/css">
         :root{
             --main-grey: #BCBCBC;
             --main-black: #231f20;
@@ -77,12 +77,26 @@ require_once './header.php';
         button:focus {
             outline: none;
         }
+
+
         #masthead{
             width: 150px;
             margin-left: 20px;
             display: block;
             cursor: pointer;
         }
+
+        .ingredientFill{
+            width: 350px;
+            font-family: 'Montserrat', sans-serif;
+            font-style: italic;
+            border: none;
+            border-bottom: 1px solid var(--main-grey);
+            font-size: 11pt;
+        }
+
+
+
         .account{
             font-family: 'Montserrat', sans-serif;
             text-decoration: none;
@@ -97,14 +111,43 @@ require_once './header.php';
             text-decoration: none;
             color: rgb(138, 138, 138);
         }
+
+        #search_div{
+            width: 450px;
+            height: 580px;
+            float: left;
+            position: relative;
+            top: 160px;
+            left: 8%;
+            z-index: 10;
+            background-color: white;
+            border-radius: 30px;
+            padding: 10px 50px 10px 50px;
+            -webkit-box-shadow: 0 0 74px 2px var(--main-black-a);
+            -moz-box-shadow: 0 0 74px 2px var(--main-black-a);
+            box-shadow: 0 0 74px 2px var(--main-black-a);
+        }
+        .search{
+            background-color: transparent;
+            border: none;
+            color: var(--main-black);
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            float: right;
+            margin-right: 40px;
+        }
         .resultsHeader{
             background-image: url("images/mainBG.jpg");
             background-size: 120%;
-            background-position-y: -800px;
+            background-position-y: -450px;
             background-position-x: -30px;
             width: 100%;
             height: 300px;
-            margin-bottom: 50px;
             background-repeat: no-repeat;
             background-position: fixed;
         }
@@ -114,6 +157,11 @@ require_once './header.php';
             padding-top: 120px;
             padding-left: 0px;
         }
+        /*h1{*/
+            /*text-align: left;*/
+            /*padding-left: 400px;*/
+            /*padding-top: 50px;*/
+        /*}*/
         .column {
             float: left;
             width: 30%;
@@ -138,39 +186,6 @@ require_once './header.php';
         #image{
             width: 50%;
         }
-        .bottombar{
-            background-color:#badee2; width: 100%; padding:30px 50px 10px 0px; float: center; text-align: center; margin: auto; margin-top: 50px;
-        }
-        .howtorow{
-            padding-right:30px; padding-left:30px;
-        }
-        .row1{
-            width:850px; height: 400px; margin: auto;
-        }
-        .row2{
-            width:850px; height: 510px; margin: auto;
-        }
-        .row3{
-            width:850px; height: 600px; margin: auto;
-        }
-        #img1{
-            width: 400px; float: left; border-radius: 20px; margin: 0px 50px 0px 0px; box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.15);
-        }
-        #img2{
-            width: 400px; float: right; border-radius: 20px; margin: 0px 0px 0px 50px;
-        }
-        #img3{
-            width: 400px; float: left; border-radius: 20px; box-shadow:3px 3px 10px 0px #e8e8e8; margin: 0px 50px 0px 0px;
-        }
-        #txt1{
-            line-height: 150%; padding-top: 150px;
-        }
-        #txt2{
-            line-height: 150%; padding-top: 180px; text-align: right;
-        }
-        #txt3{
-            line-height: 150%; padding-top: 190px;
-        }
 
         @media screen and (max-device-width: 450px){
             svg{
@@ -184,6 +199,27 @@ require_once './header.php';
             .standardTitle {
                 width: 90%;
             }
+            #profilebox{
+                background-color: white;
+                width: 90%;
+                height: 75%;
+                padding: 120px 50px 50px;
+
+            }
+            .column {
+                float: left;
+                width: 90%;
+                text-align: left; float: center; margin: auto; line-height: 140%; margin-top: -110px; padding-left: 25px;
+            }
+            .textbox{
+                background-color: #badee2; border-radius: 10px; font-size: 10pt; float: left; margin: auto; width: 90%; margin-bottom: 20px;
+            }
+            .team{
+                padding: 0px 0px 0px 0px; float: center; text-align: center; margin: auto;
+            }
+            .footer{
+                float: center; text-align: center; margin: auto; padding: 0px 30px 50px 30px;
+            }
             h1{
                 font-size: 24pt;
                 padding-left: 30px;
@@ -195,58 +231,24 @@ require_once './header.php';
                 font-size: 14pt;
                 padding-left: 30px;
             }
+            #image{
+                width: 100%;
+                padding-left: 18px;
+                padding-top: 10px;
+            }
             .footer{
-                padding: 50px 0px 50px 30px; float: center; text-align: center; margin: auto; margin-top: -20px; font-size: 10pt;
-            }
-            .resultsHeader{
-                margin-bottom: 0px;
-            }
-            .resultsHeaderText{
-                text-align: left;
-                color: white;
-                padding-top: 100px;
-                width: 60%;
-                padding-left: 0px;
-                margin-left: -15px;
-            }
-            .row1{
-                width:100%px; margin: auto;
-            }
-            .row2{
-                width:100%px; margin: auto;
-            }
-            .row3{
-                width:100%; margin: auto;
-            }
-            #img1{
-                width: 300px; border-radius: 20px; box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.15); float: center; margin: auto; margin-top: -40px; margin-bottom: 30px;
-            }
-            #img2{
-                width: 300px; border-radius: 20px; float: left; margin: auto; margin-top: 100px; margin-bottom: 30px;
-            }
-            #img3{
-                width: 300px; border-radius: 20px; box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.15); float: center; margin: auto; margin-top: 230px; margin-bottom: 30px;
-            }
-            #txt1{
-                line-height: 150%; width: 35%; float: center; margin-top: 10px; margin-left: 5px;
-            }
-            #txt2{
-                line-height: 150%; padding-top: 180px; width: 35%; margin-top: 0px; margin-left: 5px; text-align: left;
-            }
-            #txt3{
-                line-height: 150%; padding-top: 180px; width: 105%; margin-top: 0px; margin-left: 5px; text-align: left;
-            }
-            .bottombar{
-                background-color:#badee2; width: 100%; padding:30px 50px 10px 0px; float: center; text-align: center; margin: auto; margin-top: 400px;
+                padding: 30px 0px 50px 30px; float: center; text-align: center; margin: auto; margin-top: -20px; font-size: 10pt;
             }
         }
     </style>
-    <title>How To Use PantryPal</title>
+    <title>
+        About Us
+    </title>
 </head>
-<body>
+<div>
 
 <div id="header">
-    <a href="index.php"><img src="include/pantrypal.png" id="masthead" alt="PantryPal"></a>
+    <a href="index.php"><img src="images/pantrypal.png" id="masthead" alt="PantryPal"></a>
     <a class="account" href="profile.php"><?php
         if(!$fgmembersite->CheckLogin())
         {
@@ -259,34 +261,23 @@ require_once './header.php';
     <!--Maybe if signed in have "Hello, Chris"-->
 </div><br><br><br>
 <div class="resultsHeader">
-    <div class="resultsHeaderText"">
-        <h1>How To Use PantryPal</h1>
+    <div class="resultsHeaderText">
+        <h1>About Us</h1>
     </div>
 </div>
 <div class="standardTitle">
-    <div class="howtorow">
-        <div class="row1">
-            <img id="img1" src="Ingredients.png">
-            <p id="txt1">Start by choosing a few ingredients! Look in your pantry, fridge, cabinets, etc. to find what food you have to cook with. This can vary from main proteins like chicken, to vegetables like broccoli, seasonings like sesame, and more!</p>
+    <div class="column">
+        <div class="textbox">
+            <p style="margin: auto">PantryPal was created by a team of four college sophomores who just moved into their apartments and never know what to cook. Looking up recipes is always an option, but after that there is always the issue of going to get the ingredients needed. We were looking for a solution that helped us find recipes that used the ingredients we already have, so we didn't have to go through the hassle of buying them after. That's when PantryPal was born to help us, and many other college students, cook awesome meals!!</p>
         </div>
     </div>
-    <div class="howtorow">
-        <div class="row2">
-            <img id="img2" src="Chicken.png">
-            <p id="txt2">Then pick a recipe that you like! All of them should match the ingredients that you searched and now you just have to choose what's best. For example, here is a Sesame Chicken "card" that you can take a look at. Click the arrow on the right to read more, and get the actual recipe.</p>
-        </div>
-    </div>
-    <div class="howtorow">
-        <div class="row3">
-            <img id="img3" src="Recipe.png">
-            <p id="txt3">After you click on the arrow, the recipe on it's original site will pop up with the exact ingredients, directions, and sometimes reviews. You can read more about the recipe and start cooking yourself! Some of the recipes will require a few extra ingredients on top of what you entered, but hopefully this will help give you a good starting point.</p>
-        </div>
-    </div><br>
-    <div class="bottombar">
-        <h2>Happy cooking :)</h2><br>
+    <br>
+    <div class="team">
+        <br><h2>Team</h2>
+        <img id="image" src="images/Pantry.png">
     </div>
     <div class="footer">
-        &copy; PantryPal Inc.<br>
+        <br> &copy; PantryPal Inc.<br>
     </div>
 </div>
 

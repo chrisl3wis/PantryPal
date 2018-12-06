@@ -22,6 +22,7 @@ class Login extends MySQLDatabase
 	public $membershipStart;
 	public $id;
 	public $username;
+	public $admin;
 	
 	public $errors = array();
 	
@@ -52,10 +53,11 @@ class Login extends MySQLDatabase
 		$confirmcode = $this->escape_value($this->confirmcode);
 		$registrationStart = $this->escape_value($this->registrationStart);
 		$membershipStart = $this->escape_value($this->membershipStart);
+		$admin = $this->$this->escape_value($this->admin);
 
 		try
 		{ 
-			return $this->createUser($forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
+			return $this->createUser($forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $admin);
 		}
 		catch (Exception $e){
 			
@@ -66,16 +68,16 @@ class Login extends MySQLDatabase
 	}
 	
 		
-	private function createUser($forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart){
+	private function createUser($forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $admin){
 		
 		global $database;
 		
-		$sql = "INSERT INTO ".self::$table_name." (forename, surname, email, username, password, resetpassword, confirmcode, registrationStart, membershipStart) 
-				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$sql = "INSERT INTO ".self::$table_name." (forename, surname, email, username, password, resetpassword, confirmcode, registrationStart, membershipStart, admin) 
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				
 		if ($stmt = $database->get_connection()->prepare($sql)) {
 			
-			$stmt->bind_param('sssssssss', $forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
+			$stmt->bind_param('ssssssssss', $forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $admin);
 			
 			if ( false===$stmt) {
 			 	throw new Exception("Exception thrown (Login:createUser:statement) Error logged as: ".$stmt->error ,E_ALL);
@@ -109,10 +111,11 @@ class Login extends MySQLDatabase
 		$confirmcode = $this->escape_value($this->confirmcode);
 		$registrationStart = $this->escape_value($this->registrationStart);
 		$membershipStart = $this->escape_value($this->membershipStart);
+		$admin = $this->escape_value($this->admin);
 		
 		try
 		{ 
-			return $this->updateUser($forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
+			return $this->updateUser($forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $admin);
 		}
 		catch (Exception $e){
 			
@@ -124,7 +127,7 @@ class Login extends MySQLDatabase
 	
 	
 	
-	private function updateUser($forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart){
+	private function updateUser($forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $admin){
 		
 		global $database;
 		
@@ -133,7 +136,7 @@ class Login extends MySQLDatabase
 		
 		if ($stmt = $database->get_connection()->prepare($sql)) {
 			
-			$stmt->bind_param('ssssssssss', $forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $email);
+			$stmt->bind_param('sssssssssss', $forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $admin, $email);
 			if ( false===$stmt) {
 			 	throw new Exception("Exception thrown (Login:updateUser) Error logged as: ".$stmt->error ,E_ALL);
 			}
@@ -236,7 +239,7 @@ class Login extends MySQLDatabase
 			return false;
 		}
 						
-		$sql  = "SELECT id, forename, surname, email, username, password, resetpassword, confirmcode, registrationStart, membershipStart FROM ". self::$table_name ." WHERE {$field} = ?  ";
+		$sql  = "SELECT id, forename, surname, email, username, password, resetpassword, confirmcode, registrationStart, membershipStart, admin  FROM ". self::$table_name ." WHERE {$field} = ?  ";
 		
 		if ($stmt = $database->get_connection()->prepare($sql)) {
 			
@@ -252,7 +255,7 @@ class Login extends MySQLDatabase
 
 		    $stmt->store_result();
 	
-		    $stmt->bind_result($id, $forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
+		    $stmt->bind_result($id, $forename, $surname, $email, $username, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $admin);
 			if ($stmt->errno) {
 				throw new Exception("Exception thrown bind_result(Login:get_user_for_field_with_value) Error logged as: ".$stmt->error ,E_ALL);		
 			}
@@ -271,6 +274,7 @@ class Login extends MySQLDatabase
 			$this->confirmcode = $confirmcode;
 			$this->registrationStart = $registrationStart;
 			$this->membershipStart = $membershipStart;
+			$this->admin = $admin;
 						
 			return ($num_of_rows == 1) ? true : false;
 						
@@ -318,7 +322,7 @@ class Login extends MySQLDatabase
 			return false;
 		}
 						
-		$sql  = "SELECT id, forename, surname, email, password, resetpassword, confirmcode, registrationStart, membershipStart FROM ". self::$table_name ." WHERE {$field} = ? AND {$field2} = ? ";		
+		$sql  = "SELECT id, forename, surname, email, password, resetpassword, confirmcode, registrationStart, membershipStart, admin  FROM ". self::$table_name ." WHERE {$field} = ? AND {$field2} = ? ";
 		
 		if ($stmt = $database->get_connection()->prepare($sql)) {
 			
@@ -334,7 +338,7 @@ class Login extends MySQLDatabase
 
 		    $stmt->store_result();
 	
-		    $stmt->bind_result($id, $forename, $surname, $email, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart);
+		    $stmt->bind_result($id, $forename, $surname, $email, $password, $resetpassword, $confirmcode, $registrationStart, $membershipStart, $admin);
 			if ($stmt->errno) {
 				throw new Exception("Exception thrown bind_result(Login:get_user_for_field_with_value) Error logged as: ".$stmt->error ,E_ALL);
 			}
@@ -352,6 +356,7 @@ class Login extends MySQLDatabase
 			$this->confirmcode = $confirmcode;
 			$this->registrationStart = $registrationStart;
 			$this->membershipStart = $membershipStart;
+			$this->admin = $admin;
 						
 			return ($num_of_rows == 1) ? true : false;
 						
