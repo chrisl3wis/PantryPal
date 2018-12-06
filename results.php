@@ -165,7 +165,7 @@ if ($mysqli->connect_errno) {
     $sql = "SELECT * FROM lewischr_recipes.all_data_view
     WHERE $query GROUP BY title";
 
-//    echo $sql;
+    //    echo $sql;
 
 
     if ($result = $mysqli->query($sql)) {
@@ -216,11 +216,12 @@ if ($mysqli->connect_errno) {
     <script src="scripts/masonry.pkgd.min.js"></script>
     <script>
 
-        jQuery(window).on('load', function(){ var $ = jQuery;
+        jQuery(window).on('load', function() {
+            var $ = jQuery;
 
-        let elem = document.querySelector('#resultsDiv');
+            let elem = document.querySelector('#resultsDiv');
 
-        document.addEventListener('click',function () {
+
             let msnry = new Masonry(elem, {
 
                 itemSelector: '.searchResult',
@@ -228,6 +229,7 @@ if ($mysqli->connect_errno) {
                 gutterWidth: 20
             });
         });
+
 
 
     </script>
