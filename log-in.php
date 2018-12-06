@@ -27,7 +27,7 @@ if(isset($_POST['submitted']))
         <style type="text/css">
             /*!*#logo{*!*/
                 /*!*width: 200px;*!*/
-            /*!*}*!*/
+            /*!*}*!*/xor
             body {
                 background: url("images/mainBG.jpg") repeat-y;
                 background-size: cover;

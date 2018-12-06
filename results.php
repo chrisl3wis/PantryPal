@@ -21,6 +21,7 @@ if ($mysqli->connect_errno) {
     <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700" rel="stylesheet">
     <script src="scripts/masonry.pkgd.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <title>Pantry Pal: Search Results</title>
     <style>
@@ -30,10 +31,10 @@ if ($mysqli->connect_errno) {
         #resultsDiv {
             background-color: white;
             height: auto;
-            padding: 10px;
+            padding: 10px 0px 20px 10px;
             float: left;
-            width: 80%;
-            max-width: 1500px;
+            width: 100%;
+            max-width: 1800px;
 
         }
         #resultsDiv:after {
@@ -56,6 +57,8 @@ if ($mysqli->connect_errno) {
             display: block;
             clear: both;
             box-sizing: content-box;
+            position: relative;
+            /*min-height: 350px;*/
         }
 
         .recipeImage {
@@ -124,6 +127,7 @@ if ($mysqli->connect_errno) {
             margin-top: 10px;
             display: block;
         }
+
         @media screen and (max-width: 400px){
             .resultsHeader{
                 background: none;
@@ -211,6 +215,8 @@ if ($mysqli->connect_errno) {
     ?>
     <script src="scripts/masonry.pkgd.min.js"></script>
     <script>
+
+        jQuery(window).on('load', function(){ var $ = jQuery;
 
         let elem = document.querySelector('#resultsDiv');
 
