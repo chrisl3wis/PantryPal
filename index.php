@@ -18,7 +18,6 @@ if($mysqli -> connect_errno){
     exit("STOPPING page");
 }
 
-
 ?>
 <html lang="en">
 <head>
