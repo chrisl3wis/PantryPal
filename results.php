@@ -207,7 +207,13 @@ if ($mysqli->connect_errno) {
             else {
                 var_dump($mysqli);
             }
-            echo '<img class="saveRecipe" src="images/saved.png" alt="Save Recipes"></div></div></a>';
+            $lsql = "SELECT * FROM lewischr_recipes.likes WHERE user_id =" . $globalUserId . " AND recipe_id =" . $row['ID'];
+            $lres = $mysqli->query($lsql);
+            if ($lres->fetch_assoc()) {
+                echo '<a href="heart.php?heart=false&user_id=' . $globalUserId . '&recipe_id=' . $row['ID'] . '"><img class="saveRecipe" src="images/saved.png" alt="Saved"></a></div></div>';
+            } else {
+                echo '<a href="heart.php?heart=true&user_id=' . $globalUserId . '&recipe_id=' . $row['ID'] . '"><img class="saveRecipe" src="images/unsaved.png" alt="Not Saved"></a></div></div>';
+            }
         }
     } else {
         var_dump($mysqli);
@@ -229,8 +235,6 @@ if ($mysqli->connect_errno) {
                 gutterWidth: 20
             });
         });
-
-
 
     </script>
 </div>

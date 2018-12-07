@@ -1,10 +1,27 @@
-[05-Dec-2018 04:05:34 Europe/London] PHP Fatal error:  Uncaught Error: Call to undefined function UserEmail() in /home/aegoldbe/public_html/PantryPal/resultsBasic.php:214
+[06-Dec-2018 10:20:05 UTC] PHP Fatal error:  Cannot use [] for reading in /home/lewischr/public_html/PantryPal/results.php on line 251
+[06-Dec-2018 10:20:30 UTC] PHP Fatal error:  Cannot use [] for reading in /home/lewischr/public_html/PantryPal/results.php on line 251
+[06-Dec-2018 10:20:40 UTC] PHP Fatal error:  Cannot use [] for reading in /home/lewischr/public_html/PantryPal/results.php on line 250
+[06-Dec-2018 10:56:06 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/lewischr/public_html/PantryPal/results.php on line 329
+[06-Dec-2018 10:56:47 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/lewischr/public_html/PantryPal/results.php on line 329
+[06-Dec-2018 03:01:29 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to undefined function clean() in /home/lewischr/public_html/PantryPal/results.php:253
 Stack trace:
 #0 {main}
-  thrown in /home/aegoldbe/public_html/PantryPal/resultsBasic.php on line 214
-[05-Dec-2018 04:37:39 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/aegoldbe/public_html/PantryPal/resultsBasic.php on line 222
-[05-Dec-2018 04:46:10 UTC] PHP Parse error:  syntax error, unexpected ''"><img class="saveRecipe" src' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/aegoldbe/public_html/PantryPal/resultsBasic.php on line 279
-[05-Dec-2018 04:56:46 Europe/London] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on null in /home/aegoldbe/public_html/PantryPal/heart.php:26
+  thrown in /home/lewischr/public_html/PantryPal/results.php on line 253
+[06-Dec-2018 11:12:30 UTC] PHP Parse error:  syntax error, unexpected 'while' (T_WHILE), expecting ',' or ';' in /home/lewischr/public_html/PantryPal/results.php on line 264
+[06-Dec-2018 11:19:30 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/lewischr/public_html/PantryPal/results.php on line 255
+[06-Dec-2018 07:28:18 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/lewischr/public_html/PantryPal/adminEditRecipe.php:142
 Stack trace:
 #0 {main}
-  thrown in /home/aegoldbe/public_html/PantryPal/heart.php on line 26
+  thrown in /home/lewischr/public_html/PantryPal/adminEditRecipe.php on line 142
+[06-Dec-2018 15:42:47 UTC] PHP Parse error:  syntax error, unexpected 'for' (T_FOR), expecting ',' or ';' in /home/lewischr/public_html/PantryPal/adminEditRecipe.php on line 145
+[06-Dec-2018 07:47:25 America/Los_Angeles] PHP Catchable fatal error:  Object of class mysqli_result could not be converted to string in /home/lewischr/public_html/PantryPal/adminEditRecipe.php on line 146
+[06-Dec-2018 15:48:14 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/lewischr/public_html/PantryPal/adminEditRecipe.php on line 150
+[06-Dec-2018 08:57:23 America/Los_Angeles] PHP Parse error:  syntax error, unexpected '}' in /home/lewischr/public_html/PantryPal/include/fg_membersite.php on line 1076
+[06-Dec-2018 08:57:30 America/Los_Angeles] PHP Parse error:  syntax error, unexpected '}' in /home/lewischr/public_html/PantryPal/include/fg_membersite.php on line 1076
+[06-Dec-2018 08:57:32 America/Los_Angeles] PHP Parse error:  syntax error, unexpected '}' in /home/lewischr/public_html/PantryPal/include/fg_membersite.php on line 1076
+[06-Dec-2018 08:59:02 America/Los_Angeles] PHP Parse error:  syntax error, unexpected '}' in /home/lewischr/public_html/PantryPal/include/fg_membersite.php on line 1076
+[06-Dec-2018 08:59:14 America/Los_Angeles] PHP Parse error:  syntax error, unexpected '}' in /home/lewischr/public_html/PantryPal/include/fg_membersite.php on line 1076
+[06-Dec-2018 09:26:55 America/Los_Angeles] PHP Parse error:  syntax error, unexpected '}' in /home/lewischr/public_html/PantryPal/include/fg_membersite.php on line 1076
+[06-Dec-2018 20:32:12 UTC] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/lewischr/public_html/PantryPal/profile.php on line 12
+[06-Dec-2018 15:04:28 America/Los_Angeles] PHP Catchable fatal error:  Object of class Login could not be converted to string in /home/lewischr/public_html/PantryPal/include/class.login.php on line 60
+[06-Dec-2018 15:04:52 America/Los_Angeles] PHP Catchable fatal error:  Object of class Login could not be converted to string in /home/lewischr/public_html/PantryPal/include/class.login.php on line 60
