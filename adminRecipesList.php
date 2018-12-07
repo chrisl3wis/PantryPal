@@ -1,11 +1,11 @@
 <?php
 require_once './header.php';
 
-if(!$fgmembersite->CheckAdminLogin())
+/*if(!$fgmembersite->CheckAdminLogin())
 {
     $fgmembersite->RedirectToURL("profile.php");
     exit;
-}
+}*/
 
 $host = "webdev.iyaserver.com";
 $userid = "lewischr";
@@ -91,6 +91,20 @@ if ($mysqli->connect_errno) {
             color: red;
             font-size: 12pt;
         }
+        .nextpos{
+            float: right;
+            color: #231f20;
+        }
+        .nextPos:hover{
+            color: #8AC1C6;
+        }
+        .pageButton{
+            color: #231f20;
+        }
+        .pageButton:hover{
+            color: #8AC1C6;
+        }
+
 
 
 
@@ -99,6 +113,49 @@ if ($mysqli->connect_errno) {
 </head>
 <body>
 <div id="recipeBox">
+
+        <?php
+
+        $sql = "SELECT * FROM lewischr_recipes.recipe
+        WHERE 1";
+
+        $result = $mysqli->query($sql) or die($mysqli->error);
+
+
+        if(empty($_REQUEST["start"])) {
+            $start=1;
+        }
+        else {
+            $start = $_REQUEST["start"];
+        }
+
+        $end = $start + 9;
+
+        if ($result->num_rows < $end) {
+            $end = $result->num_rows;
+        }
+
+        $counter = $start;
+
+        $result->data_seek($start-1);
+
+        $searchstring = "&title=" . $_REQUEST['title'] . "&description=" . $_REQUEST['description'];
+
+
+
+        if($start != 1)
+        {
+            echo "<a  class = 'pageButton' href='adminRecipesList.php?start=" . ($start-10) . $searchstring .
+                "'>Previous Records</a> ";
+        }
+        if($end < $result->num_rows) {
+            echo "<a class = 'nextpos'  href='adminRecipesList.php?start=" . ($start + 10) .
+                $searchstring .
+                "'>Next Records</a>";
+        }
+        echo "<br><br>";
+
+        ?>
     <h1>All Recipes in Database</h1>
     <div id="recipeList">
         <!-- titles -->
@@ -108,12 +165,9 @@ if ($mysqli->connect_errno) {
         <div class="recipeEdit"><strong>Edit</strong></div>
         <div class="recipeDelete"><strong>Delete</strong></div>
         <div style="clear: both"></div>
+
         <?php
 
-        $sql = "SELECT * FROM lewischr_recipes.recipe
-        WHERE 1";
-
-        $result = $mysqli->query($sql) or die($mysqli->error);
         while ($row = $result->fetch_assoc()){
             echo '<div class="recipeRow">
             <div class="recipeID">' . $row['ID'] . '</div>
@@ -122,6 +176,11 @@ if ($mysqli->connect_errno) {
             <div class="recipeEdit"><a href="adminEditRecipe.php?recipeid=' . $row['ID'] . '">edit</a></div>
             <div class="recipeDelete"><a href="adminEditRecipe.php?delete=true&recipeid=' . $row['ID'] . '">remove</a></div>
         </div>';
+
+            if ($counter == $end){
+                break;
+            }
+            $counter++;
         }
 
         ?>
