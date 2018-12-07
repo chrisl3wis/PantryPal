@@ -1,4 +1,25 @@
-<html>
+<?php
+require_once './header.php';
+
+if(!$fgmembersite->CheckAdminLogin())
+{
+    $fgmembersite->RedirectToURL("profile.php");
+    exit;
+}
+
+$host = "webdev.iyaserver.com";
+$userid = "lewischr";
+$userpw = "Iya6521484446";
+$db = "lewischr_recipes";
+
+$mysqli = new mysqli ($host, $userid, $userpw, $db);
+
+if ($mysqli->connect_errno) {
+    echo "db connection error" . $mysqli->connect_error;
+    exit("STOPPING page");
+}
+?>
+<html lang="en-us">
 <head>
     <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css">
     <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
@@ -31,11 +52,16 @@
             height: 45px;
             clear: both;
         }
+        .userID{
+            float: left;
+            width: 5%;
+            margin: 10px;
+            clear: both;
+        }
         .userName{
             float: left;
-            width: 25%;
+            width: 20%;
             margin: 15px;
-            clear: both;
         }
         .userDesc{
             float: left;
@@ -82,6 +108,7 @@ require_once './header.php';
     <h1>All Users in Database</h1>
     <div id="userList">
         <!-- titles -->
+        <div class="userID"><strong>Name</strong></div>
         <div class="userName"><strong>Name</strong></div>
         <div class="userDesc"><strong>Username</strong></div>
         <div class="userEmail"><strong>Email</strong></div>
@@ -89,20 +116,24 @@ require_once './header.php';
         <div class="userDelete"><strong>Delete</strong></div>
         <div style="clear: both"></div>
         <!-- put loop here -->
-        <div class="userRow">
-            <div class="userName">Alyssa Goldberg</div>
-            <div class="userDesc">username</div>
-            <div class="userEmail">email@usc.edu</div>
-            <div class="userEdit">Admin &nbsp; <a href="">change</a></div>
-            <div class="userDelete"><a href="">remove</a></div>
-        </div>
-        <div class="userRow">
-            <div class="userName">Myles Willett</div>
-            <div class="userDesc">username</div>
-            <div class="userEmail">email@usc.edu</div>
-            <div class="userEdit">Admin &nbsp; <a href="">change</a></div>
-            <div class="userDelete"><a href="">remove</a></div>
-        </div>
+        <?php
+
+        $sql = "SELECT * FROM lewischr_recipes.login
+        WHERE 1";
+
+        $result = $mysqli->query($sql) or die($mysqli->error);
+        while ($row = $result->fetch_assoc()){
+            echo '<div class="userRow">
+            <div class="userID">' . $row['id'] . '</div>
+            <div class="userName">' . $row['forename'] . ' '. $row['surname'] . '</div>
+            <div class="userDesc">' . $row['username'] . '</div>
+            <div class="userEmail">' . $row['email'] . '</div>
+            <div class="userEdit"><a href="adminEditRecipe.php?userid=' . $row['id'] . '">edit</a></div>
+            <div class="userDelete"><a href="adminEditRecipe.php?delete=true&userid=' . $row['id'] . '">remove</a></div>
+        </div>';
+        }
+
+        ?>
 
 
 
