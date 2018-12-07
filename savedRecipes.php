@@ -1,6 +1,18 @@
 <?PHP
 require_once("./include/membersite_config.php");
 require_once './header.php';
+
+$host = "webdev.iyaserver.com";
+$userid = "lewischr";
+$userpw = "Iya6521484446";
+$db = "lewischr_recipes";
+
+$mysqli = new mysqli ($host, $userid, $userpw, $db);
+
+if ($mysqli->connect_errno) {
+    echo "db connection error" . $mysqli->connect_error;
+    exit("STOPPING page");
+}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -179,58 +191,30 @@ Filter by Ingredient: <input class="ingredient" type="text" name="ing1" placehol
 </div>
 </div> -->
 <div id="savedCont">
-    <div class="searchResult">
-        <img class="recipeImage" src="pestopasta.jpg" alt="pesto">
-        <div class="recipeInfo">
-            <span class="recipeName"><strong>Pesto Pasta</strong><br></span>
-            <em>recipe description goes right here</em>
-            <br>
-            <div class="tags">vegan</div><div class="tags">dinner</div>
-        </div>
+    <?php
+    $usql = "SELECT * FROM lewischr_recipes.login WHERE email = '" . $fgmembersite->UserEmail() . "'";
+    $ures = $mysqli->query($usql);
+    $urow = $ures->fetch_assoc();
+    $globalUserId = $urow['id'];
 
+    $lsql = "SELECT * FROM lewischr_recipes.likes WHERE user_id =" . $globalUserId;
+    $lres = $mysqli->query($lsql);
+    while ($lrow = $lres->fetch_assoc()) {
+        $rsql = "SELECT * FROM lewischr_recipes.recipe WHERE ID =" . $lrow['recipe_id'];
+        $rres = $mysqli->query($rsql);
+        $rrow = $rres->fetch_assoc();
+        echo '<div class="searchResult">
+					<img class="recipeImage" src="' . $rrow['imgURL'] . '" alt="pesto">
+					<div class="recipeInfo">
+						<span class="recipeName"><strong>' . $rrow['title'] . '</strong><br></span>
+						<em>' . $rrow['description'] . '</em>
+						<br>
+						<div class="tags">vegan</div><div class="tags">dinner</div>
+					</div>
+				</div>';
+    }
+    ?>
 
-    </div>
-    <div class="searchResult">
-        <img class="recipeImage" src="pestopasta.jpg" alt="pesto">
-        <div class="recipeInfo">
-            <span class="recipeName"><strong>Pesto Pasta</strong><br></span>
-            <em>recipe description goes right here</em>
-            <br>
-            <div class="tags">vegan</div><div class="tags">dinner</div>
-        </div>
-
-
-    </div>
-
-    <div class="searchResult">
-        <img class="recipeImage" src="pestopasta.jpg" alt="pesto">
-        <div class="recipeInfo">
-            <span class="recipeName"><strong>Pesto Pasta</strong><br></span>
-            <em>recipe description goes right here</em>
-            <br>
-            <div class="tags">vegan</div><div class="tags">dinner</div>
-        </div>
-
-    </div>
-
-    <div class="searchResult">
-        <img class="recipeImage" src="pestopasta.jpg" alt="pesto">
-        <div class="recipeInfo">
-            <span class="recipeName"><strong>Pesto Pasta</strong><br></span>
-            <em>recipe description goes right here</em>
-            <br>
-            <div class="tags">vegan</div><div class="tags">dinner</div>
-        </div>
-</div>
-
-    <div class="searchResult">
-        <img class="recipeImage" src="pestopasta.jpg" alt="pesto">
-        <div class="recipeInfo">
-            <span class="recipeName"><strong>Pesto Pasta</strong><br></span>
-            <em>recipe description goes right here</em>
-            <br>
-            <div class="tags">vegan</div><div class="tags">dinner</div>
-        </div>
 </body>
 
 </html>
