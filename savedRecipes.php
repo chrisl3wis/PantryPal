@@ -179,12 +179,14 @@ Filter by Ingredient: <input class="ingredient" type="text" name="ing1" placehol
 </div>
 </div> -->
 <div id="savedCont">
-    <div class="recipeInfo">
-            <span class="recipeName"><strong>Roasted Salmon Glazed With Brown Sugar and Mustard</strong>
-
-            <br></span>
-        <em>yummy salmon. super fast</em>
-        <br><div class="tags">Dinner</div><div class="tags">For One</div><div class="tags">Main Course</div><div class="tags">Quick</div><div class="tags">Weekday</div><div class="tags">Weeknight</div><div class="tags">Gluten-Free</div><div class="tags">Healthy</div><div class="tags">Nut-Free</div><div class="tags">Pescatarian</div><img class="saveRecipe" src="images/saved.png" alt="Save Recipes"></div>
+    <div class="searchResult">
+        <img class="recipeImage" src="pestopasta.jpg" alt="pesto">
+        <div class="recipeInfo">
+            <span class="recipeName"><strong>Pesto Pasta</strong><br></span>
+            <em>recipe description goes right here</em>
+            <br>
+            <div class="tags">vegan</div><div class="tags">dinner</div>
+        </div>
 
 
     </div>

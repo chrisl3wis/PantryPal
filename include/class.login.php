@@ -57,7 +57,7 @@ class Login extends MySQLDatabase
 		$confirmcode = $this->escape_value($this->confirmcode);
 		$registrationStart = $this->escape_value($this->registrationStart);
 		$membershipStart = $this->escape_value($this->membershipStart);
-		$admin = $this->admin;
+		$admin = $this->$this->escape_value($this->admin);
 
 		try
 		{ 
