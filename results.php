@@ -1,5 +1,10 @@
 <?php
 require_once './header.php';
+if($fgmembersite->CheckLogin())
+{
+    $uid=$fgmembersite->UserID();
+    $save=true;
+}
 
 $host = "webdev.iyaserver.com";
 $userid = "lewischr";
@@ -12,7 +17,6 @@ if ($mysqli->connect_errno) {
     echo "db connection error" . $mysqli->connect_error;
     exit("STOPPING page");
 }
-
 ?>
 
 <html lang="en">
@@ -148,17 +152,12 @@ if ($mysqli->connect_errno) {
 </div>
 <div id="resultsDiv">
     <?php
-
     $ingreds = $_REQUEST['ingreds'];
-
-
     for ($i = 0; $i<count($ingreds); $i++) {
-
         if(!empty($ingreds[$i])){
             $query.= "ingredient LIKE '%$ingreds[$i]%'";
             if (!empty($ingreds[$i+1])) $query .= " OR ";
         }
-
     }
     $query .= empty($query) ? " 1 " : "";
 
@@ -172,15 +171,15 @@ if ($mysqli->connect_errno) {
         echo "<div id='numResults'>".$result->num_rows." results found </div>";
 
         while ($row = $result->fetch_assoc()) {
-            echo '<a href="'.$row['url'].'" target="_blank" ><div class="searchResult"><div>
-            <img class="recipeImage" alt="Recipe Image'.$row['title'].'" src="'.$row['imgURL'].'" >
-            </div>
-            <div class="recipeInfo">
-            <span class="recipeName"><strong>' . $row['title'] . '</strong>
-              
-            <br></span>
-            <em>' . $row['description'] . '</em>
-            <br>';
+            echo '
+            <div class="searchResult">
+                <div><a href="'.$row['url'].'" target="_blank" >
+                    <img class="recipeImage" alt="Recipe Image'.$row['title'].'" src="'.$row['imgURL'].'" >
+                    </a>
+                </div>
+                <div class="recipeInfo">
+                    <span class="recipeName"><strong>' . $row['title'] . '</strong></span>
+                <br><em>' . $row['description'] . '</em></div><br>';
             //echo '<div class="tags">'.$row["ID"].'</div>';
 
             $sqlMeals = "SELECT * FROM lewischr_recipes.recipe_meal_join WHERE mID=" . $row["ID"];
@@ -207,18 +206,24 @@ if ($mysqli->connect_errno) {
             else {
                 var_dump($mysqli);
             }
-            $lsql = "SELECT * FROM lewischr_recipes.likes WHERE user_id =" . $globalUserId . " AND recipe_id =" . $row['ID'];
-            $lres = $mysqli->query($lsql);
-            if ($lres->fetch_assoc()) {
-                echo '<a href="heart.php?heart=false&user_id=' . $globalUserId . '&recipe_id=' . $row['ID'] . '"><img class="saveRecipe" src="images/saved.png" alt="Saved"></a></div></div>';
-            } else {
-                echo '<a href="heart.php?heart=true&user_id=' . $globalUserId . '&recipe_id=' . $row['ID'] . '"><img class="saveRecipe" src="images/unsaved.png" alt="Not Saved"></a></div></div>';
+            if($save) {
+//                echo '<img class="saveRecipe" id="' .$row['ID']. '-rid" src="images/saved.png" alt="Saved">';
+
+                $lsql = "SELECT * FROM lewischr_recipes.likes WHERE user_id =" . $uid . " AND recipe_id =" . $row['ID'];
+                $lres = $mysqli->query($lsql);
+                if ($lres->fetch_assoc()) {
+                    echo '<img class="saveRecipe" id="' .$row['ID']. '-rid" src="images/saved.png" alt="Saved">';
+                } else {
+                    echo '<img class="saveRecipe" id="' .$row['ID']. '-rid" src="images/unsaved.png" alt="Not Saved">';
+                }
             }
+            echo "</div>"; //close searchResult div
         }
     } else {
         var_dump($mysqli);
     }
     ?>
+
     <script src="scripts/masonry.pkgd.min.js"></script>
     <script>
 
@@ -235,6 +240,53 @@ if ($mysqli->connect_errno) {
                 gutterWidth: 20
             });
         });
+
+
+        let classname = document.getElementsByClassName("saveRecipe");
+
+
+
+
+        function saveRecipe() {
+            let thisImg = this;
+            let recipeID= thisImg.id.substring(0,thisImg.id.indexOf("-"));
+            let userID='';
+            userID= <?=$uid?>;
+            console.log(thisImg.src);
+            let currentState;
+            if(thisImg.src==="https://webdev.iyaserver.com/~lewischr/PantryPal/images/saved.png"){
+                 currentState = 'saved';
+                console.log(currentState);
+            }
+            else{
+                 currentState = 'unsaved';
+                console.log(currentState);
+            }
+
+            // console.log(recipeID);
+
+            let request = $.ajax({
+                url: "./include/saveRecipe-ajax.php",
+                method: "POST",
+                data: { user_id : userID, recipe_id : recipeID, current_state : currentState },
+
+
+            });
+            console.log("ajax");
+            request.done(function( msg ) {
+                thisImg.src='https://webdev.iyaserver.com/~lewischr/PantryPal/images/'+msg+'.png';
+                console.log(msg);
+                console.log(thisImg.src);
+            });
+
+            request.fail(function( jqXHR, textStatus ) {
+                alert( "Request failed: " + textStatus );
+            });
+        }
+
+        for (let i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', saveRecipe, false);
+        }
 
     </script>
 </div>

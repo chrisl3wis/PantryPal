@@ -196,7 +196,7 @@ if ($mysqli->connect_errno) {
             ingrName.value="";
             ingrID.value="";
             let btnID= ingCnt+'_db_insert';
-            console.log(btnID);
+            // console.log(btnID);
             document.getElementById(btnID).addEventListener("click", function() {
                 let rowNum= this.id.substring(0,this.id.indexOf("_"));
                 //console.log(rowNum);
@@ -204,7 +204,7 @@ if ($mysqli->connect_errno) {
                 let ingr_name= document.querySelector(new_ingr_id).value;
                 //console.log(ingr_name);
 
-                var request = $.ajax({
+                let request = $.ajax({
                     url: "./include/new-ingredient-ajax.php",
                     method: "POST",
                     data: { name : ingr_name },
@@ -227,6 +227,8 @@ if ($mysqli->connect_errno) {
             var button_id = $(this).attr("id");
             $('#row'+button_id+'').remove();
         });
+
+
         $('#submit').click(function(){
             var request = $.ajax({
                 url: "./include/insert-recipe-ajax.php",

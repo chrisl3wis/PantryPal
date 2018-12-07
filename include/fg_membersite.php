@@ -344,6 +344,7 @@ class FGMembersite
 		}
         
         $_SESSION[$this->GetLoginSessionVar()] = $username;
+
         if(isset($_SESSION['admin'])){
             $_SESSION[$this->GetAdminSessionVar()] = $username;
 
@@ -411,6 +412,11 @@ class FGMembersite
     function UserEmail()
     {
         return isset($_SESSION['email_of_user'])?$_SESSION['email_of_user']:'';
+    }
+
+    function UserID()
+    {
+        return isset($_SESSION['pantry_uid'])?$_SESSION['pantry_uid']:'';
     }
 	
 	
@@ -1080,12 +1086,15 @@ class FGMembersite
 		$storedpassword = $user->password;
 		$confirm = $user->confirmcode;
 		$admin = $user->admin;
+        $id = $user->id;
+
 		
 		$passwordVerify = new Password();
 		if($passwordVerify->isPasswordValidForUser($password, $user))
 		{
 	          $_SESSION['name_of_user']  = $storedName;
 	          $_SESSION['email_of_user'] = $storedEmail;
+            $_SESSION['pantry_uid'] = $id;
 	          if($admin) {
 	              $_SESSION['admin'] = true;
               }
