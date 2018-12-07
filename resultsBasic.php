@@ -242,7 +242,10 @@ include_once './header.php';
 <div id="resultsDiv">
     <?php
     if($_REQUEST) {
-
+        $usql = "SELECT * FROM lewischr_recipes.login WHERE email = '" . $fgmembersite->UserEmail() . "'";
+        $ures = $mysqli->query($usql);
+        $urow = $ures->fetch_assoc();
+        $globalUserId = $urow['id'];
 
         $sql = "SELECT * FROM lewischr_recipes.all_data_view
     WHERE ingredient LIKE '%" . $_REQUEST["ingred1"] . "%' AND ingredient LIKE '%" . $_REQUEST["ingred2"] . "%' AND ingredient LIKE '%" . $_REQUEST["ingred3"] . "%' GROUP BY title";
@@ -293,7 +296,13 @@ include_once './header.php';
             else {
                 var_dump($mysqli);
             }
-            echo '<img class="saveRecipe" src="images/saved.png" alt="Save Recipes"></div></div>';
+            $lsql = "SELECT * FROM lewischr_recipes.likes WHERE user_id =" . $globalUserId . " AND recipe_id =" . $row['ID'];
+            $lres = $mysqli->query($lsql);
+            if ($lres->fetch_assoc()) {
+                echo '<a href="heart.php?heart=false&user_id=' . $globalUserId . '&recipe_id=' . $row['ID'] . '"><img class="saveRecipe" src="images/saved.png" alt="Saved"></a></div></div>';
+            } else {
+                echo '<a href="heart.php?heart=true&user_id=' . $globalUserId . '&recipe_id=' . $row['ID'] . '"><img class="saveRecipe" src="images/unsaved.png" alt="Not Saved"></a></div></div>';
+            }
         }
     } else {
         var_dump($mysqli);
